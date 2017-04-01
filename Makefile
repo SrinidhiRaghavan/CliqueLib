@@ -2,20 +2,20 @@
 
 CC = g++
 CXX = g++
-INCLUDES = 
+INCLUDES = -I./tests -I./source 
 CXXFLAGS = -g -Wall $(INCLUDES)
 LDFLAGS = -g
 LDLIBS  =
 
-main: test_read_csv.o
+main: tests/test_read_csv.o
 
-main.o: tests.h
+main.o: tests/tests.h
 
-test_read_csv.o: tests.h
+tests/test_read_csv.o: tests/tests.h
 
 .PHONY: clean
 clean:
-	rm -f *.o *~ a.out core main
+	rm -f *.o *~ tests/*.o  tests/*~ source/*.o  source/*~ a.out core main
 
 .PHONY: all
 	all: clean main
