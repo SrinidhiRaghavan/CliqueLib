@@ -9,8 +9,13 @@ skp2140
 #define __PREPROCESSING_FUNCTIONS_H__
 
 #include <iostream>
+#include <string>
 
 //Reading a *.csv file
-void read_csv();
+void read_csv(std::string file,
+	      bool title = false,
+	      char separate_ex = ',', 
+              char comment = '#'
+             );
 
 #endif
