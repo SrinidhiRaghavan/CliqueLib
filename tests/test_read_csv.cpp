@@ -13,8 +13,8 @@ void test_read_csv()
 
     //Test 1
     std::cout << "\nTESTING READING CSV FILE 1" << std::endl;
-    read_csv("test_file_1.csv");
-
+    read_csv("origin_wine.csv");
+    
     //Test 2
     std::cout << "\nTESTING READING CSV FILE 2" << std::endl;
     read_csv("test_file_2.csv");
@@ -30,5 +30,6 @@ void test_read_csv()
     //Test 5
     std::cout << "\nTESTING READING CSV FILE 5" << std::endl;
     read_csv("test_file_5.csv");
+    
 }
 

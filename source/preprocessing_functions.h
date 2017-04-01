@@ -10,9 +10,14 @@ skp2140
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <fstream>
+#include <sstream>
+
+using namespace std;
 
 //Reading a *.csv file
-void read_csv(std::string file,
+vector<vector<float> > read_csv(string file,
 	      bool title = false,
 	      char separate_ex = ',', 
               char comment = '#'

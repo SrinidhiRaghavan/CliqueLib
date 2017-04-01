@@ -1,9 +1,9 @@
 # Stanislav Peceny
 
-CC = g++
-CXX = g++
+CC = g++-6
+CXX = g++-6
 INCLUDES = -I./tests -I./source 
-CXXFLAGS = -g -Wall $(INCLUDES)
+CXXFLAGS = -g -Wall --std=c++1z $(INCLUDES)
 LDFLAGS = -g
 LDLIBS  =
 
