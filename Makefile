@@ -7,11 +7,13 @@ CXXFLAGS = -g -Wall $(INCLUDES)
 LDFLAGS = -g
 LDLIBS  =
 
-main: tests/test_read_csv.o
+main: tests/test_read_csv.o source/preprocessing_functions.o
 
 main.o: tests/tests.h
 
 tests/test_read_csv.o: tests/tests.h
+
+source/preprocessing_functions.o: source/preprocessing_functions.h
 
 .PHONY: clean
 clean:
