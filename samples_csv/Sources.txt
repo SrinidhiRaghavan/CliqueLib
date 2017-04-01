@@ -1,0 +1,11 @@
+Stanislav Karel Peceny III
+skp2140
+4/1/2017
+
+Sample *.csv files were taken from the UCI Machine learning repository as *.data files and converted into the .csv format.
+
+Link:
+https://archive.ics.uci.edu/ml/datasets.html
+
+
+
