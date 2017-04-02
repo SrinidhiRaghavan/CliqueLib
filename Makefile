@@ -7,11 +7,13 @@ CXXFLAGS = -g -Wall --std=c++1z $(INCLUDES)
 LDFLAGS = -g
 LDLIBS  =
 
-main: tests/test_read_csv.o source/preprocessing_functions.o
+main: tests/test_read_csv.o tests/test_split_test_train_dataset.o source/preprocessing_functions.o
 
 main.o: tests/tests.h
 
 tests/test_read_csv.o: tests/tests.h
+
+tests/test_split_test_train_dataset.o: tests/tests.h
 
 source/preprocessing_functions.o: source/preprocessing_functions.h
 

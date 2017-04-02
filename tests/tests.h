@@ -9,9 +9,11 @@ skp2140
 #define __TESTS_H__
 
 #include <iostream>
+#include <vector>
 #include "preprocessing_functions.h"
 
 //TEST IMPLEMENTATIONS
 void test_read_csv();
+void test_split_test_train_dataset();
 
 #endif

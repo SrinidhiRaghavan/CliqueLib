@@ -12,5 +12,8 @@ int main()
     //reading csv file tests
     test_read_csv();
 
+    //test splitting csv files
+    test_split_test_train_dataset();
+
     return 0;
 }

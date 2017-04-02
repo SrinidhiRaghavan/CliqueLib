@@ -25,9 +25,9 @@ vector<vector<float> > read_csv(string file,
 
 //Split the dataset into a train and test section
 void split_test_train(vector<vector<float> > file, 
-		      float train_ratio,
-		      vector<vector<float> > train_file,
-		      vector<vector<float> > test_file
+		      float train_part,
+		      vector<vector<float> >& train_file,
+		      vector<vector<float> >& test_file
 		     );
 
 #endif
