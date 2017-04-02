@@ -27,6 +27,9 @@ vector<vector<float> > read_csv(string file,
             title = false;
             continue;
         }
+        //check if the line is a comment
+        if (ln[0] == comment)
+            continue;        
         istringstream parse_line (ln);
         vector<float> split_ln;
         while (parse_line)
