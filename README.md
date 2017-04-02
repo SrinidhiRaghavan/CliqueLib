@@ -33,5 +33,19 @@ Separate_ex states how the attributes are separated. ',' is the default value.
 
 Finally, the 'comment' argument asks how the function ought to distinguish a comment.
 
+2. Splitting the file into testing and training dataset after read_csv() was called. 
 
+Use the predefined function:
 
+//Split the dataset into a train and test section
+void split_test_train(vector<vector<float> > file, 
+		      float train_part,
+		      vector<vector<float> >& train_file,
+		      vector<vector<float> >& test_file
+		     );
+
+The first argument is passing the file as read in from read_csv().
+
+The second argument, train_part, is a value between 0 and 1 and states what portion the training part ought to constitute after splitting.
+
+The last two arguments are blank vector<vector<float> >, which after the function's call will contain the training and the testing part.
