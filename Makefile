@@ -26,4 +26,4 @@ clean:
 
 .PHONY: valgrind
 valgrind: main
-	valgrind --leak-check=full ./main
+	valgrind -v --num-callers=20 --leak-check=yes --leak-resolution=high --show-reachable=yes ./main
