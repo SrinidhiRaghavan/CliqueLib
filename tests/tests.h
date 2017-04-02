@@ -11,9 +11,11 @@ skp2140
 #include <iostream>
 #include <vector>
 #include "preprocessing_functions.h"
+#include "knn.h"
 
 //TEST IMPLEMENTATIONS
 void test_read_csv();
 void test_split_test_train_dataset();
+void test_knn();
 
 #endif

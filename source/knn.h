@@ -16,25 +16,24 @@ skp2140
 
 using namespace std;
 
-/*class KNN
+class KNN
 {
     public:
         //default constructor
-        KNN();
+        KNN(vector<vector<float> > train_file) : KNN(train_file, 1){}
 
-        //destructor
-        ~KNN();
+        //constructor
+        KNN(vector<vector<float> > train_file, int k);
 
         //Train 
-        bool train();
+        vector<vector<float> > train();
 
-        //split dataset 
+        //Classify
+        float classify(vector<float> instance);
        
     private:
-
+        int k;
+        vector<vector<float> > train_file;
 };
-*/
-
-//First implement in a non object-oriented manner
 
 #endif

@@ -15,5 +15,8 @@ int main()
     //test splitting csv files
     test_split_test_train_dataset();
 
+    //test knn functions
+    test_knn();
+
     return 0;
 }
