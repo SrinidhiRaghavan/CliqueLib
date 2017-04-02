@@ -57,7 +57,27 @@ void split_test_train(vector<vector<float> > file,
 		      vector<vector<float> >& train_file,
 		      vector<vector<float> >& test_file
 		     )
-{
+{    
+    int train_size = train_part * file.size();
+    int test_size = file.size() - train_size;
+    //size of dataset is 1
+    if (file.size() == 1)
+    {
+        train_size = 1;
+        test_size = 0;
+    }
+
+    vector<vector<float> > train (file.begin(), file.end() - test_size);
+    vector<vector<float> > test (file.begin() + train_size, file.end());
+    train_file = train;
+    test_file = test;
+    
     cout << file.size();
+    cout << train_size;
+    cout << test_size;
+    cout << train_file.size();
+    cout << test_file.size();
+cout << train_file[0][0];
+cout << test_file[0][0];
 }
 
