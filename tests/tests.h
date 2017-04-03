@@ -10,6 +10,7 @@ skp2140
 
 #include <iostream>
 #include <vector>
+#include <cassert>
 #include "preprocessing_functions.h"
 #include "knn.h"
 

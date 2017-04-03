@@ -25,6 +25,9 @@ class KNN
         //constructor
         KNN(vector<vector<float> > train_file, int k);
 
+        //get k
+        int getK() { return k; }
+
         //Train 
         vector<vector<float> > train();
 

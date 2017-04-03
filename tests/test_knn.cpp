@@ -9,7 +9,7 @@ skp2140
 
 void test_knn()
 {
-    //TEST READING CSV FILES
+    //TEST KNN OF CSV FILES
     vector<vector<float> > file;
     vector<vector<float> > train_file;
     vector<vector<float> > test_file;
@@ -17,7 +17,13 @@ void test_knn()
     //Test 1
     std::cout << "\nTESTING KNN CSV FILE 1" << std::endl;
     file = read_csv("./samples_csv/test_file_1_title_true.csv", true);
-    split_test_train(file, 0.6, train_file, test_file);    
+    split_test_train(file, 0.6, train_file, test_file);  
+
+    //examp_1 does not include a label
+    vector<float> examp_1 = { 4, 5 };
+    KNN knn1 (train_file, 3);
+    assert(knn1.getK() == 3);
+    assert(knn1.train() == train_file);
 
     //Test 2
     std::cout << "\nTESTING KNN CSV FILE 2" << std::endl;
@@ -59,7 +65,5 @@ void test_knn()
     file = read_csv("./samples_csv/test_file_9_origin_wine.csv", true);    
     split_test_train(file, 0.01, train_file, test_file); 
 
-    KNN k1 (train_file, 5);
-    KNN k2 (train_file, 3);  
 }
 
