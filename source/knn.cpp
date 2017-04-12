@@ -56,6 +56,7 @@ float KNN::classify(vector<float> instance)
     }
     //Find k nearest neighbors
     vector<float> ks;
+    vector<int> ks_indices;
     vector<int> ks_classes;
     vector<float> copy_distances = distances;
     sort(distances.begin(), distances.end());
@@ -66,32 +67,36 @@ float KNN::classify(vector<float> instance)
         for (int j = 0; j < copy_distances.size(); j++)
         {
             if (ks[i] == copy_distances[j]) 
-                ks_classes.push_back(j);
+            {
+                ks_classes.push_back(train_file[j][train_file[j].size() - 1]);
+                ks_indices.push_back(j);
+            }
         }  
     }
     //which class occurs most times
-    /*map<float, int> classification;
-    for (int i = 0; i < ks_classes.size(); i++)
+    map<float, int> classification;
+    for (int i = 0; i < ks_indices.size(); i++)
     {
-        classification[train_file[ks_classes[i]][train_file[ks_classes[i]].size() - 1]] = 0;
+        classification[train_file[ks_indices[i]][train_file[ks_indices[i]].size() - 1]] = 0;
     }
-    for (int i = 0; i < ks_classes.size(); i++)
+    for (int i = 0; i < ks_indices.size(); i++)
     {
-        classification[train_file[ks_classes[i]][train_file[ks_classes[i]].size() - 1]] +=1;
+        classification[train_file[ks_indices[i]][train_file[ks_indices[i]].size() - 1]] +=1;
     }
 
     int largest_val = numeric_limits<int>::min();
     float largest_class = numeric_limits<float>::min();
-    for( const auto& classification_pair : classification )
+    for (int i = 0; i < ks_classes.size(); i++)
     {
-        for( const auto& classification_pair : classification_pair.second )
-        {
-            if (classification_pair.)
-            std::cout << "     " << sc_pair.first << '{' << sc_pair.second.a << ',' 
-                      << sc_pair.second.b << ',' << sc_pair.second.d << "}\n" ;    
+        if (classification[ks_classes[i]] > largest_val)
+        { 
+            largest_val = classification[ks_classes[i]];
+            largest_class = ks_classes[i];
+
         }
-    }*/
+    }
+    cout << largest_class;
 	
-    return 0;
+    return largest_class;
 }
 
