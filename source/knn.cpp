@@ -45,14 +45,53 @@ float KNN::classify(vector<float> instance)
     vector<float> distances;
     //iterate over all examples
     for (int i = 0; i < train_file.size(); i++)
-    {
+    { 
         //Calculate Euclidean Distance to each example
+        float sum = 0;
         for (int j = 0; j < train_file[i].size(); j++)
         {
-            cout << train_file[i][j];
+            sum += pow(instance[i] - train_file[i][j], 2);
         }
-    }    
+        distances.push_back(pow(sum, 0.5));
+    }
+    //Find k nearest neighbors
+    vector<float> ks;
+    vector<int> ks_classes;
+    vector<float> copy_distances = distances;
+    sort(distances.begin(), distances.end());
+    for (int i = 0; i < this->k; i++)
+        ks.push_back(distances[i]);
+    for (int i = 0; i < this->k; i++)
+    {
+        for (int j = 0; j < copy_distances.size(); j++)
+        {
+            if (ks[i] == copy_distances[j]) 
+                ks_classes.push_back(j);
+        }  
+    }
+    //which class occurs most times
+    /*map<float, int> classification;
+    for (int i = 0; i < ks_classes.size(); i++)
+    {
+        classification[train_file[ks_classes[i]][train_file[ks_classes[i]].size() - 1]] = 0;
+    }
+    for (int i = 0; i < ks_classes.size(); i++)
+    {
+        classification[train_file[ks_classes[i]][train_file[ks_classes[i]].size() - 1]] +=1;
+    }
 
-    return 1.0;
+    int largest_val = numeric_limits<int>::min();
+    float largest_class = numeric_limits<float>::min();
+    for( const auto& classification_pair : classification )
+    {
+        for( const auto& classification_pair : classification_pair.second )
+        {
+            if (classification_pair.)
+            std::cout << "     " << sc_pair.first << '{' << sc_pair.second.a << ',' 
+                      << sc_pair.second.b << ',' << sc_pair.second.d << "}\n" ;    
+        }
+    }*/
+	
+    return 0;
 }
 

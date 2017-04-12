@@ -13,6 +13,12 @@ skp2140
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <cmath>
+#include <algorithm>
+#include <map>
+#include <utility>
+#include <limits>
+
 
 using namespace std;
 

@@ -77,7 +77,7 @@ void test_knn()
     KNN knn6 (train_file, 2);
     assert(knn6.getK() == 2);
     assert(knn6.train() == train_file);
-    vector<float> class_ex6 = {3, 7.4};
+    vector<float> class_ex6 = {3, 7.4, 2, 3};
     knn6.classify(class_ex6);
 
     //Test 7
@@ -88,7 +88,7 @@ void test_knn()
     KNN knn7 (train_file, 1);
     assert(knn7.getK() == 1);
     assert(knn7.train() == train_file);
-    vector<float> class_ex7 = {3, 7.4};
+    vector<float> class_ex7 = {3, 7.4, 8, 4};
     knn7.classify(class_ex7);
 
     //Test 8
@@ -99,7 +99,7 @@ void test_knn()
     KNN knn8 (train_file, 1);
     assert(knn8.getK() == 1);
     assert(knn8.train() == train_file);
-    vector<float> class_ex8 = {3, 7.4};
+    vector<float> class_ex8 = {3, 7.4, 2, 3};
     knn8.classify(class_ex8);
 
     //Test 9
@@ -110,7 +110,7 @@ void test_knn()
     KNN knn9 (train_file, 1);
     assert(knn9.getK() == 1);
     assert(knn9.train() == train_file);
-    vector<float> class_ex9 = {3, 7.4};
+    vector<float> class_ex9 = {3, 7.4, 3, 4.4};
     knn9.classify(class_ex9);
 
     //Test 10
