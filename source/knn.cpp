@@ -36,66 +36,64 @@ float KNN::classify(vector<float> instance)
         cerr << "Training file has 0 examples";
         return 0;
     }
-    if (num_attributes != this->train_file[0].size() - 1)
+    if ((unsigned int)num_attributes != this->train_file[0].size() - 1)
     {
         cerr << "Wrong number of attributes for the example to be classified";
         return 0;
     }
-    float dist_formula = 0;
+
     vector<float> distances;
     //iterate over all examples
-    for (int i = 0; i < train_file.size(); i++)
+    for (unsigned int i = 0; i < train_file.size(); i++)
     { 
         //Calculate Euclidean Distance to each example
-        float sum = 0;
-        for (int j = 0; j < train_file[i].size(); j++)
+        float sum = 0.0;
+        for (unsigned int j = 0; j < train_file[i].size() - 1; j++)
         {
-            sum += pow(instance[i] - train_file[i][j], 2);
+            sum += pow(instance[j] - train_file[i][j], 2);
         }
         distances.push_back(pow(sum, 0.5));
     }
     //Find k nearest neighbors
     vector<float> ks;
-    vector<int> ks_indices;
     vector<int> ks_classes;
     vector<float> copy_distances = distances;
     sort(distances.begin(), distances.end());
+    //k smallest distances
     for (int i = 0; i < this->k; i++)
         ks.push_back(distances[i]);
+    //actual classes of the smallest distances
     for (int i = 0; i < this->k; i++)
     {
-        for (int j = 0; j < copy_distances.size(); j++)
+        for (unsigned int j = 0; j < copy_distances.size(); j++)
         {
             if (ks[i] == copy_distances[j]) 
             {
+                //last column is the label
                 ks_classes.push_back(train_file[j][train_file[j].size() - 1]);
-                ks_indices.push_back(j);
             }
         }  
     }
     //which class occurs most times
     map<float, int> classification;
-    for (int i = 0; i < ks_indices.size(); i++)
-    {
-        classification[train_file[ks_indices[i]][train_file[ks_indices[i]].size() - 1]] = 0;
-    }
-    for (int i = 0; i < ks_indices.size(); i++)
-    {
-        classification[train_file[ks_indices[i]][train_file[ks_indices[i]].size() - 1]] +=1;
-    }
 
+    for (unsigned int i = 0; i < ks_classes.size(); i++)    
+        classification[ks_classes[i]] = 0;
+    
+    for (unsigned int i = 0; i < ks_classes.size(); i++)    
+        classification[ks_classes[i]] +=1;
+    
+    //set to minimum
     int largest_val = numeric_limits<int>::min();
     float largest_class = numeric_limits<float>::min();
-    for (int i = 0; i < ks_classes.size(); i++)
+    for (unsigned int i = 0; i < ks_classes.size(); i++)
     {
         if (classification[ks_classes[i]] > largest_val)
         { 
             largest_val = classification[ks_classes[i]];
             largest_class = ks_classes[i];
-
         }
     }
-    cout << largest_class;
 	
     return largest_class;
 }

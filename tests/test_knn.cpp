@@ -19,10 +19,10 @@ void test_knn()
     file = read_csv("./samples_csv/test_file_1_title_true.csv", true);
     split_test_train(file, 0.6, train_file, test_file);  
 
-    KNN knn1 (train_file, 2);
-    assert(knn1.getK() == 2);
+    KNN knn1 (train_file, 1);
+    assert(knn1.getK() == 1);
     assert(knn1.train() == train_file);
-    vector<float> class_ex1 = {3, 7.4};
+    vector<float> class_ex1 = {3, 9};
     knn1.classify(class_ex1);
 
     //Test 2
