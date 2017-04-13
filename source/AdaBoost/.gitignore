@@ -1,0 +1,8 @@
+AdaBoost.sln
+AdaBoost.vcxproj
+AdaBoost.vcxproj.filters
+blas_win64_MT.dll
+lapack_win64_MT.dll
+
+.vs/
+x64/
