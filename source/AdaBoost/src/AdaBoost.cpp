@@ -101,8 +101,7 @@ public:
 		cout << "Min error:" << error << " found at idx:" << min_idx << " for thres:" << thres << endl;
 	}
 
-	void predictStump(const mat& X, colvec& labels) {
-		uword N = size(X, 1);
+	void predictStump(const mat& X, colvec& labels) {;
 		colvec x = X.col(dim);
 		uvec idx = find(x >= threshold);
 		cout << "idx:" << idx << endl;
@@ -112,7 +111,7 @@ public:
 };
 
 Stump* buildStump(const mat& X, const colvec& y, const colvec& weight) {
-	uword d = size(X, 2);
+	uword d = size(X, 1);
 	vector<Stump*> stumps;
 	rowvec errors;
 	errors.zeros(1, d);
@@ -125,6 +124,58 @@ Stump* buildStump(const mat& X, const colvec& y, const colvec& weight) {
 	return stumps[min_idx];
 }
 
+class AdaBoost {
+	vector<Stump*> weakClassifiers;
+	vector<double> weights;
+public:
+	AdaBoost() {
+	}
+
+	void fit(const mat& X, const colvec& Y, uword iter) {
+		uword n = size(X, 0); //no. of samples
+		colvec sampleWts(n);
+		sampleWts.fill(1/n);
+
+		for (int i = 0; i < iter; i++) {
+			Stump* clfr = buildStump(X, Y, sampleWts);
+			double err = clfr->getError();
+			double alpha = 0.5*log((1 - err) / err);
+
+			colvec preds(n);
+			preds.zeros();
+			clfr->predictStump(X, preds);
+
+			sampleWts *= exp(-alpha * Y % preds);
+			sampleWts /= accu(sampleWts);
+
+			weakClassifiers[i] = clfr;
+			weights[i] = alpha;
+		}
+	}
+
+	void predict(const mat& testX, colvec& preds) {
+		uword n = size(testX, 0); //no. of samples
+		colvec labels;
+		colvec sum;
+		sum.zeros(n, 1);
+		labels.zeros(n, 1);
+		preds.zeros(n, 1);
+
+		auto weakIter = weakClassifiers.begin();
+		auto wtIter = weights.begin();
+		for (; weakIter != weakClassifiers.end(); weakIter++, wtIter++) {
+			Stump* clfr = *weakIter;
+			double wt = *wtIter;
+
+			clfr->predictStump(testX, labels);
+			sum += wt*labels;
+		}
+		preds.fill(-1);
+		uvec idx = find(sum > 0);
+		preds.elem(idx).fill(1);
+	}
+};
+
 int main()
 {
 	colvec x;
@@ -132,6 +183,7 @@ int main()
 	  << 2.0 << endr
 	  << 3.0 << endr;
 
+	cout << "size(x)" << arma::size(x) << " x.size()" << x.size() << endl;
 	uword N = x.size();
 	colvec w;
 	w.ones(N, 1);
@@ -141,8 +193,23 @@ int main()
 	  << -1.0 << endr
 	  << 1.0 << endr;
 
-	cout << "x:" << x << endl;
-	cout << "y:" << y << endl;
+	//cout << "x:" << x << endl;
+	//cout << "y:" << y << endl;
+
+	vector<double> v;
+	v.push_back(1);
+	v.push_back(2);
+	v.push_back(3);
+	v.push_back(4);
+	v.push_back(5);
+	v.push_back(6);
+
+	mat a(v);
+	a.reshape(3, 2);
+	a = a.t();
+
+	cout << "a:" << a << endl;
+	cout << "size(a)" << arma::size(a) << " size(a, 0):" << size(a, 0) << " size(a, 1):" << size(a, 1) << endl;
 	
 	//calculateThreshold(x, y, w, "lesser");
 	
