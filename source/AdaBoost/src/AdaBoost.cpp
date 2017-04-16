@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <armadillo>
+#include <math.h>
 
 using namespace std;
 using namespace arma;
@@ -136,7 +137,7 @@ public:
 		colvec sampleWts(n);
 		sampleWts.fill(1/n);
 
-		for (int i = 0; i < iter; i++) {
+		for (uword i = 0; i < iter; i++) {
 			Stump* clfr = buildStump(X, Y, sampleWts);
 			double err = clfr->getError();
 			double alpha = 0.5*log((1 - err) / err);
