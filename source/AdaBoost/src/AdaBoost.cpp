@@ -80,7 +80,7 @@ public:
 			else
 			{
 				cout << "<" << endl;
-				idx = find(x <= x(i));
+				idx = find(x < x(i));
 				cout << "idx:" << idx << endl;
 				y_predict.fill(-1);
 				y_predict.elem(idx).ones();
@@ -109,7 +109,18 @@ public:
 		labels.fill(less);
 		labels.elem(idx).fill(more);
 	}
+	friend ostream& operator<<(ostream& os, const Stump& s);
 };
+
+ostream& operator<<(ostream& os, const Stump& s)
+{
+	os << "dim:" << s.dim << endl;
+	os << "error:" << s.error << endl;
+	os << "threshold:" << s.threshold << endl;
+	os << "less:" << s.less << endl;
+	os << "more:" << s.more << endl;
+	return os;
+}
 
 Stump* buildStump(const mat& X, const colvec& y, const colvec& weight) {
 	uword d = size(X, 1);
@@ -181,8 +192,9 @@ int main()
 {
 	colvec x;
 	x << 1.0 << endr
-	  << 2.0 << endr
-	  << 3.0 << endr;
+		<< 2.0 << endr
+		<< 3.0 << endr
+		<< 1.0 << endr;
 
 	cout << "size(x)" << arma::size(x) << " x.size()" << x.size() << endl;
 	uword N = x.size();
@@ -190,9 +202,10 @@ int main()
 	w.ones(N, 1);
 	
 	colvec y;
-	y << 1.0 << endr 
-	  << -1.0 << endr
-	  << 1.0 << endr;
+	y << 1.0 << endr
+		<< 1.0 << endr
+		<< 1.0 << endr
+		<< -1.0 << endr;
 
 	//cout << "x:" << x << endl;
 	//cout << "y:" << y << endl;
@@ -209,10 +222,14 @@ int main()
 	a.reshape(3, 2);
 	a = a.t();
 
-	cout << "a:" << a << endl;
-	cout << "size(a)" << arma::size(a) << " size(a, 0):" << size(a, 0) << " size(a, 1):" << size(a, 1) << endl;
+	//cout << "a:" << a << endl;
+	//cout << "size(a)" << arma::size(a) << " size(a, 0):" << size(a, 0) << " size(a, 1):" << size(a, 1) << endl;
 	
-	//calculateThreshold(x, y, w, "lesser");
+	Stump s(1);
+	double error, thres;
+	//s.calculateThreshold(x, y, w, "greater", error, thres);
+	s.buildOneDStump(x, y, w);
+	cout << s;
 	
 	getchar();
 	return 0;
