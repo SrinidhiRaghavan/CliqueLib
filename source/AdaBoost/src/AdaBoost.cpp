@@ -60,8 +60,8 @@ public:
 
 	void calculateThreshold(const colvec& x, const colvec& y, const colvec& w, const string& sign, double& error, double& thres) {
 		uword N = x.size();
-		cout << "N: " << N << endl;
-	
+		//cout << "N: " << N << endl;
+
 		colvec err_n, y_predict;
 		err_n.zeros(N, 1);
 		y_predict.zeros(N, 1);
@@ -70,32 +70,32 @@ public:
 		for (unsigned int i = 0; i < N; i++) {
 			if (sign == "greater")
 			{
-				cout << ">" << endl;
+				//cout << ">" << endl;
 				idx = find(x >= x(i));
-				cout << "idx:" << idx << endl;
+				//cout << "idx:" << idx << endl;
 				y_predict.fill(-1);
 				y_predict.elem(idx).ones();
-				cout << "y_predict:" << y_predict << endl;
+				//cout << "y_predict:" << y_predict << endl;
 			}
 			else
 			{
-				cout << "<" << endl;
+				//cout << "<" << endl;
 				idx = find(x < x(i));
-				cout << "idx:" << idx << endl;
+				//cout << "idx:" << idx << endl;
 				y_predict.fill(-1);
 				y_predict.elem(idx).ones();
-				cout << "y_predict:" << y_predict << endl;
+				//cout << "y_predict:" << y_predict << endl;
 			}
-			cout << "y.size():" << y.size() << endl;
-			cout << "y_predict.size():" << y_predict.size() << endl;
+			//cout << "y.size():" << y.size() << endl;
+			//cout << "y_predict.size():" << y_predict.size() << endl;
 			umat err_label = (y != y_predict);
-			cout << "err_label:" << err_label << endl;
-			err_n(i) = accu(err_label);
-			cout << "sum:" << accu(err_label) << endl;
+			//cout << "err_label:" << err_label << endl;
+			err_n(i) = accu(err_label % w) / accu(w);
+			//cout << "sum:" << accu(err_label) << endl;
 		}
-		cout << "before err_n:" << err_n << endl;
-		err_n = err_n / accu(w);
-		cout << "after err_n:" << err_n << endl;
+		//cout << "before err_n:" << err_n << endl;
+		//err_n = err_n / accu(w);
+		//cout << "after err_n:" << err_n << endl;
 		error = min(err_n);
 		uword min_idx = index_min(err_n);
 		thres = x(min_idx);
@@ -104,9 +104,9 @@ public:
 
 	void predictStump(const mat& X, colvec& labels) {
 		colvec x = X.col(dim);
-		cout << "predictStump: x:" << x;
+		//cout << "predictStump: x:" << x;
 		uvec idx = find(x >= threshold);
-		cout << "predictStump: idx:" << idx << endl;
+		//cout << "predictStump: idx:" << idx << endl;
 		labels.fill(less);
 		labels.elem(idx).fill(more);
 	}
@@ -149,7 +149,10 @@ public:
 	void fit(const mat& X, const colvec& Y, uword iter) {
 		uword n = size(X, 0); //no. of samples
 		colvec sampleWts(n);
-		sampleWts.fill(1/n);
+		double initWt = 1.0 / n;
+		cout << "fit: initWt:" << initWt << endl;
+		sampleWts.fill(initWt);
+		cout << "fit: sampleWts:" << sampleWts << endl;
 
 		for (uword i = 0; i < iter; i++) {
 			Stump* clfr = buildStump(X, Y, sampleWts);
@@ -199,26 +202,34 @@ public:
 
 int main()
 {
-	cout << "it begins !!!" << endl;
+	//cout << "it begins !!!" << endl;
 	mat x;
-	x << 1 << 2 << 3 << 4 << endr
-		<< 2 << 1 << 3 << 4 << endr
-		<< 3 << 2 << 3 << 4 << endr;
+	x << 1 << 2 << endr
+		<< 2 << 4 << endr
+		<< 3 << 6 << endr
+		<< 4 << 8 << endr
+		<< 1 << 10 << endr;
 
 	mat xTest;
-	xTest << 2 << 1 << 3 << 4 << endr 
+	xTest << 2 << 1 << 3 << 4 << endr
 		<< 1 << 2 << 3 << 4 << endr
 		<< 3 << 2 << 3 << 4 << endr;
 
-	cout << "size(x)" << arma::size(x) << " x.size()" << x.size() << endl;
+	//cout << "size(x)" << arma::size(x) << " x.size()" << x.size() << endl;
 	uword N = size(x, 0);
 	colvec w;
 	w.ones(N, 1);
-	
+	w.fill(0.2);
+
 	colvec y;
 	y << 1.0 << endr
+		<< -1.0 << endr
 		<< 1.0 << endr
+		<< -1.0 << endr
 		<< -1.0 << endr;
+
+	auto z = x.col(0) % w;
+	//cout << "z:" << z << endl;
 
 	//cout << "x:" << x << endl;
 	//cout << "y:" << y << endl;
@@ -237,25 +248,28 @@ int main()
 
 	//cout << "a:" << a << endl;
 	//cout << "size(a)" << arma::size(a) << " size(a, 0):" << size(a, 0) << " size(a, 1):" << size(a, 1) << endl;
-	
-	//Stump s(0);
+
+	//Stump* s = new Stump(0);
 	//double error, thres;
-	//s.calculateThreshold(x, y, w, "greater", error, thres);
-	//s.buildOneDStump(x, y, w);
+	//s->calculateThreshold(x.col(1), y, w, "lesser", error, thres);
+	//s->buildOneDStump(x.col(1), y, w);
 	//AdaBoost ad;
 	//Stump* s = buildStump(x, y, w);
 	//cout << s;
+
+	
 	AdaBoost ad;
-	uword iter = 1;
+	uword iter = 2;
 	ad.fit(x, y, iter);
-
+	
 	colvec labels(arma::size(y));
-	cout << "here!" << endl;
+	//cout << "here!" << endl;
 
-	ad.predict(xTest, labels);
+	ad.predict(x, labels);
+
 	//s->predictStump(x, labels);
 	cout << "labels:" << labels;
-	
+
 	getchar();
 	return 0;
 }
