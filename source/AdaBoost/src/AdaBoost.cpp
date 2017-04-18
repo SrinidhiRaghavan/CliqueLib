@@ -102,23 +102,25 @@ public:
 		cout << "Min error:" << error << " found at idx:" << min_idx << " for thres:" << thres << endl;
 	}
 
-	void predictStump(const mat& X, colvec& labels) {;
+	void predictStump(const mat& X, colvec& labels) {
 		colvec x = X.col(dim);
+		cout << "predictStump: x:" << x;
 		uvec idx = find(x >= threshold);
-		cout << "idx:" << idx << endl;
+		cout << "predictStump: idx:" << idx << endl;
 		labels.fill(less);
 		labels.elem(idx).fill(more);
 	}
-	friend ostream& operator<<(ostream& os, const Stump& s);
+
+	friend ostream& operator<<(ostream& os, const Stump* s);
 };
 
-ostream& operator<<(ostream& os, const Stump& s)
+ostream& operator<<(ostream& os, const Stump* s)
 {
-	os << "dim:" << s.dim << endl;
-	os << "error:" << s.error << endl;
-	os << "threshold:" << s.threshold << endl;
-	os << "less:" << s.less << endl;
-	os << "more:" << s.more << endl;
+	os << "dim:" << s->dim << endl;
+	os << "error:" << s->error << endl;
+	os << "threshold:" << s->threshold << endl;
+	os << "less:" << s->less << endl;
+	os << "more:" << s->more << endl;
 	return os;
 }
 
@@ -128,9 +130,10 @@ Stump* buildStump(const mat& X, const colvec& y, const colvec& weight) {
 	rowvec errors;
 	errors.zeros(1, d);
 	for (unsigned int i = 0; i < d; i++) {
-		stumps[i] = new Stump(i);
-		stumps[i]->buildOneDStump(X.col(i), y, weight);
-		errors(1, i) = stumps[i]->getError();
+		Stump* s = new Stump(i);
+		stumps.push_back(s);
+		s->buildOneDStump(X.col(i), y, weight);
+		errors(0, i) = s->getError();
 	}
 	uword min_idx = index_min(errors);
 	return stumps[min_idx];
@@ -153,15 +156,21 @@ public:
 			double err = clfr->getError();
 			double alpha = 0.5*log((1 - err) / err);
 
+			//cout << "fit: :" << << endl;
+			cout << "fit: err:" << err << endl;
+			cout << "fit: alpha:" << alpha << endl;
+
 			colvec preds(n);
 			preds.zeros();
 			clfr->predictStump(X, preds);
 
-			sampleWts *= exp(-alpha * Y % preds);
-			sampleWts /= accu(sampleWts);
+			sampleWts = sampleWts % exp(-alpha * Y % preds);
+			cout << "fit: before sampleWts:" << sampleWts << endl;
+			sampleWts = sampleWts / accu(sampleWts);
+			cout << "fit: after sampleWts:" << sampleWts << endl;
 
-			weakClassifiers[i] = clfr;
-			weights[i] = alpha;
+			weakClassifiers.push_back(clfr);
+			weights.push_back(alpha);
 		}
 	}
 
@@ -190,20 +199,24 @@ public:
 
 int main()
 {
-	colvec x;
-	x << 1.0 << endr
-		<< 2.0 << endr
-		<< 3.0 << endr
-		<< 1.0 << endr;
+	cout << "it begins !!!" << endl;
+	mat x;
+	x << 1 << 2 << 3 << 4 << endr
+		<< 2 << 1 << 3 << 4 << endr
+		<< 3 << 2 << 3 << 4 << endr;
+
+	mat xTest;
+	xTest << 2 << 1 << 3 << 4 << endr 
+		<< 1 << 2 << 3 << 4 << endr
+		<< 3 << 2 << 3 << 4 << endr;
 
 	cout << "size(x)" << arma::size(x) << " x.size()" << x.size() << endl;
-	uword N = x.size();
+	uword N = size(x, 0);
 	colvec w;
 	w.ones(N, 1);
 	
 	colvec y;
 	y << 1.0 << endr
-		<< 1.0 << endr
 		<< 1.0 << endr
 		<< -1.0 << endr;
 
@@ -225,11 +238,23 @@ int main()
 	//cout << "a:" << a << endl;
 	//cout << "size(a)" << arma::size(a) << " size(a, 0):" << size(a, 0) << " size(a, 1):" << size(a, 1) << endl;
 	
-	Stump s(1);
-	double error, thres;
+	//Stump s(0);
+	//double error, thres;
 	//s.calculateThreshold(x, y, w, "greater", error, thres);
-	s.buildOneDStump(x, y, w);
-	cout << s;
+	//s.buildOneDStump(x, y, w);
+	//AdaBoost ad;
+	//Stump* s = buildStump(x, y, w);
+	//cout << s;
+	AdaBoost ad;
+	uword iter = 1;
+	ad.fit(x, y, iter);
+
+	colvec labels(arma::size(y));
+	cout << "here!" << endl;
+
+	ad.predict(xTest, labels);
+	//s->predictStump(x, labels);
+	cout << "labels:" << labels;
 	
 	getchar();
 	return 0;
