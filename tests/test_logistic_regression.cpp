@@ -1,13 +1,13 @@
 /**
-test_knn.cpp
+test_logistic_regression.cpp
 Stan Peceny
 skp2140
-4/2/2017
+4/18/2017
 */
 
 #include "tests.h"
 
-void test_knn()
+void test_logistic_regression()
 {
     //TEST KNN OF CSV FILES
     vector<vector<float> > file;

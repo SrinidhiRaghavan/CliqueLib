@@ -7,7 +7,7 @@ CXXFLAGS = -g -Wall --std=c++1z $(INCLUDES)
 LDFLAGS = -g
 LDLIBS  =
 
-main: tests/test_read_csv.o tests/test_split_test_train_dataset.o tests/test_knn.o source/preprocessing_functions.o source/knn.o
+main: tests/test_read_csv.o tests/test_split_test_train_dataset.o tests/test_knn.o tests/test_logistic_regression.o source/preprocessing_functions.o source/knn.o source/logistic_regression.o
 
 main.o: tests/tests.h
 
@@ -17,9 +17,13 @@ tests/test_split_test_train_dataset.o: tests/tests.h
 
 tests/test_knn.o: tests/tests.h
 
+tests/test_logistic_regression.o: tests/tests.h
+
 source/preprocessing_functions.o: source/preprocessing_functions.h
 
 source/knn.o: source/knn.h
+
+source/logistic_regression.o: source/logistic_regression.h
 
 .PHONY: clean
 clean:

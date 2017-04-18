@@ -18,5 +18,8 @@ int main()
     //test knn functions
     test_knn();
 
+    //test logistic regression functions
+    test_logistic_regression();
+
     return 0;
 }
