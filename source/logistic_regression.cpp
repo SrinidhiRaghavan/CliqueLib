@@ -14,9 +14,15 @@ LogisticRegression::LogisticRegression(vector<vector<float> > train_file, int k)
     this->train_file = train_file;
 }
 
+//calculate sigmoid function
+float LogisticRegression::sigmoid_function(float z)
+{
+    float e = 2.718282;
+    return 1.0 / (1.0 + pow(e, -z));
+}
+
+
 //Train
-//Although KNN has no model, this function was created for consistency with other algorithms
-//Easier for Machine Learning beginners 
 vector<vector<float> > LogisticRegression::train()
 {
     return train_file;

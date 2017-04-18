@@ -34,6 +34,9 @@ class LogisticRegression
         //get k
         int getK() { return k; }
 
+	//calculate sigmoid function
+	float sigmoid_function(float z);
+
         //Train 
         vector<vector<float> > train();
 

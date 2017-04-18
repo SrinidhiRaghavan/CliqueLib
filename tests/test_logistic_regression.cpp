@@ -15,16 +15,15 @@ void test_logistic_regression()
     vector<vector<float> > test_file;
 
     //Test 1
-    std::cout << "\nTESTING KNN CSV FILE 1" << std::endl;
+    std::cout << "\nTESTING Sigmoid Function" << std::endl;
     file = read_csv("./samples_csv/test_file_1_title_true.csv", true);
-    split_test_train(file, 0.6, train_file, test_file);  
 
-    KNN knn1 (train_file, 1);
-    assert(knn1.getK() == 1);
-    assert(knn1.train() == train_file);
-    vector<float> class_ex1 = {3, 9};
-    knn1.classify(class_ex1);
+    LogisticRegression lr1 (file, 1);
+    cout << lr1.sigmoid_function(1) << " ~ " << 0.731 << endl;
+    cout << lr1.sigmoid_function(0) << " ~ " << 0.5 << endl;
+    cout << lr1.sigmoid_function(2) << " ~ " << 0.881 << endl;
 
+/*
     //Test 2
     std::cout << "\nTESTING KNN CSV FILE 2" << std::endl;
     file = read_csv("./samples_csv/test_file_2_title_false.csv", false);
@@ -123,6 +122,6 @@ void test_logistic_regression()
     assert(knn10.train() == train_file);
     vector<float> class_ex10 = {3, 7.4};
     knn10.classify(class_ex10);
-
+*/
 }
 
