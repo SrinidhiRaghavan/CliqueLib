@@ -23,7 +23,7 @@ float KNN::euclideanDistance (int num_attributes, vector<float> instance1, vecto
     {
         sum += pow(instance1[j] - instance2[j], 2);
     }
-    return sum;
+    return pow(sum, 0.5);
 }
 
 
@@ -61,7 +61,7 @@ float KNN::classify(vector<float> instance)
     for (unsigned int i = 0; i < train_file.size(); i++)
     { 
 	float sum = euclideanDistance(train_file[i].size() - 1, instance, train_file[i]);
-        distances.push_back(pow(sum, 0.5));
+        distances.push_back(sum);
     }
     //Find k nearest neighbors
     vector<float> ks;
