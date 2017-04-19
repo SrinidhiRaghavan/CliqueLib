@@ -71,6 +71,9 @@ float LogisticRegression::classify(vector<float> instance, vector<float> coeffic
     {
         z += coefficients[i + 1] * instance[i];
     }	
-    return sigmoid_function(z);
+    if (sigmoid_function(z) >= 0.5)
+        return 1;
+    else
+        return 0;
 }
 
