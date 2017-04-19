@@ -11,11 +11,11 @@
 
 template<typename T>
 class BaggingClassifier {
-	vector<T*> base_estimators;
-	u_word n_estimators;
-	u_word max_samples;
+	std::vector<T*> base_estimators;
+	arma::uword n_estimators;
+	arma::uword max_samples;
 
 public:
-	BaggingClassifier(uword, uword);
-	void fit(const mat&, const colvec&, uword);
+	BaggingClassifier(arma::uword, arma::uword);
+	void fit(const arma::mat&, const arma::colvec&, arma::uword);
 };
