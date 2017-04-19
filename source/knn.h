@@ -19,7 +19,6 @@ skp2140
 #include <utility>
 #include <limits>
 
-
 using namespace std;
 
 class KNN
@@ -39,6 +38,12 @@ class KNN
         
         // calculate Euclidean Distance
         float euclideanDistance (int length, vector<float> instance1, vector<float> instance2);
+
+        //find K neighbors
+        vector<vector<float> > findNeighbors(vector<float> instance);
+
+        //determine class
+        float findClass(vector<vector<float> > k_neighbors);
 
         //Train 
         vector<vector<float> > train();
