@@ -8,7 +8,7 @@ skp2140
 #include "logistic_regression.h"
 
 //Constructor
-LogisticRegression::LogisticRegression(vector<vector<float> > train_file, int num_epochs, int learning_rate)
+LogisticRegression::LogisticRegression(vector<vector<float> > train_file, int num_epochs, float learning_rate)
 {
     this->train_file = train_file;
     this->num_epochs = num_epochs;
@@ -41,7 +41,7 @@ vector<float> LogisticRegression::train()
         for (unsigned int j = 0; j < train_file.size(); j++)
         {
             float f_x = classify(train_file[j], coefficients);
-            float error = train_file[j][train_file.size() - 1] - f_x;
+            float error = train_file[j][train_file[j].size() - 1] - f_x;
             error_sum += pow(error, 2);
             coefficients[0] += learning_rate * error * f_x * (1.0 - f_x);
             //iterate over each attribute in a row
@@ -71,9 +71,12 @@ float LogisticRegression::classify(vector<float> instance, vector<float> coeffic
     {
         z += coefficients[i + 1] * instance[i];
     }	
+    return sigmoid_function(z);
+    /*
     if (sigmoid_function(z) >= 0.5)
         return 1;
     else
         return 0;
+    */
 }
 

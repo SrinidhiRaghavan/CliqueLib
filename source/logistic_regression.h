@@ -29,7 +29,7 @@ class LogisticRegression
         LogisticRegression(vector<vector<float> > train_file) : LogisticRegression(train_file, 100, 0.01){}
 
         //constructor
-        LogisticRegression(vector<vector<float> > train_file, int num_epochs, int learning_rate);
+        LogisticRegression(vector<vector<float> > train_file, int num_epochs, float learning_rate);
 
         //get num_epochs
         int get_num_epochs() { return num_epochs; }

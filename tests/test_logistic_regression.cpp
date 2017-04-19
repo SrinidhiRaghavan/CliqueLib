@@ -50,7 +50,6 @@ void test_logistic_regression()
     for (unsigned int i = 0; i < coefficients_expected.size(); i++)
         cout << "predicted: " <<  coefficients_trained[i]
          << " real: " << coefficients_expected[i] << endl;
-   
 /*
     //Test 2
     std::cout << "\nTESTING KNN CSV FILE 2" << std::endl;
