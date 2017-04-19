@@ -72,7 +72,7 @@ float KNN::findClass(vector<vector<float> > k_neighbors)
     //class is last attribute for each neighbor
     for (unsigned int i = 0; i < k_neighbors.size(); i++) 
     {
-        float neighbor_label = k_neighbors[i][k_neighbors.size() - 1];
+        float neighbor_label = k_neighbors[i][k_neighbors.size()];
         if (classification.find(neighbor_label) != classification.end())        
             classification[neighbor_label] +=1;        
         else   
@@ -86,8 +86,8 @@ float KNN::findClass(vector<vector<float> > k_neighbors)
     {
         if (classification[k_neighbors[i][k_neighbors.size() - 1]] > largest_val)
         { 
-            largest_val = classification[k_neighbors[i][k_neighbors.size() - 1]];
-            largest_class = k_neighbors[i][k_neighbors.size() - 1];
+            largest_val = classification[k_neighbors[i][k_neighbors.size()]];
+            largest_class = k_neighbors[i][k_neighbors.size()];
         }
     }
     return largest_class;

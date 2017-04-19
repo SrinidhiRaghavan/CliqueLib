@@ -140,8 +140,7 @@ void test_knn()
     neighb.push_back(subn1);
     neighb.push_back(subn2);
     neighb.push_back(subn3);
-    //assert(knn12.findClass(neighb) == 0.0);
-    cout << knn12.findClass(neighb);
+    assert(knn12.findClass(neighb) == 0.0);
 
 }
 
