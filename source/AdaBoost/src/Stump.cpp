@@ -87,6 +87,9 @@ void Stump::calculateThreshold(const colvec& x, const colvec& y, const colvec& w
 }
 
 void Stump::predictStump(const mat& X, colvec& labels) {
+	uword n = size(X, 0); //no. of samples
+	labels.zeros(n, 1);
+
 	colvec x = X.col(dim);
 	//cout << "predictStump: x:" << x;
 	uvec idx = find(x >= threshold);

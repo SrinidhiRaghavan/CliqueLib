@@ -91,6 +91,10 @@ int main()
 	cout << "x:" << x << endl;
 	cout << "randA:" << randA << endl;
 	cout << "x(randA):" << x.rows(randA) << endl;
+	x.rows(randA).fill(0.5);
+	x.col(0) = y;
+	cout << "x:" << x << endl;
+	cout << "x:" << find(sum(x, 1) > 5) << endl;
 	
 	getchar();
 	return 0;

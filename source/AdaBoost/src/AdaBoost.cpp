@@ -14,21 +14,6 @@
 using namespace std;
 using namespace arma;
 
-Stump* AdaBoost::buildStump(const mat& X, const colvec& y, const colvec& weight) {
-	uword d = size(X, 1);
-	vector<Stump*> stumps;
-	rowvec errors;
-	errors.zeros(1, d);
-	for (unsigned int i = 0; i < d; i++) {
-		Stump* s = new Stump(i);
-		stumps.push_back(s);
-		s->buildOneDStump(X.col(i), y, weight);
-		errors(0, i) = s->getError();
-	}
-	uword min_idx = index_min(errors);
-	return stumps[min_idx];
-}
-
 AdaBoost::AdaBoost() {
 }
 
@@ -83,4 +68,19 @@ void AdaBoost::predict(const mat& testX, colvec& preds) {
 	preds.fill(-1);
 	uvec idx = find(sum > 0);
 	preds.elem(idx).fill(1);
+}
+
+Stump* AdaBoost::buildStump(const mat& X, const colvec& y, const colvec& weight) {
+	uword d = size(X, 1);
+	vector<Stump*> stumps;
+	rowvec errors;
+	errors.zeros(1, d);
+	for (unsigned int i = 0; i < d; i++) {
+		Stump* s = new Stump(i);
+		stumps.push_back(s);
+		s->buildOneDStump(X.col(i), y, weight);
+		errors(0, i) = s->getError();
+	}
+	uword min_idx = index_min(errors);
+	return stumps[min_idx];
 }
