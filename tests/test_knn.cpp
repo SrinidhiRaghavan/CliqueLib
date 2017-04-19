@@ -130,5 +130,7 @@ void test_knn()
     vector<float> examp2 = {4, 4, 4, 4, 0};
     assert(knn11.euclideanDistance(4, examp1, examp2) == 4.0);
 
+   //Test 12
+
 }
 
