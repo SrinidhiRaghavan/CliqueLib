@@ -130,7 +130,18 @@ void test_knn()
     vector<float> examp2 = {4, 4, 4, 4, 0};
     assert(knn11.euclideanDistance(4, examp1, examp2) == 4.0);
 
-   //Test 12
+    //Test 12
+    //machinelearningmastery.com
+    KNN knn12 (train_file, 3);
+    vector<vector<float> > neighb;
+    vector<float> subn1 = {1,1,1,0};
+    vector<float> subn2 = {2,2,2,0};
+    vector<float> subn3 = {3,3,3,1};
+    neighb.push_back(subn1);
+    neighb.push_back(subn2);
+    neighb.push_back(subn3);
+    //assert(knn12.findClass(neighb) == 0.0);
+    cout << knn12.findClass(neighb);
 
 }
 
