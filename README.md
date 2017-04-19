@@ -113,7 +113,7 @@ Consequently, there are the two core functions of the logistic regression algori
 f) The train() function returns a vector<float> of coefficients. There are no arguments to train() as the algorithm object already has all necessary variables stored. This is enforced to enable to use the algorithm more simply for a novice user.
 
 //Train - returns a vector of coefficients
-vector<float> train();
+vector <float> train();
 
 g) The classify function makes a classification prediction and takes as parameters an instance that needs to be classified as well as the model represented as a vector<float> of coefficients returned by train(). 
 

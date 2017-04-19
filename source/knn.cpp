@@ -14,6 +14,20 @@ KNN::KNN(vector<vector<float> > train_file, int k)
     this->train_file = train_file;
 }
 
+// calculate Euclidean Distance
+float KNN::euclideanDistance (int num_attributes, vector<float> instance1, vector<float> instance2)
+{
+    //Calculate Euclidean Distance to each example
+    float sum = 0.0;
+    for (int j = 0; j < num_attributes; j++)
+    {
+        sum += pow(instance1[j] - instance2[j], 2);
+    }
+    return sum;
+}
+
+
+
 //Train
 //Although KNN has no model, this function was created for consistency with other algorithms
 //Easier for Machine Learning beginners 
@@ -46,12 +60,7 @@ float KNN::classify(vector<float> instance)
     //iterate over all examples
     for (unsigned int i = 0; i < train_file.size(); i++)
     { 
-        //Calculate Euclidean Distance to each example
-        float sum = 0.0;
-        for (unsigned int j = 0; j < train_file[i].size() - 1; j++)
-        {
-            sum += pow(instance[j] - train_file[i][j], 2);
-        }
+	float sum = euclideanDistance(train_file[i].size() - 1, instance, train_file[i]);
         distances.push_back(pow(sum, 0.5));
     }
     //Find k nearest neighbors
