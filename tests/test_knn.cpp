@@ -124,5 +124,11 @@ void test_knn()
     vector<float> class_ex10 = {3, 7.4};
     knn10.classify(class_ex10);
 
+    //Test 11
+    KNN knn11 (train_file, 2);
+    vector<float> examp1 = {2, 2, 2, 2, 1};
+    vector<float> examp2 = {4, 4, 4, 4, 0};
+    assert(knn11.euclideanDistance(4, examp1, examp2) == 4.0);
+
 }
 
