@@ -86,6 +86,12 @@ int main()
 	//s->predictStump(x, labels);
 	cout << "labels:" << labels;
 
+	uvec randA = randi<uvec>(3, 1, distr_param(0, N));
+	
+	cout << "x:" << x << endl;
+	cout << "randA:" << randA << endl;
+	cout << "x(randA):" << x.rows(randA) << endl;
+	
 	getchar();
 	return 0;
 }
