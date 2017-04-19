@@ -1,15 +1,29 @@
+//============================================================================
+// Name        : BaggingClassifier.cpp
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib BaggingClassifier implementation
+//============================================================================
+
+#include <iostream>
+#include <armadillo>
+#include <math.h>
+#include "AdaBoost.h"
 #include "BaggingClassifier.h"
 
+using namespace std;
+using namespace arma;
+
 template<typename T>
-BaggingClassifier::BaggingClassifier(u_word n_estimators, u_word max_samples) {
+BaggingClassifier<T>::BaggingClassifier(uword n_estimators, uword max_samples) {
 	this->n_estimators = n_estimators;
 	this->max_samples = max_samples;
 }
 
 template<typename T>
-void BaggingClassifier::fit(const mat& X, const colvec& Y, uword iter) {
+void BaggingClassifier<T>::fit(const mat& X, const colvec& Y, uword iter) {
 
 }
 
-template BaggingClassifier<AdaBoost>(u_word, u_word);
-template void fit<AdaBoost>(const mat&, const colvec&, uword);
+template class BaggingClassifier<AdaBoost>;

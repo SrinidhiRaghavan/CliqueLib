@@ -1,3 +1,11 @@
+//============================================================================
+// Name        : BaggingClassifier.h
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib BaggingClassifier definition
+//============================================================================
+
 #pragma once
 #include <armadillo>
 
@@ -8,6 +16,6 @@ class BaggingClassifier {
 	u_word max_samples;
 
 public:
-	BaggingClassifier(u_word, u_word);
+	BaggingClassifier(uword, uword);
 	void fit(const mat&, const colvec&, uword);
 };

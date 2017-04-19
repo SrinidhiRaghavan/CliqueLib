@@ -1,3 +1,11 @@
+//============================================================================
+// Name        : Stump.h
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib Stump definition
+//============================================================================
+
 #pragma once
 #include <iostream>
 #include <armadillo>
