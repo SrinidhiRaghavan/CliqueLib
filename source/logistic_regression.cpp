@@ -24,9 +24,33 @@ float LogisticRegression::sigmoid_function(float z)
 
 
 //Train - returns a vector of coefficients
+//Uses stochastic gradient descent
 vector<float> LogisticRegression::train()
 {
-    vector<float> coefficients = {0,0,0};
+    //initialize vector of coefficients and assign each to 0
+    vector<float> coefficients;
+    for (unsigned int i = 0; i < train_file[0].size(); i++)
+    {
+        coefficients.push_back(0.0);
+    }
+    //iterate num_epochs times as using stochastic gradient descent
+    for (int i = 0; i < num_epochs; i++)
+    {
+        float error_sum = 0;
+        //iterate over each row in the training file
+        for (unsigned int j = 0; j < train_file.size(); j++)
+        {
+            float f_x = classify(train_file[j], coefficients);
+            float error = train_file[j][train_file.size() - 1] - f_x;
+            error_sum += pow(error, 2);
+            coefficients[0] += learning_rate * error * f_x * (1.0 - f_x);
+            //iterate over each attribute in a row
+            for (unsigned int k = 0; k < train_file[j].size() - 1; k++)
+            {
+                coefficients[k + 1] += learning_rate * error * f_x * (1.0 - f_x) * train_file[j][k];
+            }
+        }
+    }
     return coefficients;
 }
 
