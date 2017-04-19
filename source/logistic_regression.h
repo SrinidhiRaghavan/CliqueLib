@@ -26,25 +26,35 @@ class LogisticRegression
 {
     public:
         //default constructor
-        LogisticRegression(vector<vector<float> > train_file) : LogisticRegression(train_file, 1){}
+        LogisticRegression(vector<vector<float> > train_file) : LogisticRegression(train_file, 100, 0.01){}
 
         //constructor
-        LogisticRegression(vector<vector<float> > train_file, int k);
+        LogisticRegression(vector<vector<float> > train_file, int num_epochs, int learning_rate);
 
-        //get k
-        int getK() { return k; }
+        //get num_epochs
+        int get_num_epochs() { return num_epochs; }
+
+        //get learning_rate
+        float get_learning_rate() { return learning_rate; }
+
+        //set num_epochs
+        void set_num_epochs(int num_epochs) { this->num_epochs = num_epochs ; }
+
+        //set learning_rate
+        void set_learning_rate(float learning_rate) { this->learning_rate = learning_rate; }
 
 	//calculate sigmoid function
 	float sigmoid_function(float z);
 
-        //Train 
-        vector<vector<float> > train();
+        //Train - returns a vector of coefficients
+        vector<float> train();
 
         //Classify
         float classify(vector<float> instance, vector<float> coefficients);
        
     private:
-        int k;
+	int num_epochs;
+        float learning_rate;
         vector<vector<float> > train_file;
 };
 

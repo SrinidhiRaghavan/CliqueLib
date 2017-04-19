@@ -18,7 +18,7 @@ void test_logistic_regression()
     std::cout << "\nTESTING Sigmoid Function" << std::endl;
     file = read_csv("./samples_csv/test_file_1_title_true.csv", true);
 
-    LogisticRegression lr1 (file, 1);
+    LogisticRegression lr1 (file);
     cout << lr1.sigmoid_function(1) << " ~ " << 0.731 << endl;
     cout << lr1.sigmoid_function(0) << " ~ " << 0.5 << endl;
     cout << lr1.sigmoid_function(2) << " ~ " << 0.881 << endl;
@@ -26,7 +26,7 @@ void test_logistic_regression()
     //test the classify function with predetermined coefficients
     std::cout << "\nTESTING CLASSIFY() OF LOGISTIC REGRESSION WITH CSV FILE 1" << std::endl;
     file = read_csv("./samples_csv/test_file_10_logistic.csv", ',');
-    LogisticRegression lr2 (file, 1); 
+    LogisticRegression lr2 (file); 
     //coefficients - http://machinelearningmastery.com/
     vector<float> coefficients = {-0.406605464, 0.852573316, -1.104746259};
     cout << "predicted: " << lr2.classify(file[0], coefficients) 

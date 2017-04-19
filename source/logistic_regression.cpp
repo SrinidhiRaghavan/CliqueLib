@@ -8,10 +8,11 @@ skp2140
 #include "logistic_regression.h"
 
 //Constructor
-LogisticRegression::LogisticRegression(vector<vector<float> > train_file, int k)
+LogisticRegression::LogisticRegression(vector<vector<float> > train_file, int num_epochs, int learning_rate)
 {
-    this->k = k;
     this->train_file = train_file;
+    this->num_epochs = num_epochs;
+    this->learning_rate = learning_rate;
 }
 
 //calculate sigmoid function
@@ -22,10 +23,11 @@ float LogisticRegression::sigmoid_function(float z)
 }
 
 
-//Train - Returns a set of coefficients
-vector<vector<float> > LogisticRegression::train()
+//Train - returns a vector of coefficients
+vector<float> LogisticRegression::train()
 {
-    return train_file;
+    vector<float> coefficients = {0,0,0};
+    return coefficients;
 }
 
 //Classify
