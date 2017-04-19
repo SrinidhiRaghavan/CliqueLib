@@ -38,7 +38,7 @@ class LogisticRegression
         float get_learning_rate() { return learning_rate; }
 
         //set num_epochs
-        void set_num_epochs(int num_epochs) { this->num_epochs = num_epochs ; }
+        void set_num_epochs(int num_epochs) { this->num_epochs = num_epochs; }
 
         //set learning_rate
         void set_learning_rate(float learning_rate) { this->learning_rate = learning_rate; }
