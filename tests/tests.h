@@ -13,10 +13,12 @@ skp2140
 #include <cassert>
 #include "preprocessing_functions.h"
 #include "knn.h"
+#include "logistic_regression.h"
 
 //TEST IMPLEMENTATIONS
 void test_read_csv();
 void test_split_test_train_dataset();
 void test_knn();
+void test_logistic_regression();
 
 #endif

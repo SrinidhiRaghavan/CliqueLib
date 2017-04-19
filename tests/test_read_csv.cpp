@@ -37,7 +37,7 @@ void test_read_csv()
 
     //Test 7
     std::cout << "\nTESTING READING CSV FILE 7" << std::endl;
-    read_csv("./samples_csv/test_file_7_comment_*.csv", true,',', '*');
+    read_csv("./samples_csv/test_file_7_comment_star.csv", true,',', '*');
 
     //Test 8
     std::cout << "\nTESTING READING CSV FILE 8" << std::endl;

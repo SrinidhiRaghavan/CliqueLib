@@ -34,6 +34,12 @@ class KNN
         //get k
         int getK() { return k; }
 
+        //set k
+        void setK(int k) { this->k = k; }
+        
+        // calculate Euclidean Distance
+        float euclideanDistance (int length, vector<float> instance1, vector<float> instance2);
+
         //Train 
         vector<vector<float> > train();
 

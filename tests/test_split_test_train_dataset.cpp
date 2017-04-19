@@ -46,7 +46,7 @@ void test_split_test_train_dataset()
 
     //Test 7
     std::cout << "\nTESTING SPLITTING CSV FILE 7" << std::endl;
-    file = read_csv("./samples_csv/test_file_7_comment_*.csv", true,',', '*');
+    file = read_csv("./samples_csv/test_file_7_comment_star.csv", true,',', '*');
     split_test_train(file, 0.1, train_file, test_file); 
 
     //Test 8
