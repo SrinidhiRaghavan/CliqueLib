@@ -41,7 +41,7 @@ class LogisticRegression
         vector<vector<float> > train();
 
         //Classify
-        float classify(vector<float> instance);
+        float classify(vector<float> instance, vector<float> coefficients);
        
     private:
         int k;
