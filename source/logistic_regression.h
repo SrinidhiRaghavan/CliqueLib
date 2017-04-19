@@ -50,7 +50,7 @@ class LogisticRegression
         vector<float> train();
 
         //Classify
-        float classify(vector<float> instance, vector<float> coefficients);
+        float classify(vector<float> instance, vector<float> coefficients, bool binary = false);
        
     private:
 	int num_epochs;

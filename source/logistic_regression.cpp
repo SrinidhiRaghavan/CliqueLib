@@ -55,7 +55,7 @@ vector<float> LogisticRegression::train()
 }
 
 //Classify
-float LogisticRegression::classify(vector<float> instance, vector<float> coefficients)
+float LogisticRegression::classify(vector<float> instance, vector<float> coefficients, bool binary)
 {
     //Last column contains the labels
     int num_attributes = instance.size() - 1;
@@ -71,12 +71,15 @@ float LogisticRegression::classify(vector<float> instance, vector<float> coeffic
     {
         z += coefficients[i + 1] * instance[i];
     }	
-    return sigmoid_function(z);
-    /*
-    if (sigmoid_function(z) >= 0.5)
-        return 1;
+    
+    if (binary == true)
+    {
+        if (sigmoid_function(z) >= 0.5)
+            return 1;
+        else
+            return 0;
+    }
     else
-        return 0;
-    */
+        return sigmoid_function(z);    
 }
 

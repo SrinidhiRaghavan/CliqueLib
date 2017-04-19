@@ -30,13 +30,25 @@ void test_logistic_regression()
     LogisticRegression lr2 (file); 
     //coefficients - http://machinelearningmastery.com/
     vector<float> coefficients = {-0.406605464, 0.852573316, -1.104746259};
-    cout << "\npredicted: " << lr2.classify(file[0], coefficients) 
+
+    cout << "\nbinary = false" << endl;
+    cout << "predicted: " << lr2.classify(file[0], coefficients) 
          << " real: " << file[0][file[0].size() - 1] << endl;
     cout << "predicted: " << lr2.classify(file[1], coefficients) 
          << " real: " << file[1][file[1].size() - 1] << endl;
     cout << "predicted: " << lr2.classify(file[2], coefficients) 
          << " real: " << file[2][file[2].size() - 1] << endl;
     cout << "predicted: " << lr2.classify(file[6], coefficients) 
+         << " real: " << file[6][file[6].size() - 1] << endl;
+
+    cout << "\nbinary = true" << endl;
+    cout << "predicted: " << lr2.classify(file[0], coefficients, true) 
+         << " real: " << file[0][file[0].size() - 1] << endl;
+    cout << "predicted: " << lr2.classify(file[1], coefficients, true) 
+         << " real: " << file[1][file[1].size() - 1] << endl;
+    cout << "predicted: " << lr2.classify(file[2], coefficients, true) 
+         << " real: " << file[2][file[2].size() - 1] << endl;
+    cout << "predicted: " << lr2.classify(file[6], coefficients, true) 
          << " real: " << file[6][file[6].size() - 1] << endl;
  
     //test the train function
