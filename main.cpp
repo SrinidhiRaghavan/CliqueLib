@@ -21,5 +21,8 @@ int main()
     //test logistic regression functions
     test_logistic_regression();
 
+    //test adaboost
+    test_adaboost();
+
     return 0;
 }

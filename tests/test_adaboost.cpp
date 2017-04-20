@@ -81,7 +81,7 @@ void test_adaboost()
 	//s->predictStump(x, labels);
 	cout << "labels:" << labels;
 
-	uvec randA = randi<uvec>(3, 1, distr_param(0, N));
+	uvec randA = randi<uvec>(3, 1, distr_param(0, N-1));
 	
 	cout << "x:" << x << endl;
 	cout << "randA:" << randA << endl;
