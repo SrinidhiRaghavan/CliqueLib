@@ -12,10 +12,11 @@ skp2140
 #include <iostream>
 #include <vector>
 #include <cassert>
-#include <math.h>
+#include <cmath>
 #include "preprocessing_functions.h"
 #include "knn.h"
 #include "logistic_regression.h"
+#include "naive_bayes.h"
 #include "Stump.h"
 #include "AdaBoost.h"
 #include "BaggingClassifier.h"
