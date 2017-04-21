@@ -26,6 +26,7 @@ void test_read_csv();
 void test_split_test_train_dataset();
 void test_knn();
 void test_logistic_regression();
+void test_naive_bayes();
 void test_adaboost();
 
 #endif

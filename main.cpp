@@ -22,7 +22,7 @@ int main()
     test_logistic_regression();
 
     //test naive bayes functions
-    test_logistic_regression();
+    test_naive_bayes();
 
     //test adaboost
     test_adaboost();

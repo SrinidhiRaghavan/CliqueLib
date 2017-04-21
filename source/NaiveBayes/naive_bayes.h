@@ -11,6 +11,7 @@ skp2140
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 
 using namespace std;
 
@@ -18,10 +19,13 @@ class NB
 {
     public:
         //default constructor
-        NB(vector<vector<float> > train_file) : NB(train_file, 1){}
+        //NB(vector<vector<float> > train_file) : NB(train_file, 1){}
 
         //constructor
-        NB(vector<vector<float> > train_file, int k);
+        NB(vector<vector<float> > train_file);
+
+        //separate the examples by class
+        map<float, vector<vector<float> > > separate_each_class(); 
 
         //Train 
         vector<vector<float> > train();
@@ -30,7 +34,7 @@ class NB
         float classify(vector<float> instance);
        
     private:
-        int k;
+
         vector<vector<float> > train_file;
 };
 
