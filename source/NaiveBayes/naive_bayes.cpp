@@ -13,6 +13,29 @@ NB::NB(vector<vector<float> > train_file)
     this->train_file = train_file;
 }
 
+//Mean
+float NB::mean_average(vector<float> attributes)
+{
+    float sum = 0;
+    for (auto& attr : attributes)
+        sum += attr;
+    return sum / attributes.size();
+}
+
+//Standard deviation
+float NB::standard_deviation(vector<float> attributes)
+{
+    float mean_avg = mean_average(attributes);
+    vector<float> differences(attributes.size());
+    transform(attributes.begin(), attributes.end(),
+              differences.begin(), [mean_avg](float attr) {return attr - mean_avg; } );
+    float square_sum = inner_product(differences.begin(), differences.end(),
+                                   differences.begin(), 0.0);
+    return sqrt(square_sum / (attributes.size() - 1));
+}
+
+
+
 //separate the examples by class
 map<float, vector<vector<float> > > NB::separate_each_class()
 {

@@ -12,6 +12,9 @@ skp2140
 #include <string>
 #include <vector>
 #include <map>
+#include <algorithm>
+#include <cmath>
+#include <numeric>
 
 using namespace std;
 
@@ -26,6 +29,12 @@ class NB
 
         //separate the examples by class
         map<float, vector<vector<float> > > separate_each_class(); 
+
+	//Mean
+	float mean_average(vector<float> attributes);
+
+	//Standard deviation
+	float standard_deviation(vector<float> attributes);
 
         //Train 
         vector<vector<float> > train();

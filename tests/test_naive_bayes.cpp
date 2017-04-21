@@ -33,5 +33,16 @@ void test_naive_bayes()
     cout << endl;
     cout << "Expected: 2 21 0 1 20 1 3 22 1" << endl;
     cout << "\nNB Test 1 passed\n";
+
+    //TEST NAIVE BAYES 2 MEAN_AVERAGE AND STANDARD DEVIATION
+    //machinelearningmastery.com example
+    std::cout << "\nTESTING NB MEAN_AVERAGE AND STANDARD DEVIATION 2" << std::endl;
+    vector<float> mean_std = {1, 2, 3, 4, 5};
+    assert(nb1.mean_average(mean_std) == 3.0);
+    cout << "\nPredicted: " << nb1.standard_deviation(mean_std) <<
+            " Real: " << 1.581139 << endl;
+    cout << "\nNB Test 2 passed\n";
+
+
 }
 
