@@ -13,6 +13,7 @@ void test_naive_bayes()
 
     //TEST NAIVE BAYES 1 SEPARATE_EACH_CLASS
     //machinelearningmastery.com example
+    std::cout << "\nTESTING NB SEPARATE_EACH_CLASS 1" << std::endl;
     vector<vector<float> > example_dataset;
     vector<float> ed1 = {1, 20, 1};
     vector<float> ed2 = {2, 21, 0};
@@ -22,6 +23,15 @@ void test_naive_bayes()
     example_dataset.push_back(ed3);
     NB nb1(example_dataset);
     map<float, vector<vector<float> > >  separate_class = nb1.separate_each_class();
+    cout << endl;
+    for (auto const &el : separate_class)
+    {
+        for (unsigned int i = 0; i < el.second.size(); i++)
+            for (unsigned int j = 0; j < el.second[i].size(); j++)
+                cout << el.second[i][j] << " ";
+    }
+    cout << endl;
+    cout << "Expected: 2 21 0 1 20 1 3 22 1" << endl;
     cout << "\nNB Test 1 passed\n";
 }
 
