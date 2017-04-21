@@ -51,7 +51,7 @@ vector<vector<float> > KNN::findNeighbors(vector<float> instance)
     //iterate over all examples
     for (unsigned int i = 0; i < train_file.size(); i++)
     { 
-	float sum = euclideanDistance(train_file[i].size() - 1, instance, train_file[i]);
+	float sum = euclideanDistance(instance.size() - 1, instance, train_file[i]);
         distances.push_back(make_pair(sum, train_file[i]));
     }
     sort(distances.begin(), distances.end(), pairCompare);
@@ -72,7 +72,7 @@ float KNN::findClass(vector<vector<float> > k_neighbors)
     //class is last attribute for each neighbor
     for (unsigned int i = 0; i < k_neighbors.size(); i++) 
     {
-        float neighbor_label = k_neighbors[i][k_neighbors.size()];
+        float neighbor_label = k_neighbors[i][k_neighbors[i].size() - 1];
         if (classification.find(neighbor_label) != classification.end())        
             classification[neighbor_label] +=1;        
         else   
@@ -84,10 +84,10 @@ float KNN::findClass(vector<vector<float> > k_neighbors)
     float largest_class = numeric_limits<float>::min();
     for (unsigned int i = 0; i < k_neighbors.size(); i++)
     {
-        if (classification[k_neighbors[i][k_neighbors.size() - 1]] > largest_val)
+        if (classification[k_neighbors[i][k_neighbors[i].size() - 1]] > largest_val)
         { 
-            largest_val = classification[k_neighbors[i][k_neighbors.size()]];
-            largest_class = k_neighbors[i][k_neighbors.size()];
+            largest_val = classification[k_neighbors[i][k_neighbors[i].size() - 1]];
+            largest_class = k_neighbors[i][k_neighbors[i].size() - 1];
         }
     }
     return largest_class;
