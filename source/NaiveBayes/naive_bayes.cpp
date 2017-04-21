@@ -34,7 +34,13 @@ float NB::standard_deviation(vector<float> attributes)
     return sqrt(square_sum / (attributes.size() - 1));
 }
 
-
+//Summary 
+vector<float> NB::summary(vector<vector<float> > class_dataset)
+{
+    vector<float> summarize_attributes;
+    
+    return summarize_attributes;
+}
 
 //separate the examples by class
 map<float, vector<vector<float> > > NB::separate_each_class()
@@ -43,9 +49,6 @@ map<float, vector<vector<float> > > NB::separate_each_class()
     for (unsigned int i = 0; i < train_file.size(); i++)
     {
         vector<float> vec_attributes = train_file[i];
-        //if (separate_classes.find(vec_attributes[vec_attributes.size() - 1]) == separate_classes.end())        
-            //separate_classes[vec_attributes[vec_attributes.size() - 1]] = ;
-        //else
         separate_classes[vec_attributes[vec_attributes.size() - 1]].push_back(vec_attributes); 
     }
     return separate_classes;
@@ -53,9 +56,17 @@ map<float, vector<vector<float> > > NB::separate_each_class()
 
 
 //Train
-vector<vector<float> > NB::train()
+map<float, vector<float> > NB::train()
 {
-    return train_file;
+    map<float, vector<vector<float> > > separated_classes = separate_each_class();
+    map<float, vector<float> > attribute_summaries;
+    map<float, vector<vector<float> > >::iterator iter = separated_classes.begin();
+    while (iter != separated_classes.end())
+    {
+        attribute_summaries[iter->first] = summary(iter->second);
+        cout << "Here";
+    }
+    return attribute_summaries;
 }
 
 //Classify

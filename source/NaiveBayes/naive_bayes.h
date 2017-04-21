@@ -13,6 +13,7 @@ skp2140
 #include <vector>
 #include <map>
 #include <algorithm>
+#include <iterator>
 #include <cmath>
 #include <numeric>
 
@@ -36,8 +37,11 @@ class NB
 	//Standard deviation
 	float standard_deviation(vector<float> attributes);
 
+        //Summary 
+        vector<float> summary(vector<vector<float> > class_dataset);
+
         //Train 
-        vector<vector<float> > train();
+        map<float, vector<float> > train();
 
         //Classify
         float classify(vector<float> instance);
