@@ -53,22 +53,23 @@ The last two arguments are blank vector<vector<float> >, which after the functio
 
 4. KNN
 
+K-nearest neighbors algorithm is used for both regression as well as classification. This library is a classification library, and hence implements only the classification algorithm.
 
+KNN classifies an object by taking a majority vote of k neighbors, wherein the object is assigned to the most common class among the k nearest neighbors. 
 
+The class contains two private variables. 
 
+The first, k, is the number of k narest neighbors.
 
+The second, train_file, is a vector of vector of floats, and contains all examples used for training.
 
+The train() function is present in KNN only for consistency, and merely returns the actual example training file. KNN does not train a model, and hence the function has no particular functionality in KNN.
 
+There are two functions relevant to KNN.
 
+First, findNeighbors finds all k nearest neighbors to the given input.
 
-
-
-
-
-
-
-
-
+Second, findClass takes the vector of neighbors and returns the class for the classified object.
 
 
 5. Logistic Regression
@@ -121,6 +122,8 @@ There is an optional third parameter called binary, a boolean that specifies whe
 
 //Classify
 float classify(vector<float> instance, vector<float> coefficients, bool binary = false);
+
+6. AdaBoost
 
 
 
