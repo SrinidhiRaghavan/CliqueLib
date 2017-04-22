@@ -3,7 +3,7 @@
 CC = g++-6
 CXX = g++-6
 INCLUDES = -I./tests -I./source  -I./source/Preprocessing -I./source/KNN -I./source/LogisticRegression -I./source/NaiveBayes -I./source/AdaBoost -I ./armadillo-7.800.2/include/
-CXXFLAGS = -g -Wall --std=c++1z -o prog -O2 -larmadillo $(INCLUDES) 
+CXXFLAGS = -g -Wall --std=c++1z -fconcepts -o prog -O2 -larmadillo $(INCLUDES) 
 LDFLAGS = -L ./armadillo-7.800.2/include/armadillo
 LDLIBS  =
 
