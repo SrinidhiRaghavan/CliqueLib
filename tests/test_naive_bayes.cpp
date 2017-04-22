@@ -44,5 +44,28 @@ void test_naive_bayes()
     cout << "\nNB Test 2 passed\n";
 
 
+    //TEST NAIVE BAYES 3 SUMMARY
+    //machinelearningmastery.com example
+    std::cout << "\nTESTING NB SUMMARY 3" << std::endl;
+    vector<vector<float> > example_dataset2;
+    vector<float> ed21 = {1, 20, 0};
+    vector<float> ed22 = {2, 21, 1};
+    vector<float> ed23 = {3, 22, 0};
+    example_dataset2.push_back(ed21);
+    example_dataset2.push_back(ed22);
+    example_dataset2.push_back(ed23);
+    NB nb2(example_dataset2);
+    vector<pair<float, float> > summaries = nb2.summary(example_dataset2);
+    cout << endl;
+    for (auto const &pr : summaries)
+    {
+        cout << pr.first << " " << pr.second << " ";
+    }
+    cout << endl;
+    cout << "Expected: 2.0 1.0 21.0 1.0" << endl;
+    cout << "\nNB Test 3 passed\n";
+
+
+
 }
 

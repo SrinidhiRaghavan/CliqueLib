@@ -38,20 +38,17 @@ float NB::standard_deviation(vector<float> attributes)
 vector<pair<float, float> > NB::summary(vector<vector<float> > class_dataset)
 {
     vector<pair<float, float> > summarize_attributes;
+    //get all attributes into a single vector
     vector<float> combine_attributes;
-    vector<float> sorted_attributes;
-    for (auto& examp : class_dataset)
-    {
-        for (unsigned int j = 0; j < examp.size() - 1; j++)
-        {
+    for (auto& examp : class_dataset)    
+        for (unsigned int j = 0; j < examp.size() - 1; j++)        
             combine_attributes.push_back(examp[j]);
-        }
-    }
+
     unsigned int count = 0;
-    while (count < class_dataset[0].size())
+    while (count < class_dataset[0].size() - 1)
     {
         vector<float> segmented_attributes;
-        for (unsigned int i = count; i < combine_attributes.size(); i += class_dataset[0].size())
+        for (unsigned int i = count; i < combine_attributes.size(); i += class_dataset[0].size() - 1)
             segmented_attributes.push_back(combine_attributes[i]);
      
         summarize_attributes.push_back(make_pair(
