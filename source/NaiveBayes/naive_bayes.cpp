@@ -8,13 +8,13 @@ skp2140
 #include "naive_bayes.h"
 
 //Constructor
-NB::NB(vector<vector<float> > train_file)
+NaiveBayes::NaiveBayes(vector<vector<float> > train_file)
 {
     this->train_file = train_file;
 }
 
 //Mean
-float NB::mean_average(vector<float> attributes)
+float NaiveBayes::mean_average(vector<float> attributes)
 {
     float sum = 0;
     for (auto& attr : attributes)
@@ -23,7 +23,7 @@ float NB::mean_average(vector<float> attributes)
 }
 
 //Standard deviation
-float NB::standard_deviation(vector<float> attributes)
+float NaiveBayes::standard_deviation(vector<float> attributes)
 {
     float mean_avg = mean_average(attributes);
     vector<float> differences(attributes.size());
@@ -35,7 +35,7 @@ float NB::standard_deviation(vector<float> attributes)
 }
 
 //Summary 
-vector<pair<float, float> > NB::summary(vector<vector<float> > class_dataset)
+vector<pair<float, float> > NaiveBayes::summary(vector<vector<float> > class_dataset)
 {
     vector<pair<float, float> > summarize_attributes;
     //get all attributes into a single vector
@@ -61,7 +61,7 @@ vector<pair<float, float> > NB::summary(vector<vector<float> > class_dataset)
 }
 
 //separate the examples by class
-map<float, vector<vector<float> > > NB::separate_each_class()
+map<float, vector<vector<float> > > NaiveBayes::separate_each_class()
 {
     map<float, vector<vector<float> > > separate_classes;
     for (unsigned int i = 0; i < train_file.size(); i++)
@@ -74,7 +74,7 @@ map<float, vector<vector<float> > > NB::separate_each_class()
 
 
 //Train
-map<float, vector<pair<float, float> > > NB::train()
+map<float, vector<pair<float, float> > > NaiveBayes::train()
 {
     map<float, vector<vector<float> > > separated_classes = separate_each_class();
     map<float, vector<pair<float, float> > > attribute_summaries;
@@ -85,7 +85,7 @@ map<float, vector<pair<float, float> > > NB::train()
 }
 
 //Classify
-float NB::classify(vector<float> instance)
+float NaiveBayes::classify(vector<float> instance)
 {
     return 0.0;
 }

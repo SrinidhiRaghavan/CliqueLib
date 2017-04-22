@@ -20,12 +20,12 @@ skp2140
 
 using namespace std;
 
-class NB
+class NaiveBayes
 {
     public:
 
         //constructor
-        NB(vector<vector<float> > train_file);
+        NaiveBayes(vector<vector<float> > train_file);
 
         //separate the examples by class
         map<float, vector<vector<float> > > separate_each_class(); 
