@@ -39,6 +39,9 @@ class NaiveBayes
         //Summary 
         vector<pair<float, float> > summary(vector<vector<float> > class_dataset);
 
+	//Gaussian Probability Density function
+	float probability(float mean_average, float standard_deviation, float attribute_value);
+
         //Train 
         map<float, vector<pair<float, float> > > train();
 

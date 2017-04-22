@@ -60,6 +60,16 @@ vector<pair<float, float> > NaiveBayes::summary(vector<vector<float> > class_dat
     return summarize_attributes;
 }
 
+//Gaussian Probability Density function
+float NaiveBayes::probability(float mean_average, float standard_deviation, float attribute_value)
+{
+    float expon = exp(-1 * (pow(attribute_value - mean_average, 2.0) / 
+                      (2 * pow(standard_deviation, 2.0))));
+    float gaussian_prob = expon * 1 / (sqrt(2 * M_PI) * standard_deviation);
+    return gaussian_prob;
+}
+
+
 //separate the examples by class
 map<float, vector<vector<float> > > NaiveBayes::separate_each_class()
 {

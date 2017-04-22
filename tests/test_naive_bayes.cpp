@@ -65,7 +65,15 @@ void test_naive_bayes()
     cout << "Expected: 2.0 1.0 21.0 1.0" << endl;
     cout << "\nNaiveBayes Test 3 passed\n";
 
-
-
+    //TEST NAIVE BAYES 4 GAUSSIAN PROBABILITY
+    //machinelearningmastery.com example
+    std::cout << "\nTESTING NAIVEBAYES GAUSSIAN PROBABILITY 4" << std::endl;
+    float attr_val = 71.5;
+    float stdv = 6.2;
+    float mean_avg = 73;
+    cout << endl;
+    cout << "Calculated ~ " << nb2.probability(mean_avg, stdv, attr_val) << endl;
+    cout << "Expected ~ " << 0.0624897 << endl;
+    cout << "\nNaiveBayes Test 4 passed\n";
 }
 

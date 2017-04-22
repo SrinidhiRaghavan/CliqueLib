@@ -91,5 +91,4 @@ void test_adaboost()
 	cout << "x:" << x << endl;
 	cout << "x:" << find(sum(x, 1) > 5) << endl;
 	
-	getchar();
 }
