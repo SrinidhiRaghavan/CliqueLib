@@ -23,7 +23,7 @@ void test_knn()
     assert(knn1.getK() == 1);
     assert(knn1.train() == train_file);
     vector<float> class_ex1 = {3, 9};
-    knn1.classify(class_ex1);
+    knn1.predict(class_ex1);
     cout << "\nKNN Test 1 passed\n";
 
     //Test 2
@@ -35,7 +35,7 @@ void test_knn()
     assert(knn2.getK() == 2);
     assert(knn2.train() == train_file);
     vector<float> class_ex2 = {3, 7.4};
-    knn2.classify(class_ex2);
+    knn2.predict(class_ex2);
     cout << "\nKNN Test 2 passed\n";
 
     //Test 3
@@ -47,7 +47,7 @@ void test_knn()
     assert(knn3.getK() == 2);
     assert(knn3.train() == train_file);
     vector<float> class_ex3 = {3, 7.4, 2};
-    knn3.classify(class_ex3);
+    knn3.predict(class_ex3);
     cout << "\nKNN Test 3 passed\n";
 
     //Test 4
@@ -59,7 +59,7 @@ void test_knn()
     assert(knn4.getK() == 2);
     assert(knn4.train() == train_file);
     vector<float> class_ex4 = {3, 7.4};
-    knn4.classify(class_ex4);
+    knn4.predict(class_ex4);
     cout << "\nKNN Test 4 passed\n";
 
     //Test 5
@@ -71,7 +71,7 @@ void test_knn()
     assert(knn5.getK() == 2);
     assert(knn5.train() == train_file);
     vector<float> class_ex5 = {3, 7.4};
-    knn5.classify(class_ex5);
+    knn5.predict(class_ex5);
     cout << "\nKNN Test 5 passed\n";
 
     //Test 6
@@ -83,7 +83,7 @@ void test_knn()
     assert(knn6.getK() == 2);
     assert(knn6.train() == train_file);
     vector<float> class_ex6 = {3, 7.4, 2, 3};
-    knn6.classify(class_ex6);
+    knn6.predict(class_ex6);
     cout << "\nKNN Test 6 passed\n";
 
     //Test 7
@@ -95,7 +95,7 @@ void test_knn()
     assert(knn7.getK() == 1);
     assert(knn7.train() == train_file);
     vector<float> class_ex7 = {3, 7.4, 8, 4};
-    knn7.classify(class_ex7);
+    knn7.predict(class_ex7);
     cout << "\nKNN Test 7 passed\n";
 
     //Test 8
@@ -107,7 +107,7 @@ void test_knn()
     assert(knn8.getK() == 1);
     assert(knn8.train() == train_file);
     vector<float> class_ex8 = {3, 7.4, 2, 3};
-    knn8.classify(class_ex8);
+    knn8.predict(class_ex8);
     cout << "\nKNN Test 8 passed\n";
 
     //Test 9
@@ -119,7 +119,7 @@ void test_knn()
     assert(knn9.getK() == 1);
     assert(knn9.train() == train_file);
     vector<float> class_ex9 = {3, 7.4, 3, 4.4};
-    knn9.classify(class_ex9);
+    knn9.predict(class_ex9);
     cout << "\nKNN Test 9 passed\n";
 
     //Test 10
@@ -131,7 +131,7 @@ void test_knn()
     assert(knn10.getK() == 2);
     assert(knn10.train() == train_file);
     vector<float> class_ex10 = {3, 7.4};
-    knn10.classify(class_ex10);
+    knn10.predict(class_ex10);
     cout << "\nKNN Test 10 passed\n";
 
     //Test 11

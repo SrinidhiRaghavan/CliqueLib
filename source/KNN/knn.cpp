@@ -93,8 +93,8 @@ float KNN::findClass(vector<vector<float> > k_neighbors)
     return largest_class;
 }
 
-//Classify
-float KNN::classify(vector<float> instance)
+//Predict
+float KNN::predict(vector<float> instance)
 {
     int num_attributes = instance.size();
     if ((unsigned) this->k > train_file.size())

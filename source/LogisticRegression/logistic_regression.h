@@ -49,8 +49,8 @@ class LogisticRegression
         //Train - returns a vector of coefficients
         vector<float> train();
 
-        //Classify
-        float classify(vector<float> instance, vector<float> coefficients, bool binary = false);
+        //Predict
+        float predict(vector<float> instance, vector<float> coefficients, bool binary = false);
        
     private:
 	int num_epochs;

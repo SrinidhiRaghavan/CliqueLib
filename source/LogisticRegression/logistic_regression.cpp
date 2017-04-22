@@ -40,7 +40,7 @@ vector<float> LogisticRegression::train()
         //iterate over each row in the training file
         for (unsigned int j = 0; j < train_file.size(); j++)
         {
-            float f_x = classify(train_file[j], coefficients);
+            float f_x = predict(train_file[j], coefficients);
             float error = train_file[j][train_file[j].size() - 1] - f_x;
             error_sum += pow(error, 2);
             coefficients[0] += learning_rate * error * f_x * (1.0 - f_x);
@@ -54,8 +54,8 @@ vector<float> LogisticRegression::train()
     return coefficients;
 }
 
-//Classify
-float LogisticRegression::classify(vector<float> instance, vector<float> coefficients, bool binary)
+//Predict
+float LogisticRegression::predict(vector<float> instance, vector<float> coefficients, bool binary)
 {
     //Last column contains the labels
     int num_attributes = instance.size() - 1;
