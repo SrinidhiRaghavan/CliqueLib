@@ -16,14 +16,13 @@ skp2140
 #include <iterator>
 #include <cmath>
 #include <numeric>
+#include <utility>
 
 using namespace std;
 
 class NB
 {
     public:
-        //default constructor
-        //NB(vector<vector<float> > train_file) : NB(train_file, 1){}
 
         //constructor
         NB(vector<vector<float> > train_file);
@@ -38,10 +37,10 @@ class NB
 	float standard_deviation(vector<float> attributes);
 
         //Summary 
-        vector<float> summary(vector<vector<float> > class_dataset);
+        vector<pair<float, float> > summary(vector<vector<float> > class_dataset);
 
         //Train 
-        map<float, vector<float> > train();
+        map<float, vector<pair<float, float> > > train();
 
         //Classify
         float classify(vector<float> instance);

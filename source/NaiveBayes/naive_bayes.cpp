@@ -35,10 +35,31 @@ float NB::standard_deviation(vector<float> attributes)
 }
 
 //Summary 
-vector<float> NB::summary(vector<vector<float> > class_dataset)
+vector<pair<float, float> > NB::summary(vector<vector<float> > class_dataset)
 {
-    vector<float> summarize_attributes;
-    
+    vector<pair<float, float> > summarize_attributes;
+    vector<float> combine_attributes;
+    vector<float> sorted_attributes;
+    for (auto& examp : class_dataset)
+    {
+        for (unsigned int j = 0; j < examp.size() - 1; j++)
+        {
+            combine_attributes.push_back(examp[j]);
+        }
+    }
+    unsigned int count = 0;
+    while (count < class_dataset[0].size())
+    {
+        vector<float> segmented_attributes;
+        for (unsigned int i = count; i < combine_attributes.size(); i += class_dataset[0].size())
+            segmented_attributes.push_back(combine_attributes[i]);
+     
+        summarize_attributes.push_back(make_pair(
+                                       mean_average(segmented_attributes),
+                                       standard_deviation(segmented_attributes)
+                                       ));
+        count++;
+    }
     return summarize_attributes;
 }
 
@@ -56,16 +77,13 @@ map<float, vector<vector<float> > > NB::separate_each_class()
 
 
 //Train
-map<float, vector<float> > NB::train()
+map<float, vector<pair<float, float> > > NB::train()
 {
     map<float, vector<vector<float> > > separated_classes = separate_each_class();
-    map<float, vector<float> > attribute_summaries;
+    map<float, vector<pair<float, float> > > attribute_summaries;
     map<float, vector<vector<float> > >::iterator iter = separated_classes.begin();
     while (iter != separated_classes.end())
-    {
         attribute_summaries[iter->first] = summary(iter->second);
-        cout << "Here";
-    }
     return attribute_summaries;
 }
 
