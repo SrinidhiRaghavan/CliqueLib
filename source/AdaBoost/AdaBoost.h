@@ -14,14 +14,15 @@
 #include <iostream>
 #include <armadillo>
 #include "Stump.h"
+#include "BaseClassifier.h"
 
-class AdaBoost {
+class AdaBoost : public BaseClassifier {
 	std::vector<Stump*> weakClassifiers;
 	std::vector<double> weights;
 
 public:
 	AdaBoost();
-	void fit(const arma::mat&, const arma::colvec&, arma::uword);
+	void train(const arma::mat&, const arma::colvec&, arma::uword);
 	void predict(const arma::mat&, arma::colvec&);
 	Stump* buildStump(const arma::mat&, const arma::colvec&, const arma::colvec&);
 };

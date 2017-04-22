@@ -21,7 +21,7 @@ class BaggingClassifier {
 
 public:
 	BaggingClassifier(arma::uword, arma::uword);
-	void fit(const arma::mat&, const arma::colvec&, arma::uword);
+	void train(const arma::mat&, const arma::colvec&, arma::uword);
 	void predict(const arma::mat&, arma::colvec&);
 };
 

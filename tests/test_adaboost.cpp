@@ -71,7 +71,7 @@ void test_adaboost()
 
 	AdaBoost ad;
 	uword iter = 2;
-	ad.fit(x, y, iter);
+	ad.train(x, y, iter);
 
 	colvec labels(arma::size(y));
 	//cout << "here!" << endl;
