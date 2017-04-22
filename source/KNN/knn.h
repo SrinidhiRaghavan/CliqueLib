@@ -48,8 +48,8 @@ class KNN
         //Train 
         vector<vector<float> > train();
 
-        //Classify
-        float classify(vector<float> instance);
+        //Predict
+        float predict(vector<float> instance);
        
     private:
         int k;

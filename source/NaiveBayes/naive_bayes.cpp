@@ -82,6 +82,20 @@ map<float, vector<vector<float> > > NaiveBayes::separate_each_class()
     return separate_classes;
 }
 
+/*
+//Probability of instance being member of class
+map<float, float> probabilities_class(map<float, vector<pair<float, float> > > summary, vector<float> instance)
+{
+    map<float, float> gaussian_probabilities;
+    for (auto& smr : summary)
+    {
+        gaussian_probabilities[smr->first] = 1.0;
+        for (unsigned int i = 0; i < smr->second.size(); i++)
+        {
+            
+        } 
+    }   
+}*/
 
 //Train
 map<float, vector<pair<float, float> > > NaiveBayes::train()
@@ -95,8 +109,9 @@ map<float, vector<pair<float, float> > > NaiveBayes::train()
 }
 
 //Classify
-float NaiveBayes::classify(vector<float> instance)
+float NaiveBayes::classify(vector<pair<float, float> > summary, vector<float> instance)
 {
+    // gaussian_probability = probability(, , );
     return 0.0;
 }
 

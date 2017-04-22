@@ -42,11 +42,14 @@ class NaiveBayes
 	//Gaussian Probability Density function
 	float probability(float mean_average, float standard_deviation, float attribute_value);
 
+	//Probability of instance being member of class
+	map<float, float> probabilities_class(vector<pair<float, float> > summary, vector<float> instance);
+
         //Train 
         map<float, vector<pair<float, float> > > train();
 
         //Classify
-        float classify(vector<float> instance);
+        float classify(vector<pair<float, float> > summary, vector<float> instance);
        
     private:
 
