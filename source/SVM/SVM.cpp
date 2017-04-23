@@ -2,13 +2,13 @@
 //Name			:		SVM
 //Author		:		Srinidhi Raghavan
 //Project		:		CliqueLib
-//Description	:		Implementation of the SVM functions
+//Description		:		Implementation of the SVM functions
 //Copyright		:
 //Version		:
 //Modified Date	:
 //--------------------------------------------------------------------------------------
 
-/*
+
 #include <iostream>
 #include <math.h>
 #include <algorithm>
@@ -27,7 +27,7 @@ SVM::SVM(uword C_val) {
 
 
 //Implementation of the Fit function
-void SVM::train(const mat& data, const colvec& Y, uword epoch) {*/
+void SVM::train(const mat& data, const colvec& Y, uword epoch) {
 	/*
 		n - Number of data entries in data
 		d - Dimension of each entry in data
@@ -35,7 +35,7 @@ void SVM::train(const mat& data, const colvec& Y, uword epoch) {*/
 		w - Weight vector including the bias 
 	*/
 	
-/*	uword n = size(data, 0);
+	uword n = size(data, 0);
 	uword d = size(data, 1);
 	uword L = 1 / (n*C);
 	rowvec w(d+1);
@@ -52,7 +52,7 @@ void SVM::train(const mat& data, const colvec& Y, uword epoch) {*/
 
 
 	//Uses Pegasos Algorithm for Linear Kernels to Find the Ideal Weight Vector for the Data
-	for (uword t = 0; t < epoch; t++) {*/
+	for (uword t = 0; t < epoch; t++) {
 		/*
 			nt - Learning rate which is dependent on Lambda and the epoch number 
 			r  - Random number generated which chooses a particular data from X uniformly
@@ -60,7 +60,7 @@ void SVM::train(const mat& data, const colvec& Y, uword epoch) {*/
 			yt - rth value of Y
 		*/
 
-/*		uword nt = 1 / (L*(t+1));
+		uword nt = 1 / (L*(t+1));
 		uword r = distribution(generator);
 		rowvec xt = X.row(r);
 		uword yt = Y(r);
@@ -86,16 +86,16 @@ void SVM::predict(const mat& data, colvec& Y) {
 
 	//Concatenating the matrix X with a column of 1's. Bias is the weight corresponding to this column
 	mat X = join_horiz(data, ones(n));
-*/
+
 	/*
 		Making the Predictions
 		Step 1 - Find the product of the data entries and the weight 
 		Step 2 - If the product >= 0, then predict 1 else -1
 	*/
-/*	colvec A = X*weight;
+	colvec A = X*weight;
 	for (uword i = 0; i < n; i++)
 		if (A(i) >= 0)
 			Y(i) = 1;
 		else
 			Y(i) = -1;
-}*/
+}

@@ -17,16 +17,17 @@
 #include <armadillo>
 
 using namespace std;
+using namespace arma;
 
 class SVM {
-	vector<double> w;
-	double b;
+	colvec weight;
+	uword C;
 	
 
 public:
-	SVM();
-	void train(vector<vector<double>> X, vector<vector<double>> Y, int epoch);
-	void predict(vector<vector<double>> X, vector<vector<double>> Y);
+	SVM(uword);
+	void train(const mat&, const colvec&, uword);
+	void predict(const mat&, colvec&);
 };
 
 #endif
