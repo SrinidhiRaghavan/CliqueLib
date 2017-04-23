@@ -18,8 +18,14 @@ int main()
     //test knn functions
     test_knn();
 
+    //test knn functions
+    test_knn_std();
+
     //test logistic regression functions
     test_logistic_regression();
+
+    //test logistic regression functions
+    test_logistic_regression_std();
 
     //test naive bayes functions
     test_naive_bayes();

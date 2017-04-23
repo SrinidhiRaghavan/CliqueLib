@@ -15,15 +15,15 @@
 #include "BaseClassifier.h"
 
 class VotingClassifier {
-	std::vector<BaseClassifer*> base_estimators;
+	std::vector<BaseClassifier*> base_estimators;
 	//arma::uword n_estimators;
 	//arma::uword max_samples;
 
 public:
-	VotingClassifier(arma::uword, arma::uword);
+	VotingClassifier();
 	void train(const arma::mat&, const arma::colvec&, arma::uword);
 	void predict(const arma::mat&, arma::colvec&);
-    void addClassifier(BaseClassifer*);
+    void addClassifier(BaseClassifier*);
 };
 
 #endif

@@ -16,7 +16,9 @@ skp2140
 #include <utility>
 #include "preprocessing_functions.h"
 #include "knn.h"
+#include "knnstd.h"
 #include "logistic_regression.h"
+#include "logistic_regression_std.h"
 #include "naive_bayes.h"
 #include "Stump.h"
 #include "AdaBoost.h"
@@ -26,7 +28,9 @@ skp2140
 void test_read_csv();
 void test_split_test_train_dataset();
 void test_knn();
+void test_knn_std();
 void test_logistic_regression();
+void test_logistic_regression_std();
 void test_naive_bayes();
 void test_adaboost();
 

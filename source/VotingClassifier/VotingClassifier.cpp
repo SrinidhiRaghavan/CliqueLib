@@ -9,32 +9,24 @@
 #include <iostream>
 #include <armadillo>
 #include <math.h>
-#include "AdaBoost.h"
 #include "VotingClassifier.h"
 
 using namespace std;
 using namespace arma;
 
-template<typename T>
-VotingClassifier<T>::VotingClassifier(uword n_estimators, uword max_samples) {
-	this->n_estimators = n_estimators;
-	this->max_samples = max_samples;
+VotingClassifier::VotingClassifier() {
 }
 
-template<typename T>
-void VotingClassifier<T>::train(const mat& X, const colvec& Y, uword iter) {
-	uword n = size(X, 0);
-
-	for (uword i = 0; i < n_estimators; i++) {
-		uvec randIdx = randi<uvec>(max_samples, 1, distr_param(0, n));
-		T* clfr = new T();
-		clfr->train(X.rows(randIdx), Y.rows(randIdx), iter);
-		base_estimators.push_back(clfr);
+void VotingClassifier::train(const mat& X, const colvec& Y, uword iter) {
+	auto baseIter = base_estimators.begin();
+	for (uword i = 0; baseIter != base_estimators.end(); baseIter++, i++) {
+		BaseClassifier* clfr = *baseIter;
+		clfr->train(X, Y, iter);
 	}
 }
 
-template<typename T>
-void VotingClassifier<T>::predict(const mat& testX, colvec& labels) {
+void VotingClassifier::predict(const mat& testX, colvec& labels) {
+    uword n_estimators = base_estimators.size();
 	uword n = size(testX, 0);
 	mat predMat;
 	predMat.zeros(n, n_estimators);
@@ -42,7 +34,7 @@ void VotingClassifier<T>::predict(const mat& testX, colvec& labels) {
 
 	auto baseIter = base_estimators.begin();
 	for (uword i = 0; baseIter != base_estimators.end(); baseIter++, i++) {
-		T* clfr = *baseIter;
+		BaseClassifier* clfr = *baseIter;
 		colvec preds;
 		preds.zeros(n, 1);
 		clfr->predict(testX, preds);
@@ -53,5 +45,6 @@ void VotingClassifier<T>::predict(const mat& testX, colvec& labels) {
 	labels.fill(-1);
 	labels.elem(idx).fill(1);
 }
-
-template class VotingClassifier<AdaBoost>;
+void VotingClassifier::addClassifier(BaseClassifier* clfr) {
+		base_estimators.push_back(clfr);
+}
