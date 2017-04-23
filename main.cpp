@@ -33,5 +33,8 @@ int main()
     //test adaboost
     test_adaboost();
 
+    //test svm
+    test_svm();
+
     return 0;
 }
