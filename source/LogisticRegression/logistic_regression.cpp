@@ -8,10 +8,8 @@ skp2140
 #include "logistic_regression.h"
 
 //Constructor
-LogisticRegression::LogisticRegression(vector<vector<float> > train_file, int num_epochs, float learning_rate)
+LogisticRegression::LogisticRegression(float learning_rate)
 {
-    this->train_file = train_file;
-    this->num_epochs = num_epochs;
     this->learning_rate = learning_rate;
 }
 
@@ -25,61 +23,65 @@ float LogisticRegression::sigmoid_function(float z)
 
 //Train - returns a vector of coefficients
 //Uses stochastic gradient descent
-vector<float> LogisticRegression::train()
+void LogisticRegression::train(vector<vector<float> >& train_file, vector<float>& labels_sample, int num_epochs)
 {
-    //initialize vector of coefficients and assign each to 0
-    vector<float> coefficients;
-    for (unsigned int i = 0; i < train_file[0].size(); i++)
+    vector<float> labels_train;
+    for (unsigned int num_lb = 0; num_lb < train_file.size(); num_lb++)
+        labels_train.push_back(0.0);
+    //iterate over all vectors of coefficients
+    for (auto& coef : this->coefficients)
     {
-        coefficients.push_back(0.0);
-    }
-    //iterate num_epochs times as using stochastic gradient descent
-    for (int i = 0; i < num_epochs; i++)
-    {
-        float error_sum = 0;
-        //iterate over each row in the training file
-        for (unsigned int j = 0; j < train_file.size(); j++)
+        //assign coefficients each to 0
+        for (unsigned int i = 0; i < train_file[0].size(); i++)        
+           coef.push_back(0.0);
+        
+        //iterate num_epochs times as using stochastic gradient descent
+        for (int i = 0; i < num_epochs; i++)
         {
-            float f_x = predict(train_file[j], coefficients);
-            float error = train_file[j][train_file[j].size() - 1] - f_x;
-            error_sum += pow(error, 2);
-            coefficients[0] += learning_rate * error * f_x * (1.0 - f_x);
-            //iterate over each attribute in a row
-            for (unsigned int k = 0; k < train_file[j].size() - 1; k++)
+            float error_sum = 0;
+            predict(train_file, labels_train, false);
+            //iterate over each row in the training file
+            for (unsigned int j = 0; j < train_file.size(); j++)
             {
-                coefficients[k + 1] += learning_rate * error * f_x * (1.0 - f_x) * train_file[j][k];
+                float f_x = labels_train[j];
+                float error = labels_sample[j] - f_x;
+                error_sum += pow(error, 2);
+                coef[0] += learning_rate * error * f_x * (1.0 - f_x);
+                //iterate over each attribute in a row
+                for (unsigned int k = 0; k < train_file[j].size() - 1; k++)
+                {
+                    coef[k + 1] += learning_rate * error * f_x * (1.0 - f_x) * train_file[j][k];    
+                }
             }
         }
     }
-    return coefficients;
 }
 
 //Predict
-float LogisticRegression::predict(vector<float> instance, vector<float> coefficients, bool binary)
+void LogisticRegression::predict(vector<vector<float> >& instances, vector<float>& labels_found, bool binary)
 {
-    //Last column contains the labels
-    int num_attributes = instance.size() - 1;
-    if ((unsigned int)num_attributes != this->train_file[0].size() - 1)
+    int idx = 0;
+    //iterate over all instances
+    for (auto& instance : instances)
     {
-        cerr << "Wrong number of attributes for the example to be classified";
-        return 0;
-    }
+	//iterate over all attributes
 
-    //iterate over all attributes, the last column is the label
-    float z = coefficients[0];
-    for (unsigned int i = 0; i < instance.size() - 1; i++)
-    {
-        z += coefficients[i + 1] * instance[i];
-    }	
-    
-    if (binary == true)
-    {
-        if (sigmoid_function(z) >= 0.5)
-            return 1;
-        else
-            return 0;
-    }
-    else
-        return sigmoid_function(z);    
+	//MAKE COEFFICIENTS VECTOR OF VECTORS
+
+	float z = this->coefficients[idx][0];
+	for (unsigned int i = 0; i < instance.size(); i++)
+	    z += this->coefficients[idx][i + 1] * instance[i];
+	   
+	if (binary == true)
+	{
+	    if (sigmoid_function(z) >= 0.5)
+		labels_found[idx] = 1;
+   	    else
+		labels_found[idx] = 0;
+	}
+	else
+	    labels_found[idx] = sigmoid_function(z);
+        idx++;
+    }   
 }
 

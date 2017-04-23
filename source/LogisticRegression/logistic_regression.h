@@ -18,27 +18,22 @@ skp2140
 #include <map>
 #include <utility>
 #include <limits>
+//#include "BaseClassifier.h"
 
 
 using namespace std;
 
-class LogisticRegression
+class LogisticRegression //: public BaseClassifier
 {
     public:
         //default constructor
-        LogisticRegression(vector<vector<float> > train_file) : LogisticRegression(train_file, 100, 0.01){}
+        LogisticRegression(vector<vector<float> > train_file) : LogisticRegression(0.01){}
 
         //constructor
-        LogisticRegression(vector<vector<float> > train_file, int num_epochs, float learning_rate);
-
-        //get num_epochs
-        int get_num_epochs() { return num_epochs; }
+        LogisticRegression(float learning_rate);
 
         //get learning_rate
         float get_learning_rate() { return learning_rate; }
-
-        //set num_epochs
-        void set_num_epochs(int num_epochs) { this->num_epochs = num_epochs; }
 
         //set learning_rate
         void set_learning_rate(float learning_rate) { this->learning_rate = learning_rate; }
@@ -47,15 +42,15 @@ class LogisticRegression
 	float sigmoid_function(float z);
 
         //Train - returns a vector of coefficients
-        vector<float> train();
+        void train(vector<vector<float> >& train_file, vector<float>& labels_sample, int num_epochs);
 
         //Predict
-        float predict(vector<float> instance, vector<float> coefficients, bool binary = false);
+        void predict(vector<vector<float> >& instances, vector<float>& labels_found, bool binary = true);
        
     private:
-	int num_epochs;
         float learning_rate;
-        vector<vector<float> > train_file;
+	vector<vector<float> > coefficients;
+
 };
 
 #endif
