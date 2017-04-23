@@ -15,7 +15,7 @@ skp2140
 #include <cmath>
 #include <utility>
 #include "preprocessing_functions.h"
-#include "knn.h"
+#include "KNN.h"
 #include "knnstd.h"
 #include "logistic_regression.h"
 #include "logistic_regression_std.h"

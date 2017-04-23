@@ -9,8 +9,8 @@
 //--------------------------------------------------------------------------------------
 
 
-#ifndef __SVM_H__
-#define __SVM_H__
+#ifndef __KNN_H__
+#define __KNN_H__
 
 #pragma once
 #include <iostream>
