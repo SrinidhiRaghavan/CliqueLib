@@ -6,6 +6,44 @@ skp2140
 */
 
 #include "preprocessing_functions.h"
+using namespace arma;
+
+void read_csv(string file,
+                               mat& X,
+                               colvec& Y,
+	                       bool title,
+	                       char separate_ex, 
+                               char comment
+                              )
+{
+    auto vec_of_vec = read_csv(file, title, separate_ex, comment);
+    std::vector<double> data_flat;
+    for(auto row : vec_of_vec) {
+        for(auto element : row) {
+            data_flat.push_back(element);
+            //cout << element << " ";
+        }
+        //cout << endl;
+    }
+    auto m = vec_of_vec.size();
+    auto n = data_flat.size()/m;
+    //cout << "m,n " << m << " , " << n << endl;
+
+    for (auto x : data_flat) {
+        //cout << x << " ";
+    }
+    //cout << endl;
+
+    mat data(data_flat);
+    //cout << "before reshape data:" << data << endl;
+    data = reshape(data, n, m);
+    //cout << "after reshape data:" << data << endl;
+    data = data.t();
+    //cout << "after transpose data:" << data << endl;
+    auto cols = size(data, 1);
+    X = data.cols(0, cols-2);
+    Y = data.col(cols-1);
+}
 
 //Reading a *.csv file
 vector<vector<float> > read_csv(string file,

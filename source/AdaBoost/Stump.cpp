@@ -83,7 +83,7 @@ void Stump::calculateThreshold(const colvec& x, const colvec& y, const colvec& w
 	error = min(err_n);
 	uword min_idx = index_min(err_n);
 	thres = x(min_idx);
-	cout << "Min error:" << error << " found at idx:" << min_idx << " for thres:" << thres << endl;
+	//cout << "Min error:" << error << " found at idx:" << min_idx << " for thres:" << thres << endl;
 }
 
 void Stump::predictStump(const mat& X, colvec& labels) {

@@ -13,9 +13,17 @@ skp2140
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <armadillo>
 
 using namespace std;
 
+void read_csv(string file,
+                               arma::mat& X,
+                               arma::colvec& Y,
+	      			bool title = false,
+	      			char separate_ex = ',', 
+              			char comment = '#'
+                              );
 //Reading a *.csv file
 vector<vector<float> > read_csv(string file,
 	      			bool title = false,
