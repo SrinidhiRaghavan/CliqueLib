@@ -49,5 +49,8 @@ int main()
     //cout << "X:" << X << endl;
     //cout << "Y:" << Y << endl;
 
+    //test svm
+    test_svm();
+
     return 0;
 }

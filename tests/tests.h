@@ -15,10 +15,11 @@ skp2140
 #include <cmath>
 #include <utility>
 #include "preprocessing_functions.h"
-#include "knn.h"
+#include "KNN.h"
 #include "knnstd.h"
 #include "logistic_regression.h"
 #include "logistic_regression_std.h"
+#include "SVM.h"
 #include "naive_bayes.h"
 #include "Stump.h"
 #include "AdaBoost.h"
@@ -33,5 +34,6 @@ void test_logistic_regression();
 void test_logistic_regression_std();
 void test_naive_bayes();
 void test_adaboost();
+void test_svm();
 
 #endif
