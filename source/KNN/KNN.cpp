@@ -30,6 +30,9 @@ void KNN::train(const mat& X, const colvec& Y, uword epoch = 1) {
 
 //Implementation of the predict function 
 void KNN::predict(const mat& Xtest, colvec& Ytest) {
+    uword n = size(Xtest, 0);
+    Ytest.zeros(n, 1);
+
 	/*
 	We compute the square of the Euclidean distance between n training examples and m test examples 
 	X2 - Stores the 2-norm of the n training data in a n*1 vector

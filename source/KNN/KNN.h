@@ -15,11 +15,12 @@
 #pragma once
 #include <iostream>
 #include <armadillo>
+#include "BaseClassifier.h"
 
 using namespace std;
 using namespace arma;
 
-class KNN {
+class KNN : public BaseClassifier {
 	uword K;
 	mat Xtrain;
 	colvec Ytrain;

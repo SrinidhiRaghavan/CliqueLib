@@ -25,10 +25,57 @@ int main()
     cout << "X:" << X.rows(0, 4) << endl;
     cout << "Y:" << Y.rows(0, 4) << endl;
 
+    mat Xtrain = X.rows(0, 79);
+    colvec Ytrain = Y.rows(0, 79);
+    mat Xtest = X.rows(60, 99);
+    colvec Ytest = Y.rows(60, 99);
+
     AdaBoost clfr;
-    clfr.train(X, Y, 5);
+    clfr.train(Xtrain, Ytrain, 100);
     colvec preds;
-    clfr.predict(X, preds);
+    clfr.predict(Xtest, preds);
+
+    auto acc = getAccuracy(Ytest, preds);
+    cout << "AdaBoost acc:" << acc << endl;
+    
+    KNN knn_clfr(3);
+    knn_clfr.train(Xtrain, Ytrain, 5);
+    colvec preds_knn;
+    knn_clfr.predict(Xtest, preds_knn);
+
+    auto acc_knn = getAccuracy(Ytest, preds_knn);
+    cout << "KNN acc:" << acc_knn << endl;
+   
+    /*
+    SVM svm_clfr(0.1);
+    svm_clfr.train(Xtrain, Ytrain, 5);
+    colvec preds_svm;
+    svm_clfr.predict(Xtest, preds_svm);
+
+    auto acc_svm = getAccuracy(Ytest, preds_svm);
+    cout << "SVM acc:" << acc_svm << endl;
+    */
+
+    BaggingClassifier<AdaBoost> bgClfr(5, 70);
+    bgClfr.train(Xtrain, Ytrain, 100);
+    colvec preds_bg;
+    bgClfr.predict(Xtest, preds_bg);
+
+    auto acc_bg = getAccuracy(Ytest, preds_bg);
+    cout << "Bg acc:" << acc_bg << endl;
+
+    VotingClassifier vcClfr;
+    vcClfr.addClassifier(&clfr);
+    vcClfr.addClassifier(&knn_clfr);
+    vcClfr.addClassifier(&knn_clfr);
+    vcClfr.addClassifier(&clfr);
+    vcClfr.addClassifier(&clfr);
+    vcClfr.train(Xtrain, Ytrain, 100);
+    colvec preds_vc;
+    vcClfr.predict(Xtest, preds_vc);
+
+    auto acc_vc = getAccuracy(Ytest, preds_vc);
+    cout << "Vc acc:" << acc_vc << endl;
     
     /*
     colvec a,b;
@@ -43,15 +90,12 @@ int main()
 		<< -1.0 << endr
 		<< -1.0 << endr;
     */
-
-    auto acc = getAccuracy(Y, preds);
-    cout << "acc:" << acc << endl;
     
     //cout << "X:" << X << endl;
     //cout << "Y:" << Y << endl;
 
     //test svm
-    test_svm();
+    //test_svm();
 
     return 0;
 }

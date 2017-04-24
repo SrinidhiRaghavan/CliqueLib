@@ -83,6 +83,7 @@ void SVM::train(const mat& data, const colvec& Y, uword epoch) {
 void SVM::predict(const mat& data, colvec& Y) {
 	//n - Number of data entries in data
 	uword n = size(data, 0);
+    Y.zeros(n, 1);
 
 	//Concatenating the matrix X with a column of 1's. Bias is the weight corresponding to this column
 	mat X = join_horiz(data, ones(n));

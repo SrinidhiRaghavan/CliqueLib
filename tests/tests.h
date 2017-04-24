@@ -24,6 +24,7 @@ skp2140
 #include "Stump.h"
 #include "AdaBoost.h"
 #include "BaggingClassifier.h"
+#include "VotingClassifier.h"
 
 //TEST IMPLEMENTATIONS
 void test_read_csv();

@@ -23,14 +23,16 @@ BaggingClassifier<T>::BaggingClassifier(uword n_estimators, uword max_samples) {
 
 template<typename T>
 void BaggingClassifier<T>::train(const mat& X, const colvec& Y, uword iter) {
+    //cout << "BaggingClassifier::train: Training begin" << endl;
 	uword n = size(X, 0);
 
 	for (uword i = 0; i < n_estimators; i++) {
-		uvec randIdx = randi<uvec>(max_samples, 1, distr_param(0, n));
+		uvec randIdx = randi<uvec>(max_samples, 1, distr_param(0, n-1));
 		T* clfr = new T();
 		clfr->train(X.rows(randIdx), Y.rows(randIdx), iter);
 		base_estimators.push_back(clfr);
 	}
+    //cout << "BaggingClassifier::train: Training done" << endl;
 }
 
 template<typename T>
