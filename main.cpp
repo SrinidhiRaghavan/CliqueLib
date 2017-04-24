@@ -18,6 +18,7 @@ int main()
     mat X;
     colvec Y;
     //read_csv("samples_csv/toy_sample.csv", X, Y, true, ',', '#');
+    //read_csv("samples_csv/admits.csv", X, Y, false, ',', '#');
     read_csv("samples_csv/admits.csv", X, Y, true, ',', '#');
     cout << "size X:" << arma::size(X) << endl;
     cout << "size Y:" << arma::size(Y) << endl;
