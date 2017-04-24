@@ -29,9 +29,9 @@ void read_csv(string file,
     auto n = data_flat.size()/m;
     //cout << "m,n " << m << " , " << n << endl;
 
-    for (auto x : data_flat) {
+    //for (auto x : data_flat) {
         //cout << x << " ";
-    }
+    //}
     //cout << endl;
 
     mat data(data_flat);
