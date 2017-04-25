@@ -20,7 +20,7 @@ using namespace std;
 using namespace arma;
 
 class SVM {
-	rowvec weight;
+	colvec weight;
 	double C;
 	
 
