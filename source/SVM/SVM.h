@@ -21,11 +21,11 @@ using namespace arma;
 
 class SVM {
 	colvec weight;
-	uword C;
+	double C;
 	
 
 public:
-	SVM(uword);
+	SVM(double);
 	void train(const mat&, const colvec&, uword);
 	void predict(const mat&, colvec&);
 };
