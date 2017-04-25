@@ -18,7 +18,7 @@ using namespace std;
 using namespace arma;
 
 //Constructor for the SVM
-Logistic::Logistic(uword C_val = 0.1) {
+Logistic::Logistic(double C_val = 0.1) {
 	C = C_val;
 }
 
