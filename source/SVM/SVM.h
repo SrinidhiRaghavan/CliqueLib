@@ -1,11 +1,11 @@
 //--------------------------------------------------------------------------------------
-//Name:					SVM
-//Author:				Srinidhi Raghavan
-//Project:				CliqueLib
-//Description:			Header for the SVM
-//Copyright:
-//Version
-//Last Modified Date:
+//Name			:		SVM
+//Author		:		Srinidhi Raghavan
+//Project		:		CliqueLib
+//Description		:		Header for the SVM
+//Copyright		:
+//Version		:
+//Last Modified Date	:
 //--------------------------------------------------------------------------------------
 
 
