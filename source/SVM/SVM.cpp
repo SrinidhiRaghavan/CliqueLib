@@ -44,7 +44,7 @@ void SVM::train(const mat& data, const colvec& Y, uword epoch) {
 
 	//Uniform Random Generator used for Generating the data entry indices randomly
 	default_random_engine generator;
-	uniform_int_distribution<int> distribution(0, n);
+	uniform_int_distribution<int> distribution(0, n-1);
 
 	
 	//Concatenating the matrix X with a column of 1's. Bias is the weight corresponding to this column
