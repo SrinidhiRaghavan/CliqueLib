@@ -5,7 +5,7 @@
 //Description		:		Implementation of the SVM functions
 //Copyright		:
 //Version		:
-//Modified Date	:
+//Modified Date		:
 //--------------------------------------------------------------------------------------
 
 
@@ -37,7 +37,7 @@ void SVM::train(const mat& data, const colvec& Y, uword epoch) {
 	
 	uword n = size(data, 0);
 	uword d = size(data, 1);
-	uword L = 1 / (n*C);
+	double L = 1 / (n*C);
 	rowvec w(d+1);
 	w.fill(0);
 	
@@ -60,7 +60,7 @@ void SVM::train(const mat& data, const colvec& Y, uword epoch) {
 			yt - rth value of Y
 		*/
 
-		uword nt = 1 / (L*(t+1));
+		double nt = 1 / (L*(t+1));
 		uword r = distribution(generator);
 		rowvec xt = X.row(r);
 		uword yt = Y(r);
@@ -83,7 +83,7 @@ void SVM::train(const mat& data, const colvec& Y, uword epoch) {
 void SVM::predict(const mat& data, colvec& Y) {
 	//n - Number of data entries in data
 	uword n = size(data, 0);
-    Y.zeros(n, 1);
+    	Y.zeros(n, 1);
 
 	//Concatenating the matrix X with a column of 1's. Bias is the weight corresponding to this column
 	mat X = join_horiz(data, ones(n));
