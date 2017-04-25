@@ -48,7 +48,7 @@ void SVM::train(const mat& data, const colvec& Y, uword epoch) {
 
 	
 	//Concatenating the matrix X with a column of 1's. Bias is the weight corresponding to this column
-	mat X = join_horiz(data, ones(n));
+	mat X = join_horiz(data, ones(n, 1));
 
 
 	//Uses Pegasos Algorithm for Linear Kernels to Find the Ideal Weight Vector for the Data
