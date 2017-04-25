@@ -64,9 +64,9 @@ void SVM::train(const mat& data, const colvec& Y, uword epoch) {
 		uword r = distribution(generator);
 		rowvec xt = X.row(r);
 		uword yt = Y(r);
-		uword a = dot(w, xt)*yt;
+		double a = dot(w, xt)*yt;
 
-		if (a < 1)
+		if (a < 1.0)
 			w = (1 - nt*L)*w + nt*yt*xt;
 
 		else
@@ -86,7 +86,7 @@ void SVM::predict(const mat& data, colvec& Y) {
     	Y.zeros(n, 1);
 
 	//Concatenating the matrix X with a column of 1's. Bias is the weight corresponding to this column
-	mat X = join_horiz(data, ones(n));
+	mat X = join_horiz(data, ones(n, 1));
 
 	/*
 		Making the Predictions
