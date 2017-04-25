@@ -2,10 +2,10 @@
 //Name			:		Logistic Regression
 //Author		:		Srinidhi Raghavan
 //Project		:		CliqueLib
-//Description	:		Header for the Logistic
+//Description		:		Header for the Logistic
 //Copyright		:
 //Version		:
-//Modified Date	:		04/22/2017
+//Modified Date		:		04/22/2017
 //--------------------------------------------------------------------------------------
 
 
@@ -21,10 +21,10 @@ using namespace arma;
 
 class Logistic {
 	colvec weight;
-	uword C;
+	double C;
 
 public:
-	Logistic(uword);
+	Logistic(double);
 	void train(const mat&, const colvec&, uword);
 	void predict(const mat&, colvec&);
 };
