@@ -2,10 +2,10 @@
 //Name			:		Logistic Regression
 //Author		:		Srinidhi Raghavan
 //Project		:		CliqueLib
-//Description	:		Implementation of the Logistic Regression functions
+//Description		:		Implementation of the Logistic Regression functions
 //Copyright		:
 //Version		:
-//Modified Date	:		04/22/2017
+//Modified Date		:		04/22/2017
 //--------------------------------------------------------------------------------------
 
 #include <iostream>
