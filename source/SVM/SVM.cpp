@@ -21,7 +21,7 @@ using namespace std;
 using namespace arma;
 
 //Constructor for the SVM
-SVM::SVM(uword C_val) {
+SVM::SVM(double C_val = 0.1) {
 	C = C_val;
 }
 
