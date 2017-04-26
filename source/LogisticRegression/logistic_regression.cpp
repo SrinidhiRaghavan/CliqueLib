@@ -8,8 +8,8 @@ using namespace std;
 using namespace arma;
 
 //Constructor for the SVM
-Logistic::Logistic(double C_val) {
-	C = C_val;
+Logistic::Logistic(double alpha) {
+	this->alpha = alpha;
 }
 
 
@@ -39,7 +39,7 @@ void Logistic::train(const mat& data, const colvec& Y, uword epoch) {
 
 	//Applying Gradient Descent to update the weights 
 	for (uword t = 0; t < epoch; t++) {
-		w += C * X.t() * (labels - sigmoid(X*w));
+		w += alpha * X.t() * (labels - sigmoid(X*w));
 	}
 	weight = w;
 }
