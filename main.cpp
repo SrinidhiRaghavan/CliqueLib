@@ -46,15 +46,15 @@ int main()
     auto acc_knn = getAccuracy(Ytest, preds_knn);
     cout << "KNN acc:" << acc_knn << endl;
    
-    /*
+    
     SVM svm_clfr(0.1);
-    svm_clfr.train(Xtrain, Ytrain, 5);
+    svm_clfr.train(Xtrain, Ytrain, 1000);
     colvec preds_svm;
     svm_clfr.predict(Xtest, preds_svm);
 
     auto acc_svm = getAccuracy(Ytest, preds_svm);
     cout << "SVM acc:" << acc_svm << endl;
-    */
+   
 
     BaggingClassifier<AdaBoost> bgClfr(5, 70);
     bgClfr.train(Xtrain, Ytrain, 100);

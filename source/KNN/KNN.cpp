@@ -2,10 +2,10 @@
 //Name			:		SVM
 //Author		:		Srinidhi Raghavan
 //Project		:		CliqueLib
-//Description	:		Implementation of the KNN functions
+//Description		:		Implementation of the KNN functions
 //Copyright		:
 //Version		:
-//Modified Date	:
+//Modified Date		:
 //--------------------------------------------------------------------------------------
 
 #include <iostream>
@@ -15,6 +15,7 @@
 
 using namespace std;
 using namespace arma;
+
 //Constructor for the SVM
 KNN::KNN(uword K_val) {
 	K = K_val;

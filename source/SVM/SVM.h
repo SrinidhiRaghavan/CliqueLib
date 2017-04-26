@@ -1,11 +1,11 @@
 //--------------------------------------------------------------------------------------
-//Name:					SVM
-//Author:				Srinidhi Raghavan
-//Project:				CliqueLib
-//Description:			Header for the SVM
-//Copyright:
-//Version
-//Last Modified Date:
+//Name			:		SVM
+//Author		:		Srinidhi Raghavan
+//Project		:		CliqueLib
+//Description		:		Header for the SVM
+//Copyright		:
+//Version		:
+//Last Modified Date	:
 //--------------------------------------------------------------------------------------
 
 
@@ -21,11 +21,11 @@ using namespace arma;
 
 class SVM {
 	colvec weight;
-	uword C;
+	double C;
 	
 
 public:
-	SVM(uword);
+	SVM(double);
 	void train(const mat&, const colvec&, uword);
 	void predict(const mat&, colvec&);
 };

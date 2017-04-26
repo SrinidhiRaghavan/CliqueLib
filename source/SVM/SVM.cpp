@@ -5,7 +5,7 @@
 //Description		:		Implementation of the SVM functions
 //Copyright		:
 //Version		:
-//Modified Date	:
+//Modified Date		:
 //--------------------------------------------------------------------------------------
 
 
@@ -21,7 +21,7 @@ using namespace std;
 using namespace arma;
 
 //Constructor for the SVM
-SVM::SVM(uword C_val) {
+SVM::SVM(double C_val = 0.1) {
 	C = C_val;
 }
 
@@ -34,21 +34,20 @@ void SVM::train(const mat& data, const colvec& Y, uword epoch) {
 		L - Lambda parameter for SVM
 		w - Weight vector including the bias 
 	*/
-	
 	uword n = size(data, 0);
 	uword d = size(data, 1);
-	uword L = 1 / (n*C);
-	rowvec w(d+1);
+	double L = 1 / (n*C);
+	colvec w(d+1);
 	w.fill(0);
 	
 
 	//Uniform Random Generator used for Generating the data entry indices randomly
 	default_random_engine generator;
-	uniform_int_distribution<int> distribution(0, n);
+	uniform_int_distribution<int> distribution(0, n-1);
 
 	
 	//Concatenating the matrix X with a column of 1's. Bias is the weight corresponding to this column
-	mat X = join_horiz(data, ones(n));
+	mat X = join_horiz(data, ones(n, 1));
 
 
 	//Uses Pegasos Algorithm for Linear Kernels to Find the Ideal Weight Vector for the Data
@@ -60,14 +59,13 @@ void SVM::train(const mat& data, const colvec& Y, uword epoch) {
 			yt - rth value of Y
 		*/
 
-		uword nt = 1 / (L*(t+1));
+		double nt = 1 / (L*(t+1));
 		uword r = distribution(generator);
 		rowvec xt = X.row(r);
 		uword yt = Y(r);
-		uword a = dot(w, xt)*yt;
-
-		if (a < 1)
-			w = (1 - nt*L)*w + nt*yt*xt;
+		double a = dot(w, xt)*yt;
+		if (a < 1.0)
+			w = (1 - nt*L)*w + nt*yt*xt.t();
 
 		else
 			w = (1 - nt*L)*w;
@@ -83,10 +81,10 @@ void SVM::train(const mat& data, const colvec& Y, uword epoch) {
 void SVM::predict(const mat& data, colvec& Y) {
 	//n - Number of data entries in data
 	uword n = size(data, 0);
-    Y.zeros(n, 1);
-
+    	Y.zeros(n, 1);
+	
 	//Concatenating the matrix X with a column of 1's. Bias is the weight corresponding to this column
-	mat X = join_horiz(data, ones(n));
+	mat X = join_horiz(data, ones(n, 1));
 
 	/*
 		Making the Predictions
@@ -100,3 +98,4 @@ void SVM::predict(const mat& data, colvec& Y) {
 		else
 			Y(i) = -1;
 }
+
