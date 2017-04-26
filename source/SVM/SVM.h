@@ -15,25 +15,27 @@
 #pragma once
 #include <iostream>
 #include <armadillo>
+#include "BaseClassifier.h"
 
 using namespace std;
 using namespace arma;
 
-class SVM {
+class SVM : public BaseClassifier {
 	colvec weight;
 	double C;
 	
 
 public:
+	SVM();
 	SVM(double);
 	void train(const mat&, const colvec&, uword);
 	void predict(const mat&, colvec&);
         
-        //get Regularization Paramete C
+        //get Regularization Parameter C
         double getRegularizationParameter() { return C; };
         
         //set Regularization Parameter C
-        void setRegularizationParameter(int C) { this->C = C; }
+        void setRegularizationParameter(double C) { this->C = C; }
 };
 
 #endif

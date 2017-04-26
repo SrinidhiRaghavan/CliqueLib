@@ -15,6 +15,7 @@
 #pragma once
 #include <iostream>
 #include <armadillo>
+#include "BaseClassifier.h"
 
 using namespace std;
 using namespace arma;
@@ -22,7 +23,7 @@ using namespace arma;
 /**
  * Logistic regression, also called logit regression, is a machine learning algorithm used for binary classification. Logistic regression is named after its core function, the logistic function, also called the sigmoid function. The algorithm predicts what the probability is of an input belonging to one of the two classes. If the probability is more than 0.5, the output is a prediction for that class. Otherwise, the prediction is for the other class.
  */
-class Logistic {
+class Logistic : public BaseClassifier {
 	colvec weight; /*!< Weight is a column vector of coefficients and is evaluated using stochastic
                             gradient descent
                         */

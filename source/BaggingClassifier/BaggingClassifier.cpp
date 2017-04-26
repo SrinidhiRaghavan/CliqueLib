@@ -60,4 +60,5 @@ void BaggingClassifier<C>::predict(const mat& testX, colvec& labels) {
 }
 
 template class BaggingClassifier<AdaBoost>;
+template class BaggingClassifier<SVM>;
 //template class BaggingClassifier<KNN>;
