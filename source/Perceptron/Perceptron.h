@@ -25,6 +25,7 @@ class Perceptron : public BaseClassifier
 	double neta;
 
     public:
+        Perceptron() : Perceptron(0.1){}
 	Perceptron(double);
 	void train(const mat&, const colvec&, uword);
 	void predict(const mat&, colvec&);

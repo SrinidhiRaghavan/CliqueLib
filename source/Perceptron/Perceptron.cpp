@@ -12,7 +12,7 @@ using namespace std;
 using namespace arma;
 
 //Implementation of the Perceptron Constructor
-Perceptron:: Perceptron(double n = 0.1){
+Perceptron:: Perceptron(double n){
 	neta = n;
 }
 
