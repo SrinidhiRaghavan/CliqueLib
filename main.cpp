@@ -62,7 +62,7 @@ int main()
     bgClfr.predict(Xtest, preds_bg);
 
     auto acc_bg = getAccuracy(Ytest, preds_bg);
-    cout << "Bg acc:" << acc_bg << endl;
+    cout << "Bg adB acc:" << acc_bg << endl;
     
     /*
     BaggingClassifier<KNN> bgClfr(5, 400);
@@ -72,30 +72,15 @@ int main()
 
     auto acc_bg = getAccuracy(Ytest, preds_bg);
     cout << "Bg knn acc:" << acc_bg << endl;
-
-    BaggingClassifier<SVM> bgClfr(5, 400);
-    bgClfr.train(Xtrain, Ytrain, 100);
-    colvec preds_bg;
-    bgClfr.predict(Xtest, preds_bg);
-
-    auto acc_bg = getAccuracy(Ytest, preds_bg);
-    cout << "Bg knn acc:" << acc_bg << endl;
     */
 
-    VotingClassifier vcClfr;
-    BaseClassifier* clfr_b = (BaseClassifier*)&clfr;
-    BaseClassifier* knn_clfr_b = (BaseClassifier*)&knn_clfr;
-    vcClfr.addClassifier(clfr_b);
-    vcClfr.addClassifier(knn_clfr_b);
-    vcClfr.addClassifier(knn_clfr_b);
-    vcClfr.addClassifier(clfr_b);
-    vcClfr.addClassifier(clfr_b);
-    vcClfr.train(Xtrain, Ytrain, 100);
-    colvec preds_vc;
-    vcClfr.predict(Xtest, preds_vc);
+    BaggingClassifier<SVM> bgClfr_svm(5, 400);
+    bgClfr_svm.train(Xtrain, Ytrain, 100);
+    colvec preds_bg_svm;
+    bgClfr_svm.predict(Xtest, preds_bg_svm);
 
-    auto acc_vc = getAccuracy(Ytest, preds_vc);
-    cout << "Vc acc:" << acc_vc << endl;
+    auto acc_bg_svm = getAccuracy(Ytest, preds_bg);
+    cout << "Bg svm acc:" << acc_bg_svm << endl;
     
     /*
     colvec a,b;
@@ -123,5 +108,20 @@ int main()
     logistic_clfr.predict(Xtest, preds_log);
     auto acc_log = getAccuracy(Ytest, preds_log);
     cout << "Logistic acc: " << acc_log << endl;	
+
+    VotingClassifier vcClfr;
+    BaseClassifier* svm_clfr_b = (BaseClassifier*)&svm_clfr;
+    BaseClassifier* knn_clfr_b = (BaseClassifier*)&knn_clfr;
+    BaseClassifier* logistic_clfr_b = (BaseClassifier*)&logistic_clfr;
+    vcClfr.addClassifier(svm_clfr_b);
+    vcClfr.addClassifier(knn_clfr_b);
+    vcClfr.addClassifier(logistic_clfr_b);
+    vcClfr.train(Xtrain, Ytrain, 100);
+    colvec preds_vc;
+    vcClfr.predict(Xtest, preds_vc);
+
+    auto acc_vc = getAccuracy(Ytest, preds_vc);
+    cout << "Vc acc:" << acc_vc << endl;
+
     return 0;
 }
