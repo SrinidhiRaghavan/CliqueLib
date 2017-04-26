@@ -139,6 +139,17 @@ int main()
     auto acc_log = getAccuracy(Ytest, preds_log);
     cout << "Logistic acc: " << acc_log << endl;	
 
+
+
+    Perceptron perceptron_clfr(0.01);
+    perceptron_clfr.train(Xtrain, Ytrain, 100);
+    colvec preds_perceptron;
+    perceptron_clfr.predict(Xtest, preds_perceptron);
+    auto acc_perceptron = getAccuracy(Ytest, preds_perceptron);
+    cout << "Perceptron acc: " << acc_perceptron << endl;	
+
+
+
     VotingClassifier vcClfr;
     BaseClassifier* svm_clfr_b = (BaseClassifier*)&svm_clfr;
     BaseClassifier* knn_clfr_b = (BaseClassifier*)&knn_clfr;

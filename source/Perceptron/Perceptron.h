@@ -22,9 +22,10 @@ class Perceptron : public BaseClassifier
 {
     private:
 	colvec weight;
+	double neta;
 
     public:
-	Perceptron(){}
+	Perceptron(double);
 	void train(const mat&, const colvec&, uword);
 	void predict(const mat&, colvec&);
 };
