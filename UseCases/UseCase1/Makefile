@@ -21,7 +21,7 @@ source/AdaBoost/AdaBoost.o: ../../source/AdaBoost/AdaBoost.h
 
 .PHONY: clean
 clean:
-	rm -f *.o *~ source/*.o  source/*~ source/Preprocessing/*.o source/Preprocessing/*~ source/AdaBoost/*.o source/AdaBoost/*~ a.out core usecase1
+	rm -f *.o *~ ../..source/*.o  ../../source/*~ ../../source/Preprocessing/*.o ../../source/Preprocessing/*~ ../../source/AdaBoost/*.o ../../source/AdaBoost/*~ a.out core usecase1
 
 .PHONY: all
 	all: clean usecase1
