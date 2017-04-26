@@ -10,6 +10,7 @@
 #define __BAGGINGCLASSIFIER_H__
 
 #pragma once
+#include <memory>
 #include <armadillo>
 
 template<class C> concept bool Classifier = requires(C c, const arma::mat& X, const arma::colvec& Y, arma::uword iter, arma::colvec& labels) 
@@ -22,7 +23,7 @@ template<Classifier C>
 class BaggingClassifier 
 {
     private:
-	std::vector<C*> base_estimators;
+	std::vector<std::shared_ptr<C>> base_estimators;
 	arma::uword n_estimators;
 	arma::uword max_samples;
 

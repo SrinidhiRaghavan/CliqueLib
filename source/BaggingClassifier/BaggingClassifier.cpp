@@ -33,7 +33,7 @@ void BaggingClassifier<C>::train(const mat& X, const colvec& Y, uword iter)
 	for (uword i = 0; i < n_estimators; i++) 
         {
 		uvec randIdx = randi<uvec>(max_samples, 1, distr_param(0, n-1));
-		C* clfr = new C();
+		auto clfr = make_shared<C>();
 		clfr->train(X.rows(randIdx), Y.rows(randIdx), iter);
 		base_estimators.push_back(clfr);
 	}
@@ -50,7 +50,7 @@ void BaggingClassifier<C>::predict(const mat& testX, colvec& labels)
 	auto baseIter = base_estimators.begin();
 	for (uword i = 0; baseIter != base_estimators.end(); baseIter++, i++) 
         {
-		C* clfr = *baseIter;
+		auto clfr = *baseIter;
 		colvec preds;
 		preds.zeros(n, 1);
 		clfr->predict(testX, preds);
