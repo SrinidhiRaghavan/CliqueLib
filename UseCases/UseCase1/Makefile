@@ -27,5 +27,5 @@ clean:
 	all: clean usecase1
 
 .PHONY: valgrind
-valgrind: main
-	valgrind -v --num-callers=20 --leak-check=yes --leak-resolution=high --show-reachable=yes ./main
+valgrind: usecase1
+	valgrind -v --num-callers=20 --leak-check=yes --leak-resolution=high --show-reachable=yes ./usecase1
