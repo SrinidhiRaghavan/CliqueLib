@@ -10,6 +10,9 @@
 #include <armadillo>
 #include <math.h>
 #include "AdaBoost.h"
+#include "KNN.h"
+#include "SVM.h"
+#include "logistic_regression.h"
 #include "BaggingClassifier.h"
 
 using namespace std;
@@ -57,3 +60,4 @@ void BaggingClassifier<C>::predict(const mat& testX, colvec& labels) {
 }
 
 template class BaggingClassifier<AdaBoost>;
+//template class BaggingClassifier<KNN>;
