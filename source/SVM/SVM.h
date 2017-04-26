@@ -26,7 +26,7 @@ class SVM : public BaseClassifier {
 	
 
 public:
-	SVM();
+	SVM() : SVM(0.1) {}
 	SVM(double);
 	void train(const mat&, const colvec&, uword);
 	void predict(const mat&, colvec&);
