@@ -28,14 +28,16 @@ using namespace arma;
  * input. Euclidean distance is used for measuring the similarity between instances.
  */
 class KNN : public BaseClassifier {
-	uword K; /*!< K represents the number of nearest neighbors of an input instance */
-	mat Xtrain; /*!< Xtrain is the matrix representing the training dataset of attributes  */
+	uword K; /*!< K represents the number of nearest neighbors of an input instance. */
+	mat Xtrain; /*!< Xtrain is the matrix representing the training dataset of attributes.  */
 	colvec Ytrain; /*!< Ytrain is the column vector representing the labels corresponding to the
-                            examples in the training dataset 
+                            examples in the training dataset. 
                         */
 
 public:
-        KNN() : KNN(3){}
+        KNN() : KNN(3){} /**< A default constructor for KNN is available
+                             and sets the default value of K to 3.
+                          */
         
 	KNN(uword); /**< A KNN object is created by a constructor wherein the user must specify 
                          the value k representing k nearest neighbors.
@@ -56,10 +58,10 @@ public:
                                                 vector and returns void. 
                                             */
 
-        uword getK() { return K; } /**< The user can retrieve K by calling the function's getter */
+        uword getK() { return K; } /**< The user can retrieve K by calling the function's getter. */
 
         void setK(uword K) { this->K = K; } /**< The user can change the value of K by calling 
-                                                 the function's setter 
+                                                 the function's setter. 
                                              */
 };
 
