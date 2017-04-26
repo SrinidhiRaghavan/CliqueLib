@@ -28,6 +28,12 @@ public:
 	SVM(double);
 	void train(const mat&, const colvec&, uword);
 	void predict(const mat&, colvec&);
+        
+        //get Regularization Paramete C
+        double getRegularizationParameter() { return C; };
+        
+        //set Regularization Parameter C
+        void setRegularizationParameter(int C) { this->C = C; }
 };
 
 #endif
