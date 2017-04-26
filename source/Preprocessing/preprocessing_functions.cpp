@@ -1,9 +1,10 @@
-/**
-preprocessing_functions.cpp
-Stan Peceny
-skp2140
-4/1/2017
-*/
+//============================================================================
+// Name        : preprocessing_functions.cpp
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib Preprocessing functions implementation
+//============================================================================
 
 #include "preprocessing_functions.h"
 using namespace arma;

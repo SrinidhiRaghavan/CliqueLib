@@ -1,13 +1,10 @@
-//--------------------------------------------------------------------------------------
-//Name			:		SVM
-//Author		:		Srinidhi Raghavan
-//Project		:		CliqueLib
-//Description		:		Implementation of the SVM functions
-//Copyright		:
-//Version		:
-//Modified Date		:
-//--------------------------------------------------------------------------------------
-
+//============================================================================
+// Name        : SVM.cpp
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib SVM implementation
+//============================================================================
 
 #include <iostream>
 #include <math.h>

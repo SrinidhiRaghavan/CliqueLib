@@ -6,7 +6,6 @@
 // Description : CliqueLib BaggingClassifier definition
 //============================================================================
 
-
 #ifndef __BAGGINGCLASSIFIER_H__
 #define __BAGGINGCLASSIFIER_H__
 

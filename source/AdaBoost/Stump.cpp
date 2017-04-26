@@ -1,3 +1,11 @@
+//============================================================================
+// Name        : Stump.cpp
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib Stump implementation
+//============================================================================
+
 #include <armadillo>
 #include <iostream>
 #include "Stump.h"

@@ -1,9 +1,10 @@
-/**
-test_knn_std.cpp
-Stan Peceny
-skp2140
-4/2/2017
-*/
+//============================================================================
+// Name        : test_knn_std.cpp
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib KNNStd testing
+//============================================================================
 
 #include "tests.h"
 

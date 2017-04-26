@@ -1,3 +1,4 @@
+# CliqueLib
 # Stanislav Peceny
 
 CC = g++-6

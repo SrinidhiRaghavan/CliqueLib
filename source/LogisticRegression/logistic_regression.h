@@ -1,13 +1,10 @@
-//--------------------------------------------------------------------------------------
-//Name			:		Logistic Regression
-//Author		:		Srinidhi Raghavan
-//Project		:		CliqueLib
-//Description		:		Header for the Logistic
-//Copyright		:
-//Version		:
-//Modified Date		:		04/22/2017
-//--------------------------------------------------------------------------------------
-
+//============================================================================
+// Name        : logistic_regression.h
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib Logistic regression definition
+//============================================================================
 
 #ifndef __Logistic_H__
 #define __Logistic_H__

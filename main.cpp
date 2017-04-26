@@ -1,12 +1,14 @@
-/**
-main.cpp
-Stan Peceny
-skp2140
-4/1/2017
-*/
+//============================================================================
+// Name        : main.cpp
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : Main function
+//============================================================================
 
 #include <armadillo>
 #include "tests.h"
+
 using namespace arma;
 
 double getAccuracy(colvec& a, colvec& b) {

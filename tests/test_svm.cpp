@@ -1,7 +1,10 @@
-/**
-test_svm.cpp
-4/22/2017
-*/
+//============================================================================
+// Name        : test_svm.cpp
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib SVM testing
+//============================================================================
 
 #include "tests.h"
 

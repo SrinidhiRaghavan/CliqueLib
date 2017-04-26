@@ -1,3 +1,11 @@
+//============================================================================
+// Name        : logistic_regression.cpp
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib Logistic regression implementation
+//============================================================================
+
 #include <iostream>
 #include <armadillo>
 #include <math.h>

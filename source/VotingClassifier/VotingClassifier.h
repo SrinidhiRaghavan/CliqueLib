@@ -6,7 +6,6 @@
 // Description : CliqueLib VotingClassifier definition
 //============================================================================
 
-
 #ifndef __VOTINGCLASSIFIER_H__
 #define __VOTINGCLASSIFIER_H__
 

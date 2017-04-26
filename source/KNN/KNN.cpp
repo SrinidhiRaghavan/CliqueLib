@@ -1,17 +1,14 @@
-//--------------------------------------------------------------------------------------
-//Name			:		SVM
-//Author		:		Srinidhi Raghavan
-//Project		:		CliqueLib
-//Description		:		Implementation of the KNN functions
-//Copyright		:
-//Version		:
-//Modified Date		:
-//--------------------------------------------------------------------------------------
+//============================================================================
+// Name        : KNN.cpp
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib KNN implementation
+//============================================================================
 
 #include <iostream>
 #include <armadillo>
 #include "KNN.h"
-
 
 using namespace std;
 using namespace arma;

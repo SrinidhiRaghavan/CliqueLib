@@ -1,13 +1,10 @@
-//--------------------------------------------------------------------------------------
-//Name			:		SVM
-//Author		:		Srinidhi Raghavan
-//Project		:		CliqueLib
-//Description	:		Header for the KNN
-//Copyright		:
-//Version		:
-//Modified Date	:
-//--------------------------------------------------------------------------------------
-
+//============================================================================
+// Name        : KNN.h
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib KNN definition
+//============================================================================
 
 #ifndef __KNN_H__
 #define __KNN_H__

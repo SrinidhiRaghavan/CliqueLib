@@ -6,7 +6,6 @@
 // Description : CliqueLib Stump definition
 //============================================================================
 
-
 #ifndef __STUMP_H__
 #define __STUMP_H__
 
