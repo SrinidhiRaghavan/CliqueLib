@@ -52,6 +52,8 @@ source/AdaBoost/AdaBoost.o: source/AdaBoost/AdaBoost.h
 
 source/BaggingClassifier/BaggingClassifier.o: source/BaggingClassifier/BaggingClassifier.h
 
+source/VotingClassifier/VotingClassifier.o: source/VotingClassifier/VotingClassifier.h
+
 .PHONY: clean
 clean:
 	rm -f *.o *~ tests/*.o  tests/*~ source/*.o  source/*~ source/Preprocessing/*.o source/Preprocessing/*~ source/KNN/*.o source/KNN/*~ source/KNNStd/*.o source/KNNStd/*~ source/LogisticRegression/*.o source/LogisticRegression/*~ source/LogisticRegressionStd/*.o source/LogisticRegressionStd/*~  source/NaiveBayes/*.o source/NaiveBayes/*~  source/AdaBoost/*.o source/AdaBoost/*~ source/BaggingClassifier/*.o source/BaggingClassifier/*~ source/VotingClassifier/*~ source/VotingClassifier/*.o source/SVM/*.o source/SVM/*~ a.out core main
