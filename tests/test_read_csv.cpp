@@ -1,9 +1,10 @@
-/**
-test_read_csv.cpp
-Stan Peceny
-skp2140
-4/1/2017
-*/
+//============================================================================
+// Name        : test_read_csv.cpp
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib Reading CSVs testing
+//============================================================================
 
 #include "tests.h"
 

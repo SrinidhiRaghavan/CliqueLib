@@ -14,18 +14,18 @@
 using namespace std;
 using namespace arma;
 
-VotingClassifier::VotingClassifier() {
-}
-
-void VotingClassifier::train(const mat& X, const colvec& Y, uword iter) {
+void VotingClassifier::train(const mat& X, const colvec& Y, uword iter) 
+{
 	auto baseIter = base_estimators.begin();
-	for (uword i = 0; baseIter != base_estimators.end(); baseIter++, i++) {
+	for (uword i = 0; baseIter != base_estimators.end(); baseIter++, i++) 
+        {
 		BaseClassifier* clfr = *baseIter;
 		clfr->train(X, Y, iter);
 	}
 }
 
-void VotingClassifier::predict(const mat& testX, colvec& labels) {
+void VotingClassifier::predict(const mat& testX, colvec& labels) 
+{
     uword n_estimators = base_estimators.size();
 	uword n = size(testX, 0);
 	mat predMat;
@@ -33,7 +33,8 @@ void VotingClassifier::predict(const mat& testX, colvec& labels) {
 	labels.zeros(n, 1);
 
 	auto baseIter = base_estimators.begin();
-	for (uword i = 0; baseIter != base_estimators.end(); baseIter++, i++) {
+	for (uword i = 0; baseIter != base_estimators.end(); baseIter++, i++) 
+        {
 		BaseClassifier* clfr = *baseIter;
 		colvec preds;
 		preds.zeros(n, 1);
@@ -45,6 +46,8 @@ void VotingClassifier::predict(const mat& testX, colvec& labels) {
 	labels.fill(-1);
 	labels.elem(idx).fill(1);
 }
-void VotingClassifier::addClassifier(BaseClassifier* clfr) {
+
+void VotingClassifier::addClassifier(BaseClassifier* clfr) 
+{
 		base_estimators.push_back(clfr);
 }

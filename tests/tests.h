@@ -1,9 +1,10 @@
-/**
-tests.h
-Stan Peceny
-skp2140
-4/1/2017
-*/
+//============================================================================
+// Name        : tests.h
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib Tests definitions
+//============================================================================
 
 #ifndef __TESTS_H__
 #define __TESTS_H__

@@ -1,9 +1,10 @@
-/**
-test_split_test_train_dataset_csv.cpp
-Stan Peceny
-skp2140
-4/2/2017
-*/
+//============================================================================
+// Name        : test_split_test_train_dataset.cpp
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib splitting training and testing dataset testing
+//============================================================================
 
 #include "tests.h"
 

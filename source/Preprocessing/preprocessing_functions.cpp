@@ -1,9 +1,10 @@
-/**
-preprocessing_functions.cpp
-Stan Peceny
-skp2140
-4/1/2017
-*/
+//============================================================================
+// Name        : preprocessing_functions.cpp
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib Preprocessing functions implementation
+//============================================================================
 
 #include "preprocessing_functions.h"
 using namespace arma;
@@ -18,8 +19,10 @@ void read_csv(string file,
 {
     auto vec_of_vec = read_csv(file, title, separate_ex, comment);
     std::vector<double> data_flat;
-    for(auto row : vec_of_vec) {
-        for(auto element : row) {
+    for(auto row : vec_of_vec) 
+    {
+        for(auto element : row) 
+        {
             data_flat.push_back(element);
             //cout << element << " ";
         }

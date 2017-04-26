@@ -1,9 +1,10 @@
-/**
-test_logistic_regression.cpp
-Stan Peceny
-skp2140
-4/18/2017
-*/
+//============================================================================
+// Name        : test_logistic_regression.cpp
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib Logistic regression testing
+//============================================================================
 
 #include "tests.h"
 

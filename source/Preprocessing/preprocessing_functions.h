@@ -1,9 +1,10 @@
-/**
-preprocessing_functions.h
-Stan Peceny
-skp2140
-4/1/2017
-*/
+//============================================================================
+// Name        : preprocessing_functions.h
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib Preprocessing functions definition
+//============================================================================
 
 #ifndef __PREPROCESSING_FUNCTIONS_H__
 #define __PREPROCESSING_FUNCTIONS_H__

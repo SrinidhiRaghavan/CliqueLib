@@ -1,9 +1,9 @@
 //============================================================================
-// Name        : driver.cpp
+// Name        : test_adaboost.cpp
 // Author      : CliqueLib
 // Version     :
 // Copyright   : 
-// Description : CliqueLib Demo
+// Description : CliqueLib AdaBoost testing
 //============================================================================
 
 #include "tests.h"

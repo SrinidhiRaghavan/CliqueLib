@@ -1,9 +1,10 @@
-/**
-test_naive_bayes.cpp
-Stan Peceny
-skp2140
-4/20/2017
-*/
+//============================================================================
+// Name        : test_naive_bayes.cpp
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib Naive Bayes testing
+//============================================================================
 
 #include "tests.h"
 
