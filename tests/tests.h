@@ -39,6 +39,7 @@ void test_naive_bayes();
 void test_adaboost();
 void test_svm();
 void test_usecase1();
+void test_usecase2();
 void test_perceptron();
 
 #endif
