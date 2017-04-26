@@ -26,6 +26,7 @@
 #include "AdaBoost.h"
 #include "BaggingClassifier.h"
 #include "VotingClassifier.h"
+#include "Perceptron.h"
 
 //TEST IMPLEMENTATIONS
 void test_read_csv();
@@ -38,5 +39,6 @@ void test_naive_bayes();
 void test_adaboost();
 void test_svm();
 void test_usecase1();
+void test_perceptron();
 
 #endif

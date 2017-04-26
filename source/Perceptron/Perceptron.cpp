@@ -1,25 +1,19 @@
-//--------------------------------------------------------------------------------------
-//Name			:		Perceptron
-//Author		:		Srinidhi Raghavan
-//Project		:		CliqueLib
-//Description		:		Implementation of the Perceptron Algorithm
-//Copyright		:
-//Version		:
-//Modified Date		:		04/26/2017
-//--------------------------------------------------------------------------------------
+//============================================================================
+// Name        : Perceptron.cpp
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib Perceptron implementation
+//============================================================================
 
-
-#include <iostream>
-#include <armadillo>
-#include <math.h>
 #include "Perceptron.h"
-
 
 using namespace std;
 using namespace arma;
 
 //Implementation of the Fit function
-void Perceptron::train(const mat& data, const colvec& Y, uword epoch) {
+void Perceptron::train(const mat& data, const colvec& Y, uword epoch) 
+{
 	/*
 	n - Number of data entries in data
 	d - Dimension of each entry in data
@@ -36,8 +30,10 @@ void Perceptron::train(const mat& data, const colvec& Y, uword epoch) {
 	mat X = join_horiz(data, ones(n));
 
 	//Applying Gradient Descent to update the weights 
-	for (uword t = 0; t < epoch; t++) {
-		for(uword i = 0; i < n; i++){	
+	for (uword t = 0; t < epoch; t++) 
+        {
+		for(uword i = 0; i < n; i++)
+                {	
 			uword f_word;
 			if (X.row(i)*w > 0)
 				f_word = 1;
@@ -51,7 +47,8 @@ void Perceptron::train(const mat& data, const colvec& Y, uword epoch) {
 
 
 //Implementation of the predict function 
-void Perceptron::predict(const mat& data, colvec& Y) {
+void Perceptron::predict(const mat& data, colvec& Y) 
+{
 	//n - Number of data entries in data
 	uword n = size(data, 0);
 	Y.zeros(n, 1);
@@ -66,10 +63,12 @@ void Perceptron::predict(const mat& data, colvec& Y) {
 	*/
 	colvec A = X*weight;
 	for (uword i = 0; i < n; i++)
+        {
 		if (A(i) > 0)
 			Y(i) = 1;
 		else
 			Y(i) = 0;
+        }
 }
 
 
