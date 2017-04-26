@@ -48,7 +48,7 @@ int main()
    
     
     SVM svm_clfr(0.1);
-    svm_clfr.train(Xtrain, Ytrain, 1000);
+    svm_clfr.train(Xtrain, Ytrain, 10000);
     colvec preds_svm;
     svm_clfr.predict(Xtest, preds_svm);
 
