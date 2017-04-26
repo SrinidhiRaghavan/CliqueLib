@@ -13,14 +13,16 @@
 #include <iostream>
 #include <armadillo>
 
-class Stump {
+class Stump 
+{
+    private:
 	unsigned int dim;
 	double error;
 	double threshold;
 	int less;
 	int more;
 
-public:
+    public:
 	Stump(unsigned int);
 	double getError();
 	unsigned int getDimension();

@@ -16,13 +16,15 @@ using namespace std;
 using namespace arma;
 
 //Constructor for the SVM
-Logistic::Logistic(double alpha) {
+Logistic::Logistic(double alpha) 
+{
 	this->alpha = alpha;
 }
 
 
 //Implementation of the Fit function
-void Logistic::train(const mat& data, const colvec& Y, uword epoch) {
+void Logistic::train(const mat& data, const colvec& Y, uword epoch) 
+{
 	/*
 	n - Number of data entries in data
 	d - Dimension of each entry in data
@@ -34,7 +36,8 @@ void Logistic::train(const mat& data, const colvec& Y, uword epoch) {
 	w.fill(0);
 
 	colvec labels(n);
-	for(uword i = 0; i<n; i++){
+	for(uword i = 0; i<n; i++)
+        {
 		if (Y(i) == -1)
 		    labels(i) = 0;
 		else
@@ -46,15 +49,15 @@ void Logistic::train(const mat& data, const colvec& Y, uword epoch) {
 	mat X = join_horiz(data, ones(n, 1));
 
 	//Applying Gradient Descent to update the weights 
-	for (uword t = 0; t < epoch; t++) {
-		w += (alpha/(t+1)) * X.t() * (labels - sigmoid(X*w));
-	}
+	for (uword t = 0; t < epoch; t++)         
+	    w += (alpha/(t+1)) * X.t() * (labels - sigmoid(X*w));	
 	weight = w;
 }
 
 
 //Implementation of the predict function 
-void Logistic::predict(const mat& data, colvec& Y) {
+void Logistic::predict(const mat& data, colvec& Y) 
+{
 	//n - Number of data entries in data
 	uword n = size(data, 0);
 	Y.zeros(n, 1);
@@ -76,7 +79,8 @@ void Logistic::predict(const mat& data, colvec& Y) {
 }
 
 //Implementation of the Sigmoid Function 
-colvec Logistic::sigmoid(const colvec& Z) {
+colvec Logistic::sigmoid(const colvec& Z) 
+{
 	double e = 2.71828;
 	uword n = size(Z, 0);
 	colvec eZ(n);

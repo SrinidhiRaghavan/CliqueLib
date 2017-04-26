@@ -13,48 +13,39 @@
 using namespace std;
 using namespace arma;
 
-//Constructor for the KNN
 KNN::KNN(uword K) {
 	this->K = K;
 }
 
-
-//Implementation of the Fit function
 void KNN::train(const mat& X, const colvec& Y, uword epoch = 1) {
 	Xtrain = X;
 	Ytrain = Y;
 }
 
-
-//Implementation of the predict function 
 void KNN::predict(const mat& Xtest, colvec& Ytest) {
     uword n = size(Xtest, 0);
     Ytest.zeros(n, 1);
 
-	/*
-	We compute the square of the Euclidean distance between n training examples and m test examples 
-	X2 - Stores the 2-norm of the n training data in a n*1 vector
-	Y2 - Stores the 2-norm of the m training data in a 1*m vector 
-	XY - Stores the twice of the element wise dot product of Xtrain and Xtest in a n*m matrix
-	dist - Stores the square of the distances between every test data from every train data in a n*m matrix
+ 	/*
+  	 * We compute the square of the Euclidean distance between n training examples and 
+         * m test examples 
+	 * X2 - Stores the 2-norm of the n training data in a n*1 vector
+	 * Y2 - Stores the 2-norm of the m training data in a 1*m vector 
+	 * XY - Stores the twice of the element wise dot product of Xtrain and Xtest in a n*m matrix
+	 * dist - Stores the square of the distances between every test data from every train data in 
+         * an n*m matrix
 	*/
  	mat X2 = sum(Xtrain % Xtrain, 1);
-    //cout << "X2: " << X2 << endl;
 	mat Y2 = (sum(Xtest % Xtest, 1)).t();
-    //cout << "Y2: " << Y2 << endl;
 	mat XY = 2* Xtrain * Xtest.t();
-    //cout << "XY: " << XY << endl;
 	mat dist = XY.each_col() - X2;
-    dist = dist*(-1);
-    //cout << "dist1: " << dist << endl;
+        dist = dist*(-1);
 	dist = dist.each_row() + Y2;
 
-    //cout << "dist2: " << dist << endl;
-
 	/*
-	Sorting and finding the top K-nearest neighbors 
-	A majority voting is done amongst the labels of the neighbors 
-	The most common label is chosen as the answer 
+	 * Sorting and finding the top K-nearest neighbors 
+	 * A majority voting is done amongst the labels of the neighbors 
+	 * The most common label is chosen as the answer 
 	*/
 	uword m = size(dist, 1);
 	for (uword i = 0; i < m; i++) {

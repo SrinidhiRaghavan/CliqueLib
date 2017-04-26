@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : VotingClassifier.h
 // Author      : CliqueLib
-// Version     :
+// Version     : 
 // Copyright   : 
 // Description : CliqueLib VotingClassifier definition
 //============================================================================
@@ -13,16 +13,16 @@
 #include <armadillo>
 #include "BaseClassifier.h"
 
-class VotingClassifier {
+class VotingClassifier 
+{
+    private:
 	std::vector<BaseClassifier*> base_estimators;
-	//arma::uword n_estimators;
-	//arma::uword max_samples;
 
-public:
-	VotingClassifier();
+    public:
+	VotingClassifier() {}
 	void train(const arma::mat&, const arma::colvec&, arma::uword);
 	void predict(const arma::mat&, arma::colvec&);
-    void addClassifier(BaseClassifier*);
+        void addClassifier(BaseClassifier*);
 };
 
 #endif

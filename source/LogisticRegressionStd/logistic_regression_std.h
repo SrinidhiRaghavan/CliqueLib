@@ -1,9 +1,10 @@
-/**
-logistic_regression_std.h
-Stan Peceny
-skp2140
-4/18/2017
-*/
+//============================================================================
+// Name        : logistic_regression.h
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib Logistic Regression definition
+//============================================================================
 
 #ifndef __LOGISTIC_REGRESSION_STD_H__
 #define __LOGISTIC_REGRESSION_H__

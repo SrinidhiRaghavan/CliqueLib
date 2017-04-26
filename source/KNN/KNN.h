@@ -24,14 +24,16 @@ using namespace arma;
  * The prevailing prediction of these k nearest neighbors is returned as the prediction for the new
  * input. Euclidean distance is used for measuring the similarity between instances.
  */
-class KNN : public BaseClassifier {
+class KNN : public BaseClassifier 
+{
+    private:
 	uword K; /*!< K represents the number of nearest neighbors of an input instance. */
 	mat Xtrain; /*!< Xtrain is the matrix representing the training dataset of attributes.  */
 	colvec Ytrain; /*!< Ytrain is the column vector representing the labels corresponding to the
                             examples in the training dataset. 
                         */
 
-public:
+    public:
         KNN() : KNN(3){} /**< A default constructor for KNN is available
                              and sets the default value of K to 3.
                           */

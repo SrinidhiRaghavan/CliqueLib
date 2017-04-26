@@ -24,7 +24,9 @@ using namespace arma;
  * two classes. If the probability is more than 0.5, the output is a prediction for that class. Otherwise, 
  * the prediction is for the other class.
  */
-class Logistic : public BaseClassifier {
+class Logistic : public BaseClassifier 
+{
+    private:
 	colvec weight; /*!< Weight is a column vector of coefficients and is evaluated using stochastic
                             gradient descent
                         */
@@ -32,7 +34,7 @@ class Logistic : public BaseClassifier {
                            every time they are updated 
                        */
                     
-public:
+    public:
         Logistic() : Logistic(0.01){} /**< A default constructor for Logistic Regression is available
                                            and sets the default learning rate alpha to 0.01
                                        */

@@ -1,9 +1,10 @@
-/**
-knnstd.h
-Stan Peceny
-skp2140
-4/2/2017
-*/
+//============================================================================
+// Name        : knnstd.h
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : CliqueLib Knnstd definition
+//============================================================================
 
 #ifndef __KNNSTD_H__
 #define __KNNSTD_H__

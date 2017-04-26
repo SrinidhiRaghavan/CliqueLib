@@ -14,34 +14,23 @@
 using namespace std;
 using namespace arma;
 
-AdaBoost::AdaBoost() {
-}
-
 void AdaBoost::train(const mat& X, const colvec& Y, uword iter) {
-	uword n = size(X, 0); //no. of samples
+	uword n = size(X, 0); //number of samples
 	colvec sampleWts(n);
 	double initWt = 1.0 / n;
-	//cout << "train: initWt:" << initWt << endl;
 	sampleWts.fill(initWt);
-	//cout << "train: sampleWts:" << sampleWts << endl;
 
 	for (uword i = 0; i < iter; i++) {
 		Stump* clfr = buildStump(X, Y, sampleWts);
 		double err = clfr->getError();
 		double alpha = 0.5*log((1 - err) / err);
 
-		//cout << "train: :" << << endl;
-		//cout << "train: err:" << err << endl;
-		//cout << "train: alpha:" << alpha << endl;
-
 		colvec preds(n);
 		preds.zeros();
 		clfr->predictStump(X, preds);
 
 		sampleWts = sampleWts % exp(-alpha * Y % preds);
-		//cout << "train: before sampleWts:" << sampleWts << endl;
 		sampleWts = sampleWts / accu(sampleWts);
-		//cout << "train: after sampleWts:" << sampleWts << endl;
 
 		weakClassifiers.push_back(clfr);
 		weights.push_back(alpha);
@@ -49,7 +38,7 @@ void AdaBoost::train(const mat& X, const colvec& Y, uword iter) {
 }
 
 void AdaBoost::predict(const mat& testX, colvec& preds) {
-	uword n = size(testX, 0); //no. of samples
+	uword n = size(testX, 0); //number of samples
 	colvec labels;
 	colvec sum;
 	sum.zeros(n, 1);

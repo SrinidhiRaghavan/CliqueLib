@@ -11,8 +11,6 @@ LDLIBS  =
 
 main: tests/test_read_csv.o tests/test_split_test_train_dataset.o tests/test_knn.o tests/test_knn_std.o tests/test_logistic_regression.o tests/test_logistic_regression_std.o tests/test_naive_bayes.o tests/test_adaboost.o tests/test_svm.o source/Preprocessing/preprocessing_functions.o source/KNN/KNN.o source/KNNStd/knnstd.o source/LogisticRegression/logistic_regression.o source/LogisticRegressionStd/logistic_regression_std.o source/NaiveBayes/naive_bayes.o source/AdaBoost/Stump.o source/AdaBoost/AdaBoost.o source/SVM/SVM.o source/BaggingClassifier/BaggingClassifier.o source/VotingClassifier/VotingClassifier.o source/VotingClassifier/VotingClassifier.o
 
-#main: tests/test_read_csv.o tests/test_split_test_train_dataset.o tests/test_knn.o tests/test_logistic_regression.o  source/Preprocessing/preprocessing_functions.o source/KNN/KNN.o source/LogisticRegression/logistic_regression.o 
-
 main.o: tests/tests.h
 
 tests/test_read_csv.o: tests/tests.h
