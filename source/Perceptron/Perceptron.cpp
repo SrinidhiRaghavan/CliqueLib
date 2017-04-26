@@ -11,6 +11,12 @@
 using namespace std;
 using namespace arma;
 
+//Implementation of the Perceptron Constructor
+Perceptron:: Perceptron(double n = 0.1){
+	neta = n;
+}
+
+
 //Implementation of the Fit function
 void Perceptron::train(const mat& data, const colvec& Y, uword epoch) 
 {
@@ -30,17 +36,19 @@ void Perceptron::train(const mat& data, const colvec& Y, uword epoch)
 	mat X = join_horiz(data, ones(n));
 
 	//Applying Gradient Descent to update the weights 
-	for (uword t = 0; t < epoch; t++) 
-        {
-		for(uword i = 0; i < n; i++)
-                {	
-			uword f_word;
-			if (X.row(i)*w > 0)
-				f_word = 1;
-			else
-				f_word = -1;
-			w = w + (f_word*Y(i))*X.row(i).t();			
+	for (uword t = 0; t < epoch; t++) {
+		colvec delta(d+1);
+		delta.fill(0);
+		for(uword i = 0; i < n; i++){	
+			uword f_word =  -1;
+			if (dot(X.row(i),w) >= 0)
+			    f_word = 1;
+
+			if (f_word * Y(i) < 0)
+				delta = delta - f_word*X.row(i).t();
 		}
+
+		w = w - neta/n * delta;
 	}
 	weight = w;
 }
@@ -64,10 +72,10 @@ void Perceptron::predict(const mat& data, colvec& Y)
 	colvec A = X*weight;
 	for (uword i = 0; i < n; i++)
         {
-		if (A(i) > 0)
+		if (A(i) >= 0)
 			Y(i) = 1;
 		else
-			Y(i) = 0;
+			Y(i) = -1;
         }
 }
 
