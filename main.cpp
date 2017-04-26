@@ -19,16 +19,16 @@ int main()
     colvec Y;
     //read_csv("samples_csv/toy_sample.csv", X, Y, true, ',', '#');
     //read_csv("samples_csv/admits.csv", X, Y, false, ',', '#');
-    read_csv("samples_csv/admits.csv", X, Y, true, ',', '#');
+    read_csv("samples_csv/Cancer.csv", X, Y, true, ',', '#');
     cout << "size X:" << arma::size(X) << endl;
     cout << "size Y:" << arma::size(Y) << endl;
-    cout << "X:" << X.rows(0, 4) << endl;
+    //cout << "X:" << X.rows(0, 4) << endl;
     cout << "Y:" << Y.rows(0, 4) << endl;
 
-    mat Xtrain = X.rows(0, 79);
-    colvec Ytrain = Y.rows(0, 79);
-    mat Xtest = X.rows(60, 99);
-    colvec Ytest = Y.rows(60, 99);
+    mat Xtrain = X.rows(0, 499);
+    colvec Ytrain = Y.rows(0, 499);
+    mat Xtest = X.rows(500, 567);
+    colvec Ytest = Y.rows(500, 567);
 
     AdaBoost clfr;
     clfr.train(Xtrain, Ytrain, 100);
@@ -38,31 +38,49 @@ int main()
     auto acc = getAccuracy(Ytest, preds);
     cout << "AdaBoost acc:" << acc << endl;
     
-    KNN knn_clfr(1);
-    knn_clfr.train(X, Y, 5);
+    KNN knn_clfr(23);
+    knn_clfr.train(Xtrain, Ytrain, 100);
     colvec preds_knn;
-    knn_clfr.predict(X, preds_knn);
+    knn_clfr.predict(Xtest, preds_knn);
 
-    auto acc_knn = getAccuracy(Y, preds_knn);
+    auto acc_knn = getAccuracy(Ytest, preds_knn);
     cout << "KNN acc:" << acc_knn << endl;
    
     
     SVM svm_clfr(0.1);
-    svm_clfr.train(Xtrain, Ytrain, 1000);
+    svm_clfr.train(Xtrain, Ytrain, 100);
     colvec preds_svm;
     svm_clfr.predict(Xtest, preds_svm);
 
     auto acc_svm = getAccuracy(Ytest, preds_svm);
     cout << "SVM acc:" << acc_svm << endl;
    
-
-    BaggingClassifier<AdaBoost> bgClfr(5, 70);
+    
+    BaggingClassifier<AdaBoost> bgClfr(5, 400);
     bgClfr.train(Xtrain, Ytrain, 100);
     colvec preds_bg;
     bgClfr.predict(Xtest, preds_bg);
 
     auto acc_bg = getAccuracy(Ytest, preds_bg);
     cout << "Bg acc:" << acc_bg << endl;
+    
+    /*
+    BaggingClassifier<KNN> bgClfr(5, 400);
+    bgClfr.train(Xtrain, Ytrain, 100);
+    colvec preds_bg;
+    bgClfr.predict(Xtest, preds_bg);
+
+    auto acc_bg = getAccuracy(Ytest, preds_bg);
+    cout << "Bg knn acc:" << acc_bg << endl;
+
+    BaggingClassifier<SVM> bgClfr(5, 400);
+    bgClfr.train(Xtrain, Ytrain, 100);
+    colvec preds_bg;
+    bgClfr.predict(Xtest, preds_bg);
+
+    auto acc_bg = getAccuracy(Ytest, preds_bg);
+    cout << "Bg knn acc:" << acc_bg << endl;
+    */
 
     VotingClassifier vcClfr;
     BaseClassifier* clfr_b = (BaseClassifier*)&clfr;
@@ -100,10 +118,10 @@ int main()
     //test_svm();
 	
     Logistic logistic_clfr(0.01);
-    logistic_clfr.train(X, Y, 10000);
+    logistic_clfr.train(Xtrain, Ytrain, 100);
     colvec preds_log;
-    logistic_clfr.predict(X, preds_log);
-    auto acc_log = getAccuracy(Y, preds_log);
+    logistic_clfr.predict(Xtest, preds_log);
+    auto acc_log = getAccuracy(Ytest, preds_log);
     cout << "Logistic acc: " << acc_log << endl;	
     return 0;
 }
