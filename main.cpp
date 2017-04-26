@@ -6,7 +6,6 @@
 // Description : Main function
 //============================================================================
 
-#include <armadillo>
 #include "tests.h"
 
 using namespace arma;
@@ -17,6 +16,8 @@ double getAccuracy(colvec& a, colvec& b) {
 
 int main()
 {
+    test_usecase1();
+/*
     mat X;
     colvec Y;
     //read_csv("samples_csv/toy_sample.csv", X, Y, true, ',', '#');
@@ -39,7 +40,7 @@ int main()
 
     auto acc = getAccuracy(Ytest, preds);
     cout << "AdaBoost acc:" << acc << endl;
-    
+*/    
     KNN knn_clfr(23);
     knn_clfr.train(Xtrain, Ytrain, 100);
     colvec preds_knn;
