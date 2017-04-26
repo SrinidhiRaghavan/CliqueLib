@@ -19,8 +19,10 @@ void read_csv(string file,
 {
     auto vec_of_vec = read_csv(file, title, separate_ex, comment);
     std::vector<double> data_flat;
-    for(auto row : vec_of_vec) {
-        for(auto element : row) {
+    for(auto row : vec_of_vec) 
+    {
+        for(auto element : row) 
+        {
             data_flat.push_back(element);
             //cout << element << " ";
         }
