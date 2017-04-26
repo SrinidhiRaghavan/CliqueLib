@@ -39,7 +39,7 @@ void Logistic::train(const mat& data, const colvec& Y, uword epoch) {
 
 	//Applying Gradient Descent to update the weights 
 	for (uword t = 0; t < epoch; t++) {
-		w += alpha * X.t() * (labels - sigmoid(X*w));
+		w += (alpha/(t+1)) * X.t() * (labels - sigmoid(X*w));
 	}
 	weight = w;
 }
