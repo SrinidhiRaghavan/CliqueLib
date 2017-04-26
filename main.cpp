@@ -65,11 +65,13 @@ int main()
     cout << "Bg acc:" << acc_bg << endl;
 
     VotingClassifier vcClfr;
-    vcClfr.addClassifier(&clfr);
-    vcClfr.addClassifier(&knn_clfr);
-    vcClfr.addClassifier(&knn_clfr);
-    vcClfr.addClassifier(&clfr);
-    vcClfr.addClassifier(&clfr);
+    BaseClassifier* clfr_b = (BaseClassifier*)&clfr;
+    BaseClassifier* knn_clfr_b = (BaseClassifier*)&knn_clfr;
+    vcClfr.addClassifier(clfr_b);
+    vcClfr.addClassifier(knn_clfr_b);
+    vcClfr.addClassifier(knn_clfr_b);
+    vcClfr.addClassifier(clfr_b);
+    vcClfr.addClassifier(clfr_b);
     vcClfr.train(Xtrain, Ytrain, 100);
     colvec preds_vc;
     vcClfr.predict(Xtest, preds_vc);

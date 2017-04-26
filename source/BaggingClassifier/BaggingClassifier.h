@@ -13,9 +13,14 @@
 #pragma once
 #include <armadillo>
 
-template<typename T>
+template<class C> concept bool Classifier = requires(C c, const arma::mat& X, const arma::colvec& Y, arma::uword iter, arma::colvec& labels) {
+    { c.train(X, Y, iter) };
+    { c.predict(X, labels) };
+};
+
+template<Classifier C>
 class BaggingClassifier {
-	std::vector<T*> base_estimators;
+	std::vector<C*> base_estimators;
 	arma::uword n_estimators;
 	arma::uword max_samples;
 
