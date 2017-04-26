@@ -16,7 +16,6 @@ double getAccuracy(colvec& a, colvec& b) {
 
 int main()
 {
-    test_usecase1();
     /*
     mat X;
     colvec Y;
