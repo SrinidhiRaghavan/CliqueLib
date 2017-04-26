@@ -98,6 +98,12 @@ int main()
 
     //test svm
     //test_svm();
-
+	
+    Logistic logistic_clfr(0.01);
+    logistic_clfr.train(X, Y, 1250);
+    colvec preds_log;
+    logistic_clfr.predict(X, preds_log);
+    auto acc_log = getAccuracy(Y, preds_log);
+    cout << "Logistic acc: " << acc_log << endl;	
     return 0;
 }

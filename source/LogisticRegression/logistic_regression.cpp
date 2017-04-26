@@ -1,24 +1,14 @@
-//--------------------------------------------------------------------------------------
-//Name			:		Logistic Regression
-//Author		:		Srinidhi Raghavan
-//Project		:		CliqueLib
-//Description		:		Implementation of the Logistic Regression functions
-//Copyright		:
-//Version		:
-//Modified Date		:		04/22/2017
-//--------------------------------------------------------------------------------------
-
 #include <iostream>
 #include <armadillo>
 #include <math.h>
-#include "Logistic.h"
+#include "logistic_regression.h"
 
 
 using namespace std;
 using namespace arma;
 
 //Constructor for the SVM
-Logistic::Logistic(double C_val = 0.1) {
+Logistic::Logistic(double C_val) {
 	C = C_val;
 }
 
@@ -30,19 +20,26 @@ void Logistic::train(const mat& data, const colvec& Y, uword epoch) {
 	d - Dimension of each entry in data
 	w - Weight vector including the bias
 	*/
-
 	uword n = size(data, 0);
 	uword d = size(data, 1);
-	rowvec w(d + 1);
+	colvec w(d + 1);
 	w.fill(0);
 
+	colvec labels(n);
+	for(uword i = 0; i<n; i++){
+		if (Y(i) == -1)
+		    labels(i) = 0;
+		else
+		    labels(i) = 1;
+	
+	}
 
 	//Concatenating the matrix X with a column of 1's. Bias is the weight corresponding to this column
-	mat X = join_horiz(data, ones(n));
+	mat X = join_horiz(data, ones(n, 1));
 
 	//Applying Gradient Descent to update the weights 
 	for (uword t = 0; t < epoch; t++) {
-		w += C * X.t() * (Y - sigmoid(X*w));
+		w += C * X.t() * (labels - sigmoid(X*w));
 	}
 	weight = w;
 }
@@ -52,9 +49,10 @@ void Logistic::train(const mat& data, const colvec& Y, uword epoch) {
 void Logistic::predict(const mat& data, colvec& Y) {
 	//n - Number of data entries in data
 	uword n = size(data, 0);
+	Y.zeros(n, 1);
 
 	//Concatenating the matrix X with a column of 1's. Bias is the weight corresponding to this column
-	mat X = join_horiz(data, ones(n));
+	mat X = join_horiz(data, ones(n, 1));
 
 	/*
 	Making the Predictions
@@ -66,11 +64,11 @@ void Logistic::predict(const mat& data, colvec& Y) {
 		if (A(i) >= 0.5)
 			Y(i) = 1;
 		else
-			Y(i) = 0;
+			Y(i) = -1;
 }
 
 //Implementation of the Sigmoid Function 
-colvec sigmoid(const colvec& Z) {
+colvec Logistic::sigmoid(const colvec& Z) {
 	double e = 2.71828;
 	uword n = size(Z, 0);
 	colvec eZ(n);
@@ -80,4 +78,5 @@ colvec sigmoid(const colvec& Z) {
 
 	return eZ;
 }
+
 

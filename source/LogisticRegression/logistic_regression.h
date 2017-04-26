@@ -27,6 +27,7 @@ public:
 	Logistic(double);
 	void train(const mat&, const colvec&, uword);
 	void predict(const mat&, colvec&);
+	colvec sigmoid(const colvec&);
 };
 
 #endif
