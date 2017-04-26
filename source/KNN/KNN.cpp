@@ -16,9 +16,9 @@
 using namespace std;
 using namespace arma;
 
-//Constructor for the SVM
-KNN::KNN(uword K_val) {
-	K = K_val;
+//Constructor for the KNN
+KNN::KNN(uword K) {
+	this->K = K;
 }
 
 
