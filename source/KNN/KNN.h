@@ -43,8 +43,10 @@ public:
 	void train(const mat&, const colvec&, uword); /**< The train function accepts a matrix of 
                                                            sample inputs, a column vector of sample 
                                                            labels, and a uword representing the number 
-                                                           of epochs. Given these inputs, logistic 
-                                                           regression is able to generate a model 
+                                                           of epochs. The number of epochs is never
+                                                           used in KNN but was kept for consistency.
+                                                           Given the other inputs, KNN 
+                                                           is able to generate a model 
                                                            for predicting on new inputs. 
                                                        */
 	void predict(const mat&, colvec&); /**< The predict function accepts a matrix of inputs and 
@@ -54,11 +56,11 @@ public:
                                                 vector and returns void. 
                                             */
 
-        //get k
-        int getK() { return K; }
+        uword getK() { return K; } /**< The user can retrieve K by calling the function's getter */
 
-        //set k
-        void setK(int k) { this->K = K; }
+        void setK(uword K) { this->K = K; } /**< The user can change the value of K by calling 
+                                                 the function's setter 
+                                             */
 };
 
 #endif
