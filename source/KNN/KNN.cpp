@@ -42,10 +42,17 @@ void KNN::predict(const mat& Xtest, colvec& Ytest) {
 	dist - Stores the square of the distances between every test data from every train data in a n*m matrix
 	*/
  	mat X2 = sum(Xtrain % Xtrain, 1);
+    //cout << "X2: " << X2 << endl;
 	mat Y2 = (sum(Xtest % Xtest, 1)).t();
+    //cout << "Y2: " << Y2 << endl;
 	mat XY = 2* Xtrain * Xtest.t();
-	mat dist = XY.each_col() + X2;
-	dist = dist.each_row() - Y2;
+    //cout << "XY: " << XY << endl;
+	mat dist = XY.each_col() - X2;
+    dist = dist*(-1);
+    //cout << "dist1: " << dist << endl;
+	dist = dist.each_row() + Y2;
+
+    //cout << "dist2: " << dist << endl;
 
 	/*
 	Sorting and finding the top K-nearest neighbors 
@@ -57,7 +64,7 @@ void KNN::predict(const mat& Xtest, colvec& Ytest) {
 		uvec c = sort_index(dist.col(i));
 		c = c(span(0, K - 1));
 
-		uword total = sum(Ytrain.elem(c)); 
+		double total = accu(Ytrain.elem(c)); 
 
 		if (total >= 0)
 			Ytest(i) = 1;

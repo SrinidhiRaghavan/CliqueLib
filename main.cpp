@@ -38,12 +38,12 @@ int main()
     auto acc = getAccuracy(Ytest, preds);
     cout << "AdaBoost acc:" << acc << endl;
     
-    KNN knn_clfr(3);
-    knn_clfr.train(Xtrain, Ytrain, 5);
+    KNN knn_clfr(1);
+    knn_clfr.train(X, Y, 5);
     colvec preds_knn;
-    knn_clfr.predict(Xtest, preds_knn);
+    knn_clfr.predict(X, preds_knn);
 
-    auto acc_knn = getAccuracy(Ytest, preds_knn);
+    auto acc_knn = getAccuracy(Y, preds_knn);
     cout << "KNN acc:" << acc_knn << endl;
    
     
@@ -100,7 +100,7 @@ int main()
     //test_svm();
 	
     Logistic logistic_clfr(0.01);
-    logistic_clfr.train(X, Y, 1250);
+    logistic_clfr.train(X, Y, 10000);
     colvec preds_log;
     logistic_clfr.predict(X, preds_log);
     auto acc_log = getAccuracy(Y, preds_log);
