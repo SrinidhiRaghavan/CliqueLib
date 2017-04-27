@@ -10,6 +10,7 @@
 
 void test_split_test_train_dataset()
 {
+    /*
     //TEST READING CSV FILES
     vector<vector<float> > file;
     vector<vector<float> > train_file;
@@ -58,5 +59,5 @@ void test_split_test_train_dataset()
     //Test 9
     std::cout << "\nTESTING SPLITTING CSV FILE 9" << std::endl;
     file = read_csv("./samples_csv/test_file_9_origin_wine.csv", true);    
-    split_test_train(file, 0.01, train_file, test_file); 
+    split_test_train(file, 0.01, train_file, test_file); */
 }
