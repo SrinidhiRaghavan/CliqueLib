@@ -6,7 +6,13 @@
 // Description : Results for benchmarking KNN
 //============================================================================
 
-The following measurements were taken using Google Cloud.
+The following measurements were taken by running the benchmarking methods on Google Cloud. 
+
+The following times are smaller than those presented in the coreesponding benchmark_knn.cpp file as the author's computer is etremely slow.
+
+The first two tests compared CliqueLib's Armadillo vs. 'vector<vector> >' implementations. 
+
+As you can see, Armadillo greatly increased the performance of the library.
 
 CliqueLib Armadillo:
 
@@ -15,6 +21,8 @@ Runtime: 26149 microseconds
 CliqueLib Vectors:
 
 Runtime: 201631 microseconds.
+
+Consequently, the performance was compared with Java's Weka machine learning library and C++'s Mlpack library. Our Armadillo implementation performed very well and even beat Mlpack.
 
 Weka:
 
@@ -30,6 +38,8 @@ Runtime: 0.03 Seconds ~ 30000 microseconds
 Mlpack:
 
 Runtime: 27743 microseconds
+
+Part of Mlpack's output:
 
 [INFO ] Execution parameters:
 [INFO ]   algorithm: dual_tree
