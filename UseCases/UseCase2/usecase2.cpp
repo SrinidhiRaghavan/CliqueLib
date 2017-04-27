@@ -1,9 +1,9 @@
 //============================================================================
-// Name        : main.cpp
+// Name        : test_usecase2.cpp
 // Author      : CliqueLib
 // Version     :
 // Copyright   : 
-// Description : Main function
+// Description : Use Case 2 function
 //============================================================================
 
 #include <iostream>
