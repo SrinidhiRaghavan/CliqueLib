@@ -35,7 +35,7 @@ class Perceptron : public BaseClassifier
 
     public:
         Perceptron() : Perceptron(0.01){} /**< A default constructor for Perceptron is available
-                                              and sets the default learning rate alpha to 0.01
+                                              and sets the default learning rate neta to 0.01
                                           */
 
 	Perceptron(double);  /**< A Perceptron object is created by a constructor wherein the
