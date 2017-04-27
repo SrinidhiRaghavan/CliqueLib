@@ -1,0 +1,64 @@
+//============================================================================
+// Name        : benchmark_knn.txt
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : Results for benchmarking KNN
+//============================================================================
+
+The following measurements were taken using Google Cloud.
+
+CliqueLib Armadillo:
+
+Runtime: 26149 microseconds
+
+CliqueLib Vectors:
+
+Runtime: 201631 microseconds.
+
+Weka:
+
+Benchmark Weka: KNN
+
+=== Classifier model (full training set) ===
+
+IB1 instance-based classifier
+using 23 nearest neighbour(s) for classification
+
+Runtime: 0.03 Seconds ~ 30000 microseconds
+
+Mlpack:
+
+Runtime: 27743 microseconds
+
+[INFO ] Execution parameters:
+[INFO ]   algorithm: dual_tree
+[INFO ]   distances_file: distances_out.csv
+[INFO ]   epsilon: 0
+[INFO ]   help: 0
+[INFO ]   info: 
+[INFO ]   input_model_file: 
+[INFO ]   k: 23
+[INFO ]   leaf_size: 20
+[INFO ]   naive: 0
+[INFO ]   neighbors_file: neighbors_out.csv
+[INFO ]   output_model_file: 
+[INFO ]   query_file: 
+[INFO ]   random_basis: 0
+[INFO ]   reference_file: Cancer.csv
+[INFO ]   rho: 0.7
+[INFO ]   seed: 0
+[INFO ]   single_mode: 0
+[INFO ]   tau: 0
+[INFO ]   tree_type: kd
+[INFO ]   true_distances_file: 
+[INFO ]   true_neighbors_file: 
+[INFO ]   verbose: 1
+[INFO ]   version: 0
+[INFO ] Program timers:
+[INFO ]   computing_neighbors: 0.003940s
+[INFO ]   loading_data: 0.008077s
+[INFO ]   saving_data: 0.014478s
+[INFO ]   total_time: 0.027743s
+[INFO ]   tree_building: 0.000743s
+
