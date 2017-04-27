@@ -34,9 +34,6 @@ int main()
     //test logistic regression functions
     test_logistic_regression_std();
 
-    //test naive bayes functions
-    test_naive_bayes();
-
     //test adaboost
     test_adaboost();    
 
