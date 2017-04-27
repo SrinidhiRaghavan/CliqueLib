@@ -12,20 +12,20 @@ using namespace std;
 using namespace arma;
 
 //Implementation of the Perceptron Constructor
-Perceptron:: Perceptron(double n){
+Perceptron:: Perceptron(double n)
+{
 	neta = n;
 }
 
 
-//Implementation of the Fit function
+//Implementation of the train function
 void Perceptron::train(const mat& data, const colvec& Y, uword epoch) 
 {
-	/*
-	n - Number of data entries in data
-	d - Dimension of each entry in data
-	w - Weight vector including the bias
-	*/
-
+	
+	/// n - Number of data entries in data
+	/// d - Dimension of each entry in data
+	/// w - Weight vector including the bias
+	
 	uword n = size(data, 0);
 	uword d = size(data, 1);
 	colvec w(d + 1);
@@ -78,6 +78,3 @@ void Perceptron::predict(const mat& data, colvec& Y)
 			Y(i) = -1;
         }
 }
-
-
-
