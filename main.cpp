@@ -138,8 +138,6 @@ int main()
     auto acc_log = getAccuracy(Ytest, preds_log);
     cout << "Logistic acc: " << acc_log << endl;	
 
-
-
     Perceptron perceptron_clfr(0.01);
     perceptron_clfr.train(Xtrain, Ytrain, 100);
     colvec preds_perceptron;
@@ -147,15 +145,15 @@ int main()
     auto acc_perceptron = getAccuracy(Ytest, preds_perceptron);
     cout << "Perceptron acc: " << acc_perceptron << endl;	
 
-
-
     VotingClassifier vcClfr;
-    BaseClassifier* svm_clfr_b = (BaseClassifier*)&svm_clfr;
-    BaseClassifier* knn_clfr_b = (BaseClassifier*)&knn_clfr;
-    BaseClassifier* logistic_clfr_b = (BaseClassifier*)&logistic_clfr;
+    auto svm_clfr_b = make_shared<SVM>(svm_clfr);
+    auto knn_clfr_b = make_shared<KNN>(knn_clfr);
+    auto logistic_clfr_b = make_shared<Logistic>(logistic_clfr);
+    
     vcClfr.addClassifier(svm_clfr_b);
     vcClfr.addClassifier(knn_clfr_b);
     vcClfr.addClassifier(logistic_clfr_b);
+    
     vcClfr.train(Xtrain, Ytrain, 100);
     colvec preds_vc;
     vcClfr.predict(Xtest, preds_vc);

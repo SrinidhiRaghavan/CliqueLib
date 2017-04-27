@@ -19,7 +19,7 @@ void VotingClassifier::train(const mat& X, const colvec& Y, uword iter)
 	auto baseIter = base_estimators.begin();
 	for (uword i = 0; baseIter != base_estimators.end(); baseIter++, i++) 
         {
-		BaseClassifier* clfr = *baseIter;
+	    auto clfr = *baseIter;
 		clfr->train(X, Y, iter);
 	}
 }
@@ -35,7 +35,7 @@ void VotingClassifier::predict(const mat& testX, colvec& labels)
 	auto baseIter = base_estimators.begin();
 	for (uword i = 0; baseIter != base_estimators.end(); baseIter++, i++) 
         {
-		BaseClassifier* clfr = *baseIter;
+		auto clfr = *baseIter;
 		colvec preds;
 		preds.zeros(n, 1);
 		clfr->predict(testX, preds);
@@ -47,7 +47,7 @@ void VotingClassifier::predict(const mat& testX, colvec& labels)
 	labels.elem(idx).fill(1);
 }
 
-void VotingClassifier::addClassifier(BaseClassifier* clfr) 
+void VotingClassifier::addClassifier(std::shared_ptr<BaseClassifier> clfr) 
 {
 		base_estimators.push_back(clfr);
 }
