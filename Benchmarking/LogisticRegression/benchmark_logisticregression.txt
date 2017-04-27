@@ -6,7 +6,13 @@
 // Description : Results for benchmarking Logistic Regression
 //============================================================================
 
-The following measurements were taken using Google Cloud.
+The following measurements were taken by running the benchmarking methods on Google Cloud. 
+
+The following times are smaller than those presented in the coreesponding benchmark_logisticregression.cpp file as the author's computer is etremely slow.
+
+The first two tests compared CliqueLib's Armadillo vs. 'vector<vector> >' implementations. 
+
+As you can see, Armadillo greatly increased the performance of the library.
 
 CliqueLib Armadillo:
 
@@ -16,6 +22,8 @@ CliqueLib Vectors:
 
 Runtime: 17030 microseconds.
 
+Consequently, the performance was compared with Java's Weka machine learning library and C++'s Mlpack library. Our Armadillo implementation performed very well and even beat Mlpack.
+
 Weka: 
 
 Fails
@@ -23,6 +31,8 @@ Fails
 Mlpack:
 
 Runtime: 16206 microseconds
+
+Part of Mlpack's output:
 
 [INFO ] Execution parameters:
 [INFO ]   batch_size: 50
