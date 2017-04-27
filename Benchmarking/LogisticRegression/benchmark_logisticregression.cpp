@@ -1,9 +1,9 @@
 //============================================================================
-// Name        : test_usecase2.cpp
+// Name        : benchmark_logisticregression.cpp
 // Author      : CliqueLib
 // Version     :
 // Copyright   : 
-// Description : Use Case 2 function
+// Description : Main function for benchmarking Logistic Regression
 //============================================================================
 
 #include <iostream>
@@ -15,14 +15,8 @@
 #include <utility>
 #include "preprocessing_functions.h"
 #include "Dataset.h"
-#include "KNN.h"
 #include "logistic_regression.h"
-#include "SVM.h"
-#include "Stump.h"
-#include "AdaBoost.h"
-#include "BaggingClassifier.h"
-#include "VotingClassifier.h"
-#include "Perceptron.h"
+#include "logistic_regression_std.h"
 
 using namespace arma;
 
@@ -32,6 +26,7 @@ double getAccuracy(colvec& a, colvec& b) {
 
 int main()
 {
+/*
     //use case 2
     mat X;
     colvec Y;
@@ -91,15 +86,6 @@ int main()
     auto acc_bg = getAccuracy(data.Ytest, preds_bg);
     cout << "Bg adB acc:" << acc_bg << endl;
     
-    /*
-    BaggingClassifier<KNN> bgClfr(5, 400);
-    bgClfr.train(data.Xtrain, data.Ytrain, 100);
-    colvec preds_bg;
-    bgClfr.predict(data.Xtest, preds_bg);
-    auto acc_bg = getAccuracy(data.Ytest, preds_bg);
-    cout << "Bg knn acc:" << acc_bg << endl;
-    */
-
     BaggingClassifier<SVM> bgClfr_svm(5, 400);
     bgClfr_svm.train(data.Xtrain, data.Ytrain, 100);
     colvec preds_bg_svm;
@@ -131,6 +117,6 @@ int main()
 
     auto acc_vc = getAccuracy(data.Ytest, preds_vc);
     cout << "Vc acc:" << acc_vc << endl;
-
+*/
     return 0;
 }

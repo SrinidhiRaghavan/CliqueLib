@@ -21,7 +21,6 @@
 #include "logistic_regression.h"
 #include "logistic_regression_std.h"
 #include "SVM.h"
-#include "naive_bayes.h"
 #include "Stump.h"
 #include "AdaBoost.h"
 #include "BaggingClassifier.h"
@@ -35,7 +34,6 @@ void test_knn();
 void test_knn_std();
 void test_logistic_regression();
 void test_logistic_regression_std();
-void test_naive_bayes();
 void test_adaboost();
 void test_svm();
 void test_perceptron();
