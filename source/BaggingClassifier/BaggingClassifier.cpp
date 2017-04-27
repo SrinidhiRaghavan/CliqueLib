@@ -11,6 +11,7 @@
 #include "AdaBoost.h"
 #include "KNN.h"
 #include "SVM.h"
+#include "Perceptron.h"
 #include "logistic_regression.h"
 #include "BaggingClassifier.h"
 
@@ -61,6 +62,7 @@ void BaggingClassifier<C>::predict(const mat& testX, colvec& labels)
     labels.elem(idx).fill(1);
 }
 
+template class BaggingClassifier<Perceptron>;
 template class BaggingClassifier<AdaBoost>;
 template class BaggingClassifier<SVM>;
 template class BaggingClassifier<KNN>;
