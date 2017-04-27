@@ -72,20 +72,20 @@ int main()
     
     cout << "### Running SVM ###" << endl;
     SVM svm_clfr(0.1);
-    svm_clfr.train(X, Y, 1000);
+    svm_clfr.train(data.Xtrain, data.Ytrain, 1000);
     colvec preds_svm;
-    svm_clfr.predict(X, preds_svm);
+    svm_clfr.predict(data.Xtest, preds_svm);
 
-    auto acc_svm = getAccuracy(Y, preds_svm);
+    auto acc_svm = getAccuracy(data.Ytest, preds_svm);
     cout << "SVM acc:" << acc_svm << endl;
 
     cout << "### Running Perceptron ###" << endl;
     Perceptron pcptr_clfr;
-    pcptr_clfr.train(X, Y, 1000);
+    pcptr_clfr.train(data.Xtrain, data.Ytrain, 1000);
     colvec preds_pcptr;
-    pcptr_clfr.predict(X, preds_pcptr);
+    pcptr_clfr.predict(data.Xtest, preds_pcptr);
 
-    auto acc_pcptr = getAccuracy(Y, preds_pcptr);
+    auto acc_pcptr = getAccuracy(data.Ytest, preds_pcptr);
     cout << "Perceptron acc:" << acc_pcptr << endl;
     
     /*

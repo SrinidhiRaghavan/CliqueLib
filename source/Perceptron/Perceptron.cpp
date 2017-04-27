@@ -43,12 +43,12 @@ void Perceptron::train(const mat& data, const colvec& Y, uword epoch)
 			double f_word =  -1;
 			if (dot(X.row(i),w) >= 0)
 			    f_word = 1;
-
+			
+			
 			if (f_word * Y(i) < 0)
-				delta = delta - f_word*X.row(i).t();
+				w = w + Y(i)*X.row(i).t();
 		}
 
-		w = w - neta/n * delta;
 	}
 	weight = w;
 }
