@@ -17,13 +17,26 @@
 class VotingClassifier 
 {
     private:
-	std::vector<std::shared_ptr<BaseClassifier>> base_estimators;
+	std::vector<std::shared_ptr<BaseClassifier>> base_estimators; /*!< base_estimators contains all the classifiers
+                                                                           added into the ensemble
+                                                                       */
 
     public:
-	VotingClassifier() {}
-	void train(const arma::mat&, const arma::colvec&, arma::uword);
-	void predict(const arma::mat&, arma::colvec&);
-    void addClassifier(std::shared_ptr<BaseClassifier>);
+	VotingClassifier() {} /**< The constructor VotingClassifier creates a very simple VotingClassifier object */
+
+	void train(const arma::mat&, const arma::colvec&, arma::uword); /**< The train function calls the train function
+                                                                             for the corresponding classifier in
+                                                                             base_estimators
+                                                                         */
+	void predict(const arma::mat&, arma::colvec&); /**< The predict function calls the predict function
+                                                            for each corresponding classifier in base_estimators, 
+                                                            and takes the majority vote to yield predictions
+                                                        */
+
+        void addClassifier(std::shared_ptr<BaseClassifier>); /**< addClassifier method adds a classifier to base_estimators,
+                                                                  and hence adds an extra model to the
+                                                                  ensemble               
+                                                              */
 };
 
 #endif
