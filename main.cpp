@@ -34,6 +34,12 @@ int main()
     //test logistic regression functions
     test_logistic_regression_std();
 
+    //test perceptron
+    test_perceptron();    
+
+    //test svm
+    test_svm();    
+
     //test adaboost
     test_adaboost();    
 
