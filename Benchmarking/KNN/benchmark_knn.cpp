@@ -33,7 +33,7 @@ int main()
     colvec Y;
     read_csv("../../samples_csv/Cancer.csv", X, Y, true, ',', '#');    
     
-    //KNN with k=23
+    //KNN with k=23 takes approximately 52000 microseconds on a very slow computer
     std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
     KNN knn_clfr(23);
     knn_clfr.train(X, Y, 100);
@@ -44,8 +44,23 @@ int main()
          << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()
          << " microseconds." << endl;
 
-
     //CliqueLib Vector Implementation
+
+    vector<vector<float> > test_file = read_csv("../../samples_csv/Cancer.csv",
+	                                        true, ',', '#');
+    vector<vector<float> > train_file = test_file;
+    for (auto& instance : test_file)    
+        instance.pop_back();
+
+    //KNN with k=23 takes approximately 360000 microseconds on a very slow computer
+    start = std::chrono::steady_clock::now();    
+    KNNStd knn_vec (train_file, 23);
+    knn_vec.train();
+    knn_vec.predict(test_file);
+    end = std::chrono::steady_clock::now();
+    cout << "Time with CliqueLib's Vector Implementation: " 
+         << std::chrono::duration_cast<std::chrono::microseconds>(end - start).count()
+         << " microseconds." << endl;
 
     return 0;
 }
