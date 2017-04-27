@@ -20,7 +20,6 @@
 #include <utility>
 #include <limits>
 
-
 using namespace std;
 
 class LogisticRegressionStd
@@ -45,13 +44,16 @@ class LogisticRegressionStd
         void set_learning_rate(float learning_rate) { this->learning_rate = learning_rate; }
 
 	//calculate sigmoid function
-	float sigmoid_function(float z);
+	float sigmoid_function(float);
 
         //Train - returns a vector of coefficients
         vector<float> train();
 
         //Predict
-        float predict(vector<float> instance, vector<float> coefficients, bool binary = false);
+        float predict_label(vector<float>, vector<float>, bool);
+
+        //Predict multiple labels
+        vector<float> predict(vector<vector<float> >, vector<float>, bool binary = true);
        
     private:
 	int num_epochs;

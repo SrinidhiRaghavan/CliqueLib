@@ -41,7 +41,7 @@ vector<float> LogisticRegressionStd::train()
         //iterate over each row in the training file
         for (unsigned int j = 0; j < train_file.size(); j++)
         {
-            float f_x = predict(train_file[j], coefficients);
+            float f_x = predict_label(train_file[j], coefficients, false);
             float error = train_file[j][train_file[j].size() - 1] - f_x;
             error_sum += pow(error, 2);
             coefficients[0] += learning_rate * error * f_x * (1.0 - f_x);
@@ -55,8 +55,8 @@ vector<float> LogisticRegressionStd::train()
     return coefficients;
 }
 
-//Predict
-float LogisticRegressionStd::predict(vector<float> instance, vector<float> coefficients, bool binary)
+//Predict label
+float LogisticRegressionStd::predict_label(vector<float> instance, vector<float> coefficients, bool binary)
 {
     //Last column contains the labels
     int num_attributes = instance.size() - 1;
@@ -82,4 +82,16 @@ float LogisticRegressionStd::predict(vector<float> instance, vector<float> coeff
     }
     else
         return sigmoid_function(z);    
+}
+
+//Predict multiple labels
+vector<float> LogisticRegressionStd::predict(vector<vector<float> > instances, vector<float> coefficients, bool binary)
+{
+    vector<float> column_vector;   
+    for (auto& instance : instances)
+    {
+        float predicted_label = predict_label(instance, coefficients, binary);
+        column_vector.push_back(predicted_label);
+    }
+    return column_vector;
 }

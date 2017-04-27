@@ -26,34 +26,34 @@ void test_logistic_regression_std()
     cout << lr1.sigmoid_function(2) << " ~ " << 0.881 << endl;
 
     //test the predict function with predetermined coefficients
-    std::cout << "\nTESTING PREDICT() OF LOGISTIC REGRESSION WITH CSV FILE 10" << std::endl;
+    std::cout << "\nTESTING PREDICT_LABEL() OF LOGISTIC REGRESSION WITH CSV FILE 10" << std::endl;
     file = read_csv("./samples_csv/test_file_10_logistic.csv", ',');
     LogisticRegressionStd lr2 (file); 
     //coefficients - http://machinelearningmastery.com/
     vector<float> coefficients = {-0.406605464, 0.852573316, -1.104746259};
 
     cout << "\nbinary = false" << endl;
-    cout << "predicted: " << lr2.predict(file[0], coefficients) 
+    cout << "predicted: " << lr2.predict_label(file[0], coefficients, false) 
          << " real: " << file[0][file[0].size() - 1] << endl;
-    cout << "predicted: " << lr2.predict(file[1], coefficients) 
+    cout << "predicted: " << lr2.predict_label(file[1], coefficients, false) 
          << " real: " << file[1][file[1].size() - 1] << endl;
-    cout << "predicted: " << lr2.predict(file[2], coefficients) 
+    cout << "predicted: " << lr2.predict_label(file[2], coefficients, false) 
          << " real: " << file[2][file[2].size() - 1] << endl;
-    cout << "predicted: " << lr2.predict(file[6], coefficients) 
+    cout << "predicted: " << lr2.predict_label(file[6], coefficients, false) 
          << " real: " << file[6][file[6].size() - 1] << endl;
 
     cout << "\nbinary = true" << endl;
-    cout << "predicted: " << lr2.predict(file[0], coefficients, true) 
+    cout << "predicted: " << lr2.predict_label(file[0], coefficients, true) 
          << " real: " << file[0][file[0].size() - 1] << endl;
-    cout << "predicted: " << lr2.predict(file[1], coefficients, true) 
+    cout << "predicted: " << lr2.predict_label(file[1], coefficients, true) 
          << " real: " << file[1][file[1].size() - 1] << endl;
-    cout << "predicted: " << lr2.predict(file[2], coefficients, true) 
+    cout << "predicted: " << lr2.predict_label(file[2], coefficients, true) 
          << " real: " << file[2][file[2].size() - 1] << endl;
-    cout << "predicted: " << lr2.predict(file[6], coefficients, true) 
+    cout << "predicted: " << lr2.predict_label(file[6], coefficients, true) 
          << " real: " << file[6][file[6].size() - 1] << endl;
  
     //test the train function
-    std::cout << "\nTESTING PREDICT() OF LOGISTIC REGRESSION WITH CSV FILE 10" << std::endl;
+    std::cout << "\nTESTING PREDICT_LABEL() OF LOGISTIC REGRESSION WITH CSV FILE 10" << std::endl;
     LogisticRegressionStd lr3 (file, 100, 0.3); 
     vector<float> coefficients_trained = lr3.train();
     //coefficients - http://machinelearningmastery.com/
