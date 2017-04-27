@@ -60,7 +60,7 @@ void SVM::train(const mat& data, const colvec& Y, uword epoch)
 		double nt = 1 / (L*(t+1));
 		uword r = distribution(generator);
 		rowvec xt = X.row(r);
-		uword yt = Y(r);
+		double yt = Y(r);
 		double a = dot(w, xt)*yt;
 		if (a < 1.0)
 			w = (1 - nt*L)*w + nt*yt*xt.t();
@@ -80,7 +80,7 @@ void SVM::predict(const mat& data, colvec& Y)
 {
 	//n - Number of data entries in data
 	uword n = size(data, 0);
-    	Y.ones(n, 1);
+    Y.ones(n, 1);
 	
 	//Concatenating the matrix X with a column of 1's. Bias is the weight corresponding to this column
 	mat X = join_horiz(data, ones(n, 1));
@@ -90,10 +90,7 @@ void SVM::predict(const mat& data, colvec& Y)
 	//Step 2 - If the product >= 0, then predict 1 else -1
 	
 	colvec A = X*weight;
-	for (uword i = 0; i < n; i++)
-		if (A(i) >= 0)
-			Y(i) = 1;
-		else
-			Y(i) = -1;
+    uvec idx = find(A < 0);
+    Y.elem(idx).fill(-1);
 }
 

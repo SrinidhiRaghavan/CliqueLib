@@ -37,12 +37,12 @@ int main()
     colvec Y;
     //read_csv("samples_csv/toy_sample.csv", X, Y, true, ',', '#');
     //read_csv("samples_csv/admits.csv", X, Y, false, ',', '#');
-    read_csv("../../samples_csv/Cancer.csv", X, Y, true, ',', '#');
+    read_csv("../../samples_csv/linear.csv", X, Y, true, ',', '#');
     cout << "size X:" << arma::size(X) << endl;
     cout << "size Y:" << arma::size(Y) << endl;
     //cout << "X:" << X.rows(0, 4) << endl;
     cout << "Y:" << Y.rows(0, 4) << endl;
-    
+   
     Dataset data;
     split_train_test(X, Y, data, 0.8);
     cout << "size Xtrain:" << arma::size(data.Xtrain) << endl;
@@ -50,6 +50,7 @@ int main()
     cout << "size Xtest:" << arma::size(data.Xtest) << endl;
     cout << "size Ytest:" << arma::size(data.Ytest) << endl;
     
+    /*
     AdaBoost clfr;
     clfr.train(data.Xtrain, data.Ytrain, 100);
     colvec preds;
@@ -57,6 +58,8 @@ int main()
 
     auto acc = getAccuracy(data.Ytest, preds);
     cout << "AdaBoost acc:" << acc << endl;
+    */
+
 
     KNN knn_clfr;
     knn_clfr.train(data.Xtrain, data.Ytrain, 100);
@@ -67,22 +70,25 @@ int main()
     cout << "KNN acc:" << acc_knn << endl;
    
     
-    SVM svm_clfr;
-    svm_clfr.train(data.Xtrain, data.Ytrain, 100);
+    cout << "### Running SVM ###" << endl;
+    SVM svm_clfr(0.1);
+    svm_clfr.train(X, Y, 1000);
     colvec preds_svm;
-    svm_clfr.predict(data.Xtest, preds_svm);
+    svm_clfr.predict(X, preds_svm);
 
-    auto acc_svm = getAccuracy(data.Ytest, preds_svm);
+    auto acc_svm = getAccuracy(Y, preds_svm);
     cout << "SVM acc:" << acc_svm << endl;
 
+    cout << "### Running Perceptron ###" << endl;
     Perceptron pcptr_clfr;
-    pcptr_clfr.train(data.Xtrain, data.Ytrain, 100);
+    pcptr_clfr.train(X, Y, 1000);
     colvec preds_pcptr;
-    pcptr_clfr.predict(data.Xtest, preds_pcptr);
+    pcptr_clfr.predict(X, preds_pcptr);
 
-    auto acc_pcptr = getAccuracy(data.Ytest, preds_pcptr);
+    auto acc_pcptr = getAccuracy(Y, preds_pcptr);
     cout << "Perceptron acc:" << acc_pcptr << endl;
     
+    /*
     BaggingClassifier<AdaBoost> bgClfr(5, 400);
     bgClfr.train(data.Xtrain, data.Ytrain, 100);
     colvec preds_bg;
@@ -90,15 +96,13 @@ int main()
 
     auto acc_bg = getAccuracy(data.Ytest, preds_bg);
     cout << "Bg adB acc:" << acc_bg << endl;
-    
-    /*
+
     BaggingClassifier<KNN> bgClfr(5, 400);
     bgClfr.train(data.Xtrain, data.Ytrain, 100);
     colvec preds_bg;
     bgClfr.predict(data.Xtest, preds_bg);
     auto acc_bg = getAccuracy(data.Ytest, preds_bg);
     cout << "Bg knn acc:" << acc_bg << endl;
-    */
 
     BaggingClassifier<SVM> bgClfr_svm(5, 400);
     bgClfr_svm.train(data.Xtrain, data.Ytrain, 100);
@@ -131,6 +135,7 @@ int main()
 
     auto acc_vc = getAccuracy(data.Ytest, preds_vc);
     cout << "Vc acc:" << acc_vc << endl;
+    */
 
     return 0;
 }

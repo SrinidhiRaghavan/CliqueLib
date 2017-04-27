@@ -40,7 +40,7 @@ void Perceptron::train(const mat& data, const colvec& Y, uword epoch)
 		colvec delta(d+1);
 		delta.fill(0);
 		for(uword i = 0; i < n; i++){	
-			uword f_word =  -1;
+			double f_word =  -1;
 			if (dot(X.row(i),w) >= 0)
 			    f_word = 1;
 
