@@ -6,8 +6,9 @@
 // Description : Main function
 //============================================================================
 
-#include <armadillo>
 #include <iostream>
+#include <memory>
+#include <armadillo>
 #include <vector>
 #include <cassert>
 #include <cmath>
@@ -113,12 +114,14 @@ int main()
     cout << "Logistic acc: " << acc_log << endl;	
 
     VotingClassifier vcClfr;
-    BaseClassifier* svm_clfr_b = (BaseClassifier*)&svm_clfr;
-    BaseClassifier* knn_clfr_b = (BaseClassifier*)&knn_clfr;
-    BaseClassifier* logistic_clfr_b = (BaseClassifier*)&logistic_clfr;
+    auto svm_clfr_b = make_shared<SVM>(svm_clfr);
+    auto knn_clfr_b = make_shared<KNN>(knn_clfr);
+    auto logistic_clfr_b = make_shared<Logistic>(logistic_clfr);
+    
     vcClfr.addClassifier(svm_clfr_b);
     vcClfr.addClassifier(knn_clfr_b);
     vcClfr.addClassifier(logistic_clfr_b);
+    
     vcClfr.train(Xtrain, Ytrain, 100);
     colvec preds_vc;
     vcClfr.predict(Xtest, preds_vc);

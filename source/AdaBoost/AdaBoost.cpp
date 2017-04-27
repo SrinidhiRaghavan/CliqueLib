@@ -21,7 +21,7 @@ void AdaBoost::train(const mat& X, const colvec& Y, uword iter) {
 	sampleWts.fill(initWt);
 
 	for (uword i = 0; i < iter; i++) {
-		Stump* clfr = buildStump(X, Y, sampleWts);
+		auto clfr = buildStump(X, Y, sampleWts);
 		double err = clfr->getError();
 		double alpha = 0.5*log((1 - err) / err);
 
@@ -48,7 +48,7 @@ void AdaBoost::predict(const mat& testX, colvec& preds) {
 	auto weakIter = weakClassifiers.begin();
 	auto wtIter = weights.begin();
 	for (; weakIter != weakClassifiers.end(); weakIter++, wtIter++) {
-		Stump* clfr = *weakIter;
+		auto clfr = *weakIter;
 		double wt = *wtIter;
 
 		clfr->predictStump(testX, labels);
@@ -59,13 +59,13 @@ void AdaBoost::predict(const mat& testX, colvec& preds) {
 	preds.elem(idx).fill(1);
 }
 
-Stump* AdaBoost::buildStump(const mat& X, const colvec& y, const colvec& weight) {
+shared_ptr<Stump> AdaBoost::buildStump(const mat& X, const colvec& y, const colvec& weight) {
 	uword d = size(X, 1);
-	vector<Stump*> stumps;
+	vector<std::shared_ptr<Stump>> stumps;
 	rowvec errors;
 	errors.zeros(1, d);
 	for (unsigned int i = 0; i < d; i++) {
-		Stump* s = new Stump(i);
+		auto s = make_shared<Stump>(i);
 		stumps.push_back(s);
 		s->buildOneDStump(X.col(i), y, weight);
 		errors(0, i) = s->getError();
