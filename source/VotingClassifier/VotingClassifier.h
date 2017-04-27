@@ -23,7 +23,7 @@ class VotingClassifier
 	VotingClassifier() {}
 	void train(const arma::mat&, const arma::colvec&, arma::uword);
 	void predict(const arma::mat&, arma::colvec&);
-    void addClassifier(std::shared_ptr<BaseClassifier>);
+        void addClassifier(std::shared_ptr<BaseClassifier>);
 };
 
 #endif
