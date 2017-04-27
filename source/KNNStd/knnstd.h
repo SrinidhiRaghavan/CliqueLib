@@ -38,19 +38,22 @@ class KNNStd
         void setK(int k) { this->k = k; }
         
         // calculate Euclidean Distance
-        float euclideanDistance (int length, vector<float> instance1, vector<float> instance2);
+        float euclideanDistance (int, vector<float>, vector<float>);
 
         //find K neighbors
-        vector<vector<float> > findNeighbors(vector<float> instance);
+        vector<vector<float> > findNeighbors(vector<float>);
 
         //determine class
-        float findClass(vector<vector<float> > k_neighbors);
+        float findClass(vector<vector<float> >);
 
         //Train 
         vector<vector<float> > train();
 
-        //Predict
-        float predict(vector<float> instance);
+        //Predict a single label
+        float predict_label(vector<float>);
+
+        //Predict multiple labels
+        vector<float> predict(vector<vector<float> >);
        
     private:
         int k;

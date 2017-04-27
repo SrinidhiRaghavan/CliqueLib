@@ -94,8 +94,8 @@ float KNNStd::findClass(vector<vector<float> > k_neighbors)
     return largest_class;
 }
 
-//Predict
-float KNNStd::predict(vector<float> instance)
+//Predict a single label
+float KNNStd::predict_label(vector<float> instance)
 {
     int num_attributes = instance.size();
     if ((unsigned) this->k > train_file.size())
@@ -119,5 +119,17 @@ float KNNStd::predict(vector<float> instance)
 
     //select the prevalent class from the neighbors
     return findClass(k_neighbors);
+}
+
+//Predict multiple labels
+vector<float> KNNStd::predict(vector<vector<float> > instances)
+{
+    vector<float> column_vector;   
+    for (auto& instance : instances)
+    {
+        float predicted_label = predict_label(instance);
+        column_vector.push_back(predicted_label);
+    }
+    return column_vector;
 }
 
