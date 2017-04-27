@@ -6,7 +6,9 @@
 // Description : CliqueLib Preprocessing functions implementation
 //============================================================================
 
+#include <cmath>
 #include "preprocessing_functions.h"
+#include <cassert>
 using namespace arma;
 
 void read_csv(string file,
@@ -92,24 +94,16 @@ vector<vector<float> > read_csv(string file,
     }
 }
 
-//Split the dataset into a train and test section
-void split_test_train(vector<vector<float> > file, 
-		      float train_part,
-		      vector<vector<float> >& train_file,
-		      vector<vector<float> >& test_file
-		     )
-{    
-    int train_size = train_part * file.size();
-    int test_size = file.size() - train_size;
-    //size of dataset is 1
-    if (file.size() == 1)
-    {
-        train_size = 1;
-        test_size = 0;
-    }
-    vector<vector<float> > train (file.begin(), file.end() - test_size);
-    vector<vector<float> > test (file.begin() + train_size, file.end());
-    train_file = train;
-    test_file = test;
-}
+void split_train_test(const mat& X, const colvec& Y, Dataset& data, double trainProportion)
+{
+	uword n = size(X, 0);
+    uvec randIdx = randi<uvec>(n, 1, distr_param(0, n-1));
+    assert(trainProportion > 0);
+    uword ntrain = ceil(trainProportion * n);
+    cout << "ntrain: " << ntrain << endl;
 
+    data.Xtrain = X.rows(randIdx.rows(0, ntrain-1));
+    data.Ytrain = Y.rows(randIdx.rows(0, ntrain-1));
+    data.Xtest = X.rows(randIdx.rows(ntrain, n-1));
+    data.Ytest = Y.rows(randIdx.rows(ntrain, n-1));
+}

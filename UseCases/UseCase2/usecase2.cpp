@@ -14,6 +14,7 @@
 #include <cmath>
 #include <utility>
 #include "preprocessing_functions.h"
+#include "Dataset.h"
 #include "KNN.h"
 #include "logistic_regression.h"
 #include "SVM.h"
@@ -41,92 +42,94 @@ int main()
     cout << "size Y:" << arma::size(Y) << endl;
     //cout << "X:" << X.rows(0, 4) << endl;
     cout << "Y:" << Y.rows(0, 4) << endl;
-
-    mat Xtrain = X.rows(0, 499);
-    colvec Ytrain = Y.rows(0, 499);
-    mat Xtest = X.rows(500, 567);
-    colvec Ytest = Y.rows(500, 567);
-
+    
+    Dataset data;
+    split_train_test(X, Y, data, 0.8);
+    cout << "size Xtrain:" << arma::size(data.Xtrain) << endl;
+    cout << "size Ytrain:" << arma::size(data.Ytrain) << endl;
+    cout << "size Xtest:" << arma::size(data.Xtest) << endl;
+    cout << "size Ytest:" << arma::size(data.Ytest) << endl;
+    
     AdaBoost clfr;
-    clfr.train(Xtrain, Ytrain, 100);
+    clfr.train(data.Xtrain, data.Ytrain, 100);
     colvec preds;
-    clfr.predict(Xtest, preds);
+    clfr.predict(data.Xtest, preds);
 
-    auto acc = getAccuracy(Ytest, preds);
+    auto acc = getAccuracy(data.Ytest, preds);
     cout << "AdaBoost acc:" << acc << endl;
 
     KNN knn_clfr;
-    knn_clfr.train(Xtrain, Ytrain, 100);
+    knn_clfr.train(data.Xtrain, data.Ytrain, 100);
     colvec preds_knn;
-    knn_clfr.predict(Xtest, preds_knn);
+    knn_clfr.predict(data.Xtest, preds_knn);
 
-    auto acc_knn = getAccuracy(Ytest, preds_knn);
+    auto acc_knn = getAccuracy(data.Ytest, preds_knn);
     cout << "KNN acc:" << acc_knn << endl;
    
     
     SVM svm_clfr;
-    svm_clfr.train(Xtrain, Ytrain, 100);
+    svm_clfr.train(data.Xtrain, data.Ytrain, 100);
     colvec preds_svm;
-    svm_clfr.predict(Xtest, preds_svm);
+    svm_clfr.predict(data.Xtest, preds_svm);
 
-    auto acc_svm = getAccuracy(Ytest, preds_svm);
+    auto acc_svm = getAccuracy(data.Ytest, preds_svm);
     cout << "SVM acc:" << acc_svm << endl;
 
     Perceptron pcptr_clfr;
-    pcptr_clfr.train(Xtrain, Ytrain, 100);
+    pcptr_clfr.train(data.Xtrain, data.Ytrain, 100);
     colvec preds_pcptr;
-    pcptr_clfr.predict(Xtest, preds_pcptr);
+    pcptr_clfr.predict(data.Xtest, preds_pcptr);
 
-    auto acc_pcptr = getAccuracy(Ytest, preds_pcptr);
+    auto acc_pcptr = getAccuracy(data.Ytest, preds_pcptr);
     cout << "Perceptron acc:" << acc_pcptr << endl;
     
     BaggingClassifier<AdaBoost> bgClfr(5, 400);
-    bgClfr.train(Xtrain, Ytrain, 100);
+    bgClfr.train(data.Xtrain, data.Ytrain, 100);
     colvec preds_bg;
-    bgClfr.predict(Xtest, preds_bg);
+    bgClfr.predict(data.Xtest, preds_bg);
 
-    auto acc_bg = getAccuracy(Ytest, preds_bg);
+    auto acc_bg = getAccuracy(data.Ytest, preds_bg);
     cout << "Bg adB acc:" << acc_bg << endl;
     
     /*
     BaggingClassifier<KNN> bgClfr(5, 400);
-    bgClfr.train(Xtrain, Ytrain, 100);
+    bgClfr.train(data.Xtrain, data.Ytrain, 100);
     colvec preds_bg;
-    bgClfr.predict(Xtest, preds_bg);
-    auto acc_bg = getAccuracy(Ytest, preds_bg);
+    bgClfr.predict(data.Xtest, preds_bg);
+    auto acc_bg = getAccuracy(data.Ytest, preds_bg);
     cout << "Bg knn acc:" << acc_bg << endl;
     */
 
     BaggingClassifier<SVM> bgClfr_svm(5, 400);
-    bgClfr_svm.train(Xtrain, Ytrain, 100);
+    bgClfr_svm.train(data.Xtrain, data.Ytrain, 100);
     colvec preds_bg_svm;
-    bgClfr_svm.predict(Xtest, preds_bg_svm);
+    bgClfr_svm.predict(data.Xtest, preds_bg_svm);
 
-    auto acc_bg_svm = getAccuracy(Ytest, preds_bg_svm);
+    auto acc_bg_svm = getAccuracy(data.Ytest, preds_bg_svm);
     cout << "Bg svm acc:" << acc_bg_svm << endl;
     
 
     Logistic logistic_clfr(0.01);
-    logistic_clfr.train(Xtrain, Ytrain, 100);
+    logistic_clfr.train(data.Xtrain, data.Ytrain, 100);
     colvec preds_log;
-    logistic_clfr.predict(Xtest, preds_log);
-    auto acc_log = getAccuracy(Ytest, preds_log);
+    logistic_clfr.predict(data.Xtest, preds_log);
+    auto acc_log = getAccuracy(data.Ytest, preds_log);
     cout << "Logistic acc: " << acc_log << endl;	
 
     VotingClassifier vcClfr;
     auto svm_clfr_b = make_shared<SVM>(svm_clfr);
-    auto knn_clfr_b = make_shared<KNN>(knn_clfr);
+    auto pcptr_clfr_b = make_shared<Perceptron>(pcptr_clfr);
     auto logistic_clfr_b = make_shared<Logistic>(logistic_clfr);
     
     vcClfr.addClassifier(svm_clfr_b);
-    vcClfr.addClassifier(knn_clfr_b);
+    vcClfr.addClassifier(pcptr_clfr_b);
     vcClfr.addClassifier(logistic_clfr_b);
     
-    vcClfr.train(Xtrain, Ytrain, 100);
+    vcClfr.train(data.Xtrain, data.Ytrain, 100);
     colvec preds_vc;
-    vcClfr.predict(Xtest, preds_vc);
+    vcClfr.predict(data.Xtest, preds_vc);
 
-    auto acc_vc = getAccuracy(Ytest, preds_vc);
+    auto acc_vc = getAccuracy(data.Ytest, preds_vc);
     cout << "Vc acc:" << acc_vc << endl;
 
     return 0;
