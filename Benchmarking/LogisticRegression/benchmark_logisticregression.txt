@@ -1,0 +1,52 @@
+//============================================================================
+// Name        : benchmark_logisticregression.txt
+// Author      : CliqueLib
+// Version     :
+// Copyright   : 
+// Description : Results for benchmarking Logistic Regression
+//============================================================================
+
+The following measurements were taken using Google Cloud.
+
+CliqueLib Armadillo:
+
+Runtime: 6541 microseconds
+
+CliqueLib Vectors:
+
+Runtime: 17030 microseconds.
+
+Weka: 
+
+Fails
+
+Mlpack:
+
+Runtime: 16206 microseconds
+
+[INFO ] Execution parameters:
+[INFO ]   batch_size: 50
+[INFO ]   decision_boundary: 0.5
+[INFO ]   help: 0
+[INFO ]   info: 
+[INFO ]   input_model_file: 
+[INFO ]   labels_file: 
+[INFO ]   lambda: 0
+[INFO ]   max_iterations: 100
+[INFO ]   optimizer: sgd
+[INFO ]   output_file: output.txt
+[INFO ]   output_model_file: model.txt
+[INFO ]   output_probabilities_file: 
+[INFO ]   step_size: 0.01
+[INFO ]   test_file: Cancer.csv
+[INFO ]   tolerance: 1e-10
+[INFO ]   training_file: Cancer.csv
+[INFO ]   verbose: 1
+[INFO ]   version: 0
+[INFO ] Program timers:
+[INFO ]   loading_data: 0.015230s
+[INFO ]   logistic_regression_optimization: 0.000266s
+[INFO ]   saving_data: 0.000103s
+[INFO ]   total_time: 0.016206s
+
+
