@@ -61,7 +61,7 @@ int main()
     cout << "Testing accuracy: " << acc << "%" << endl;
     cout << "" << endl;
 
-    cout << "Training K-means with K=23 ..." << endl;
+    cout << "Training KNN with K=23 ..." << endl;
     KNN knn_clfr(23);
     knn_clfr.train(data.Xtrain, data.Ytrain, 1000);
     colvec preds_knn;
