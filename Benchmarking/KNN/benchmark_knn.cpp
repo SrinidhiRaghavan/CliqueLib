@@ -7,23 +7,22 @@
 //============================================================================
 
 #include <iostream>
-#include <memory>
 #include <armadillo>
 #include <vector>
-#include <cassert>
-#include <cmath>
-#include <utility>
 #include <chrono>
 #include "preprocessing_functions.h"
-#include "Dataset.h"
 #include "KNN.h"
 #include "knnstd.h"
 
 using namespace arma;
 
-double getAccuracy(colvec& a, colvec& b) {
-    return double(accu(a==b))/size(a, 0);
-}
+/*
+Sample Output:
+
+Time with CliqueLib's Armadillo Implementation: 48177 microseconds.
+Time with CliqueLib's Vector Implementation: 358849 microseconds.
+
+*/
 
 int main()
 {

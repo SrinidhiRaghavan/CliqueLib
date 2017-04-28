@@ -1,0 +1,95 @@
+\hypertarget{classStump}{}\section{Stump Class Reference}
+\label{classStump}\index{Stump@{Stump}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classStump_a63d9a696a2bf08463d97dd4817492e91}{Stump} (unsigned int)
+\item 
+double \hyperlink{classStump_a091fd3ba872b58e5c3c30eb272dba5b4}{get\+Error} ()
+\item 
+unsigned int \hyperlink{classStump_a14c6e816ee2e620843e367baa321b74e}{get\+Dimension} ()
+\item 
+void \hyperlink{classStump_af5202a826b568f54b47a30fef1b60d7b}{build\+One\+D\+Stump} (const arma\+::colvec \&, const arma\+::colvec \&, const arma\+::colvec \&)
+\item 
+void \hyperlink{classStump_a77f31c3b93ee4ce6b3c3d7fe63e3a787}{calculate\+Threshold} (const arma\+::colvec \&, const arma\+::colvec \&, const arma\+::colvec \&, const std\+::string \&, double \&, double \&)
+\item 
+void \hyperlink{classStump_aeea11090771c4db880c5044d8b4d2c07}{predict\+Stump} (const arma\+::mat \&, arma\+::colvec \&)
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \hyperlink{classStump_a115203f2072c7e221eb2dc36f5673f48}{operator$<$$<$} (std\+::ostream \&os, const \hyperlink{classStump}{Stump} $\ast$s)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Stump@{Stump}!Stump@{Stump}}
+\index{Stump@{Stump}!Stump@{Stump}}
+\subsubsection[{\texorpdfstring{Stump(unsigned int)}{Stump(unsigned int)}}]{\setlength{\rightskip}{0pt plus 5cm}Stump\+::\+Stump (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{dim}
+\end{DoxyParamCaption}
+)}\hypertarget{classStump_a63d9a696a2bf08463d97dd4817492e91}{}\label{classStump_a63d9a696a2bf08463d97dd4817492e91}
+\hyperlink{classStump}{Stump} constructor, accepting dimension value to build the stump over 
+
+\subsection{Member Function Documentation}
+\index{Stump@{Stump}!build\+One\+D\+Stump@{build\+One\+D\+Stump}}
+\index{build\+One\+D\+Stump@{build\+One\+D\+Stump}!Stump@{Stump}}
+\subsubsection[{\texorpdfstring{build\+One\+D\+Stump(const arma\+::colvec \&, const arma\+::colvec \&, const arma\+::colvec \&)}{buildOneDStump(const arma::colvec &, const arma::colvec &, const arma::colvec &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Stump\+::build\+One\+D\+Stump (
+\begin{DoxyParamCaption}
+\item[{const arma\+::colvec \&}]{, }
+\item[{const arma\+::colvec \&}]{, }
+\item[{const arma\+::colvec \&}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classStump_af5202a826b568f54b47a30fef1b60d7b}{}\label{classStump_af5202a826b568f54b47a30fef1b60d7b}
+Builds the stump over the given dimension Sets optimal threshold, less, more values \index{Stump@{Stump}!calculate\+Threshold@{calculate\+Threshold}}
+\index{calculate\+Threshold@{calculate\+Threshold}!Stump@{Stump}}
+\subsubsection[{\texorpdfstring{calculate\+Threshold(const arma\+::colvec \&, const arma\+::colvec \&, const arma\+::colvec \&, const std\+::string \&, double \&, double \&)}{calculateThreshold(const arma::colvec &, const arma::colvec &, const arma::colvec &, const std::string &, double &, double &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Stump\+::calculate\+Threshold (
+\begin{DoxyParamCaption}
+\item[{const arma\+::colvec \&}]{, }
+\item[{const arma\+::colvec \&}]{, }
+\item[{const arma\+::colvec \&}]{, }
+\item[{const std\+::string \&}]{, }
+\item[{double \&}]{, }
+\item[{double \&}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classStump_a77f31c3b93ee4ce6b3c3d7fe63e3a787}{}\label{classStump_a77f31c3b93ee4ce6b3c3d7fe63e3a787}
+Calculate the optimal threshold to minimize stump error \index{Stump@{Stump}!get\+Dimension@{get\+Dimension}}
+\index{get\+Dimension@{get\+Dimension}!Stump@{Stump}}
+\subsubsection[{\texorpdfstring{get\+Dimension()}{getDimension()}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Stump\+::get\+Dimension (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classStump_a14c6e816ee2e620843e367baa321b74e}{}\label{classStump_a14c6e816ee2e620843e367baa321b74e}
+Function to fetch stump dimension \index{Stump@{Stump}!get\+Error@{get\+Error}}
+\index{get\+Error@{get\+Error}!Stump@{Stump}}
+\subsubsection[{\texorpdfstring{get\+Error()}{getError()}}]{\setlength{\rightskip}{0pt plus 5cm}double Stump\+::get\+Error (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classStump_a091fd3ba872b58e5c3c30eb272dba5b4}{}\label{classStump_a091fd3ba872b58e5c3c30eb272dba5b4}
+Function to fetch stump error \index{Stump@{Stump}!predict\+Stump@{predict\+Stump}}
+\index{predict\+Stump@{predict\+Stump}!Stump@{Stump}}
+\subsubsection[{\texorpdfstring{predict\+Stump(const arma\+::mat \&, arma\+::colvec \&)}{predictStump(const arma::mat &, arma::colvec &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Stump\+::predict\+Stump (
+\begin{DoxyParamCaption}
+\item[{const arma\+::mat \&}]{, }
+\item[{arma\+::colvec \&}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classStump_aeea11090771c4db880c5044d8b4d2c07}{}\label{classStump_aeea11090771c4db880c5044d8b4d2c07}
+predict the labels based on the threshold for the dimension the stump is built on 
+
+\subsection{Friends And Related Function Documentation}
+\index{Stump@{Stump}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Stump@{Stump}}
+\subsubsection[{\texorpdfstring{operator$<$$<$}{operator<<}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{os, }
+\item[{const {\bf Stump} $\ast$}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{classStump_a115203f2072c7e221eb2dc36f5673f48}{}\label{classStump_a115203f2072c7e221eb2dc36f5673f48}
+Friend function displaying the \hyperlink{classStump}{Stump} 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+source/\+Ada\+Boost/Stump.\+h\item 
+source/\+Ada\+Boost/Stump.\+cpp\end{DoxyCompactItemize}

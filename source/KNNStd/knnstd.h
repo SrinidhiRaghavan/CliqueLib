@@ -9,6 +9,7 @@
 #ifndef __KNNSTD_H__
 #define __KNNSTD_H__
 
+#pragma once
 #include <iostream>
 #include <string>
 #include <vector>

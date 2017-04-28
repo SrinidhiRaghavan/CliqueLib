@@ -1,0 +1,98 @@
+\hypertarget{classLogistic}{}\section{Logistic Class Reference}
+\label{classLogistic}\index{Logistic@{Logistic}}
+
+
+{\ttfamily \#include $<$logistic\+\_\+regression.\+h$>$}
+
+
+
+Inheritance diagram for Logistic\+:
+% FIG 0
+
+
+Collaboration diagram for Logistic\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLogistic_ae137bd4c8e3d59f2860b89b4e8a5f43c}{Logistic} ()
+\item 
+\hyperlink{classLogistic_a274692f0789be6f13f0be7020208fa4a}{Logistic} (double)
+\item 
+void \hyperlink{classLogistic_a39f2b8b964ae18554a2affd7c3528bff}{train} (const mat \&, const colvec \&, uword)
+\item 
+void \hyperlink{classLogistic_a84e35026ef7401e5454586936c7d430f}{predict} (const mat \&, colvec \&)
+\item 
+colvec \hyperlink{classLogistic_af746b2219793f25b26827dba183a2dce}{sigmoid} (const colvec \&)
+\item 
+double \hyperlink{classLogistic_a084db9a2f532893a6bdfc75551ca9713}{get\+Learning\+Rate} ()
+\item 
+void \hyperlink{classLogistic_a5c2797f065d02feef3c83e906c408b99}{set\+Learning\+Rate} (double alpha)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classLogistic}{Logistic} regression, also called logit regression, is a machine learning algorithm used for binary classification. \hyperlink{classLogistic}{Logistic} regression is named after its core function, the logistic function, also called the sigmoid function. The algorithm predicts what the probability is of an input belonging to one of the two classes. If the probability is more than 0.\+5, the output is a prediction for that class. Otherwise, the prediction is for the other class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Logistic@{Logistic}!Logistic@{Logistic}}
+\index{Logistic@{Logistic}!Logistic@{Logistic}}
+\subsubsection[{\texorpdfstring{Logistic()}{Logistic()}}]{\setlength{\rightskip}{0pt plus 5cm}Logistic\+::\+Logistic (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classLogistic_ae137bd4c8e3d59f2860b89b4e8a5f43c}{}\label{classLogistic_ae137bd4c8e3d59f2860b89b4e8a5f43c}
+A default constructor for \hyperlink{classLogistic}{Logistic} Regression is available and sets the default learning rate alpha to 0.\+01 \index{Logistic@{Logistic}!Logistic@{Logistic}}
+\index{Logistic@{Logistic}!Logistic@{Logistic}}
+\subsubsection[{\texorpdfstring{Logistic(double)}{Logistic(double)}}]{\setlength{\rightskip}{0pt plus 5cm}Logistic\+::\+Logistic (
+\begin{DoxyParamCaption}
+\item[{double}]{alpha}
+\end{DoxyParamCaption}
+)}\hypertarget{classLogistic_a274692f0789be6f13f0be7020208fa4a}{}\label{classLogistic_a274692f0789be6f13f0be7020208fa4a}
+A logistic regression object is created by a constructor wherein the user must specify the learning rate alpha. The learning rate is used when calculating the coefficients with stochastic gradient descent. 
+
+\subsection{Member Function Documentation}
+\index{Logistic@{Logistic}!get\+Learning\+Rate@{get\+Learning\+Rate}}
+\index{get\+Learning\+Rate@{get\+Learning\+Rate}!Logistic@{Logistic}}
+\subsubsection[{\texorpdfstring{get\+Learning\+Rate()}{getLearningRate()}}]{\setlength{\rightskip}{0pt plus 5cm}double Logistic\+::get\+Learning\+Rate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classLogistic_a084db9a2f532893a6bdfc75551ca9713}{}\label{classLogistic_a084db9a2f532893a6bdfc75551ca9713}
+The user can retrieve alpha by calling the get\+Learning\+Rate getter. \index{Logistic@{Logistic}!predict@{predict}}
+\index{predict@{predict}!Logistic@{Logistic}}
+\subsubsection[{\texorpdfstring{predict(const mat \&, colvec \&)}{predict(const mat &, colvec &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Logistic\+::predict (
+\begin{DoxyParamCaption}
+\item[{const mat \&}]{data, }
+\item[{colvec \&}]{Y}
+\end{DoxyParamCaption}
+)}\hypertarget{classLogistic_a84e35026ef7401e5454586936c7d430f}{}\label{classLogistic_a84e35026ef7401e5454586936c7d430f}
+The predict function accepts a matrix of inputs and a column vector of labels initialized to 0. As the column vector is passed by reference, the algorithm simply inserts the computed predictions into the vector and returns void. \index{Logistic@{Logistic}!set\+Learning\+Rate@{set\+Learning\+Rate}}
+\index{set\+Learning\+Rate@{set\+Learning\+Rate}!Logistic@{Logistic}}
+\subsubsection[{\texorpdfstring{set\+Learning\+Rate(double alpha)}{setLearningRate(double alpha)}}]{\setlength{\rightskip}{0pt plus 5cm}void Logistic\+::set\+Learning\+Rate (
+\begin{DoxyParamCaption}
+\item[{double}]{alpha}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classLogistic_a5c2797f065d02feef3c83e906c408b99}{}\label{classLogistic_a5c2797f065d02feef3c83e906c408b99}
+The user can change the value of alpha by calling the set\+Learning\+Rate setter. \index{Logistic@{Logistic}!sigmoid@{sigmoid}}
+\index{sigmoid@{sigmoid}!Logistic@{Logistic}}
+\subsubsection[{\texorpdfstring{sigmoid(const colvec \&)}{sigmoid(const colvec &)}}]{\setlength{\rightskip}{0pt plus 5cm}colvec Logistic\+::sigmoid (
+\begin{DoxyParamCaption}
+\item[{const colvec \&}]{Z}
+\end{DoxyParamCaption}
+)}\hypertarget{classLogistic_af746b2219793f25b26827dba183a2dce}{}\label{classLogistic_af746b2219793f25b26827dba183a2dce}
+The sigmoid function calculates the sigmoid function. The function receives a column vector for input and returns a column vector as a result. The logistic function transforms any input into the range (0, 1). \index{Logistic@{Logistic}!train@{train}}
+\index{train@{train}!Logistic@{Logistic}}
+\subsubsection[{\texorpdfstring{train(const mat \&, const colvec \&, uword)}{train(const mat &, const colvec &, uword)}}]{\setlength{\rightskip}{0pt plus 5cm}void Logistic\+::train (
+\begin{DoxyParamCaption}
+\item[{const mat \&}]{data, }
+\item[{const colvec \&}]{Y, }
+\item[{uword}]{epoch}
+\end{DoxyParamCaption}
+)}\hypertarget{classLogistic_a39f2b8b964ae18554a2affd7c3528bff}{}\label{classLogistic_a39f2b8b964ae18554a2affd7c3528bff}
+The train function accepts a matrix of sample inputs, a column vector of sample labels, and a uword representing the number of epochs. Given these inputs, logistic regression is able to generate a model for predicting on new inputs. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+source/\+Logistic\+Regression/logistic\+\_\+regression.\+h\item 
+source/\+Logistic\+Regression/logistic\+\_\+regression.\+cpp\end{DoxyCompactItemize}

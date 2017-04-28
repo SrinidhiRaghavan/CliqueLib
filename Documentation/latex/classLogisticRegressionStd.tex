@@ -1,0 +1,120 @@
+\hypertarget{classLogisticRegressionStd}{}\section{Logistic\+Regression\+Std Class Reference}
+\label{classLogisticRegressionStd}\index{Logistic\+Regression\+Std@{Logistic\+Regression\+Std}}
+
+
+{\ttfamily \#include $<$logistic\+\_\+regression\+\_\+std.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classLogisticRegressionStd_a22ba912061af2c3886dcd2bba021a813}{Logistic\+Regression\+Std} (vector$<$ vector$<$ float $>$ $>$ train\+\_\+file)
+\item 
+\hyperlink{classLogisticRegressionStd_a8d9374c3af263323b0f9f783162e1a98}{Logistic\+Regression\+Std} (vector$<$ vector$<$ float $>$ $>$ train\+\_\+file, int num\+\_\+epochs, float learning\+\_\+rate)
+\item 
+int \hyperlink{classLogisticRegressionStd_a2efe3855fe471c6899529a2ecb95f56f}{get\+\_\+num\+\_\+epochs} ()
+\item 
+float \hyperlink{classLogisticRegressionStd_ae6038eea55bcbdfc25086b5f486f5c6f}{get\+\_\+learning\+\_\+rate} ()
+\item 
+void \hyperlink{classLogisticRegressionStd_a496e5025ae0b5e1f91539dcacc3b708e}{set\+\_\+num\+\_\+epochs} (int num\+\_\+epochs)
+\item 
+void \hyperlink{classLogisticRegressionStd_a8c751c719e3f23431601e844d727aa29}{set\+\_\+learning\+\_\+rate} (float learning\+\_\+rate)
+\item 
+float \hyperlink{classLogisticRegressionStd_a7171a6c804319894543dffd928e95c12}{sigmoid\+\_\+function} (float)
+\item 
+vector$<$ float $>$ \hyperlink{classLogisticRegressionStd_ab165dfd866aa94f54913fae1c7654797}{train} ()
+\item 
+float \hyperlink{classLogisticRegressionStd_ab3099375fe4881bb9dd19fbc973e5a29}{predict\+\_\+label} (vector$<$ float $>$, vector$<$ float $>$, bool)
+\item 
+vector$<$ float $>$ \hyperlink{classLogisticRegressionStd_a72426e5570bd4385149f5fb517c7eced}{predict} (vector$<$ vector$<$ float $>$ $>$, vector$<$ float $>$, bool binary=true)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classLogisticRegressionStd}{Logistic\+Regression\+Std} is Clique\+Lib\textquotesingle{}s implementation of the \hyperlink{classLogistic}{Logistic} Regression algorithm with vector$<$vector$>$ $>$ data structures rather than Armadillo. \hyperlink{classLogistic}{Logistic} regression, also called logit regression, is a machine learning algorithm used for binary classification. \hyperlink{classLogistic}{Logistic} regression is named after its core function, the logistic function, also called the sigmoid function. The algorithm predicts what the probability is of an input belonging to one of the two classes. If the probability is more than 0.\+5, the output is a prediction for that class. Otherwise, the prediction is for the other class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Logistic\+Regression\+Std@{Logistic\+Regression\+Std}!Logistic\+Regression\+Std@{Logistic\+Regression\+Std}}
+\index{Logistic\+Regression\+Std@{Logistic\+Regression\+Std}!Logistic\+Regression\+Std@{Logistic\+Regression\+Std}}
+\subsubsection[{\texorpdfstring{Logistic\+Regression\+Std(vector$<$ vector$<$ float $>$ $>$ train\+\_\+file)}{LogisticRegressionStd(vector< vector< float > > train_file)}}]{\setlength{\rightskip}{0pt plus 5cm}Logistic\+Regression\+Std\+::\+Logistic\+Regression\+Std (
+\begin{DoxyParamCaption}
+\item[{vector$<$ vector$<$ float $>$ $>$}]{train\+\_\+file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classLogisticRegressionStd_a22ba912061af2c3886dcd2bba021a813}{}\label{classLogisticRegressionStd_a22ba912061af2c3886dcd2bba021a813}
+A default constructor for \hyperlink{classLogistic}{Logistic} Regression is available and sets the default learning rate alpha to 0.\+01 and the number of epochs to 100. \index{Logistic\+Regression\+Std@{Logistic\+Regression\+Std}!Logistic\+Regression\+Std@{Logistic\+Regression\+Std}}
+\index{Logistic\+Regression\+Std@{Logistic\+Regression\+Std}!Logistic\+Regression\+Std@{Logistic\+Regression\+Std}}
+\subsubsection[{\texorpdfstring{Logistic\+Regression\+Std(vector$<$ vector$<$ float $>$ $>$ train\+\_\+file, int num\+\_\+epochs, float learning\+\_\+rate)}{LogisticRegressionStd(vector< vector< float > > train_file, int num_epochs, float learning_rate)}}]{\setlength{\rightskip}{0pt plus 5cm}Logistic\+Regression\+Std\+::\+Logistic\+Regression\+Std (
+\begin{DoxyParamCaption}
+\item[{vector$<$ vector$<$ float $>$ $>$}]{train\+\_\+file, }
+\item[{int}]{num\+\_\+epochs, }
+\item[{float}]{learning\+\_\+rate}
+\end{DoxyParamCaption}
+)}\hypertarget{classLogisticRegressionStd_a8d9374c3af263323b0f9f783162e1a98}{}\label{classLogisticRegressionStd_a8d9374c3af263323b0f9f783162e1a98}
+A logistic regression object is created by a constructor wherein the user must specify the learning rate alpha alongside the integer number of epochs and the training dataset train\+\_\+file. The learning rate is used when calculating the coefficients with stochastic gradient descent. 
+
+\subsection{Member Function Documentation}
+\index{Logistic\+Regression\+Std@{Logistic\+Regression\+Std}!get\+\_\+learning\+\_\+rate@{get\+\_\+learning\+\_\+rate}}
+\index{get\+\_\+learning\+\_\+rate@{get\+\_\+learning\+\_\+rate}!Logistic\+Regression\+Std@{Logistic\+Regression\+Std}}
+\subsubsection[{\texorpdfstring{get\+\_\+learning\+\_\+rate()}{get_learning_rate()}}]{\setlength{\rightskip}{0pt plus 5cm}float Logistic\+Regression\+Std\+::get\+\_\+learning\+\_\+rate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classLogisticRegressionStd_ae6038eea55bcbdfc25086b5f486f5c6f}{}\label{classLogisticRegressionStd_ae6038eea55bcbdfc25086b5f486f5c6f}
+The user can retrieve the learning rate by calling the function\textquotesingle{}s \hyperlink{classLogisticRegressionStd_ae6038eea55bcbdfc25086b5f486f5c6f}{get\+\_\+learning\+\_\+rate()} getter \index{Logistic\+Regression\+Std@{Logistic\+Regression\+Std}!get\+\_\+num\+\_\+epochs@{get\+\_\+num\+\_\+epochs}}
+\index{get\+\_\+num\+\_\+epochs@{get\+\_\+num\+\_\+epochs}!Logistic\+Regression\+Std@{Logistic\+Regression\+Std}}
+\subsubsection[{\texorpdfstring{get\+\_\+num\+\_\+epochs()}{get_num_epochs()}}]{\setlength{\rightskip}{0pt plus 5cm}int Logistic\+Regression\+Std\+::get\+\_\+num\+\_\+epochs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classLogisticRegressionStd_a2efe3855fe471c6899529a2ecb95f56f}{}\label{classLogisticRegressionStd_a2efe3855fe471c6899529a2ecb95f56f}
+The user can retrieve the number of epochs by calling the function\textquotesingle{}s \hyperlink{classLogisticRegressionStd_a2efe3855fe471c6899529a2ecb95f56f}{get\+\_\+num\+\_\+epochs()} getter \index{Logistic\+Regression\+Std@{Logistic\+Regression\+Std}!predict@{predict}}
+\index{predict@{predict}!Logistic\+Regression\+Std@{Logistic\+Regression\+Std}}
+\subsubsection[{\texorpdfstring{predict(vector$<$ vector$<$ float $>$ $>$, vector$<$ float $>$, bool binary=true)}{predict(vector< vector< float > >, vector< float >, bool binary=true)}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ float $>$ Logistic\+Regression\+Std\+::predict (
+\begin{DoxyParamCaption}
+\item[{vector$<$ vector$<$ float $>$ $>$}]{instances, }
+\item[{vector$<$ float $>$}]{coefficients, }
+\item[{bool}]{binary = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\hypertarget{classLogisticRegressionStd_a72426e5570bd4385149f5fb517c7eced}{}\label{classLogisticRegressionStd_a72426e5570bd4385149f5fb517c7eced}
+Predict\+\_\+label predicts the label for a single example. On the other hand, the predict function takes a vector of examples and predicts a label for every one of them. The function accepts as input the vector$<$vector$<$float$>$ $>$ of instances to predict, vector$<$float$>$ of coefficients, and a boolean binary which states whether the results should be returned as a real value \mbox{[}0, 1\mbox{]} or as a binary -\/ 0 or 1. \index{Logistic\+Regression\+Std@{Logistic\+Regression\+Std}!predict\+\_\+label@{predict\+\_\+label}}
+\index{predict\+\_\+label@{predict\+\_\+label}!Logistic\+Regression\+Std@{Logistic\+Regression\+Std}}
+\subsubsection[{\texorpdfstring{predict\+\_\+label(vector$<$ float $>$, vector$<$ float $>$, bool)}{predict_label(vector< float >, vector< float >, bool)}}]{\setlength{\rightskip}{0pt plus 5cm}float Logistic\+Regression\+Std\+::predict\+\_\+label (
+\begin{DoxyParamCaption}
+\item[{vector$<$ float $>$}]{instance, }
+\item[{vector$<$ float $>$}]{coefficients, }
+\item[{bool}]{binary}
+\end{DoxyParamCaption}
+)}\hypertarget{classLogisticRegressionStd_ab3099375fe4881bb9dd19fbc973e5a29}{}\label{classLogisticRegressionStd_ab3099375fe4881bb9dd19fbc973e5a29}
+Predict\+\_\+label predicts the label for a single example. On the other hand, the predict function takes a vector of examples and predicts a label for every one of them. Predict\+\_\+label takes 3 inputs as predict, however, vector$<$float$>$ is passed for a single instance rather than the vector of instances passed to predict. \index{Logistic\+Regression\+Std@{Logistic\+Regression\+Std}!set\+\_\+learning\+\_\+rate@{set\+\_\+learning\+\_\+rate}}
+\index{set\+\_\+learning\+\_\+rate@{set\+\_\+learning\+\_\+rate}!Logistic\+Regression\+Std@{Logistic\+Regression\+Std}}
+\subsubsection[{\texorpdfstring{set\+\_\+learning\+\_\+rate(float learning\+\_\+rate)}{set_learning_rate(float learning_rate)}}]{\setlength{\rightskip}{0pt plus 5cm}void Logistic\+Regression\+Std\+::set\+\_\+learning\+\_\+rate (
+\begin{DoxyParamCaption}
+\item[{float}]{learning\+\_\+rate}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classLogisticRegressionStd_a8c751c719e3f23431601e844d727aa29}{}\label{classLogisticRegressionStd_a8c751c719e3f23431601e844d727aa29}
+The user can change the value of the learning rate alpha by calling the function\textquotesingle{}s set\+\_\+learning\+\_\+rate setter \index{Logistic\+Regression\+Std@{Logistic\+Regression\+Std}!set\+\_\+num\+\_\+epochs@{set\+\_\+num\+\_\+epochs}}
+\index{set\+\_\+num\+\_\+epochs@{set\+\_\+num\+\_\+epochs}!Logistic\+Regression\+Std@{Logistic\+Regression\+Std}}
+\subsubsection[{\texorpdfstring{set\+\_\+num\+\_\+epochs(int num\+\_\+epochs)}{set_num_epochs(int num_epochs)}}]{\setlength{\rightskip}{0pt plus 5cm}void Logistic\+Regression\+Std\+::set\+\_\+num\+\_\+epochs (
+\begin{DoxyParamCaption}
+\item[{int}]{num\+\_\+epochs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classLogisticRegressionStd_a496e5025ae0b5e1f91539dcacc3b708e}{}\label{classLogisticRegressionStd_a496e5025ae0b5e1f91539dcacc3b708e}
+The user can change the value of alpha by calling the function\textquotesingle{}s set\+\_\+learning\+\_\+rate setter \index{Logistic\+Regression\+Std@{Logistic\+Regression\+Std}!sigmoid\+\_\+function@{sigmoid\+\_\+function}}
+\index{sigmoid\+\_\+function@{sigmoid\+\_\+function}!Logistic\+Regression\+Std@{Logistic\+Regression\+Std}}
+\subsubsection[{\texorpdfstring{sigmoid\+\_\+function(float)}{sigmoid_function(float)}}]{\setlength{\rightskip}{0pt plus 5cm}float Logistic\+Regression\+Std\+::sigmoid\+\_\+function (
+\begin{DoxyParamCaption}
+\item[{float}]{z}
+\end{DoxyParamCaption}
+)}\hypertarget{classLogisticRegressionStd_a7171a6c804319894543dffd928e95c12}{}\label{classLogisticRegressionStd_a7171a6c804319894543dffd928e95c12}
+The sigmoid function calculates the sigmoid function. The function receives a float for input and returns a float as a result. The logistic function transforms any input into the range (0, 1). \index{Logistic\+Regression\+Std@{Logistic\+Regression\+Std}!train@{train}}
+\index{train@{train}!Logistic\+Regression\+Std@{Logistic\+Regression\+Std}}
+\subsubsection[{\texorpdfstring{train()}{train()}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ float $>$ Logistic\+Regression\+Std\+::train (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classLogisticRegressionStd_ab165dfd866aa94f54913fae1c7654797}{}\label{classLogisticRegressionStd_ab165dfd866aa94f54913fae1c7654797}
+The train function trains the model for logistic regression and returns a vector of coefficients. The coefficients are obtained using stochastic gradient descent. The training dataset is iterated over num\+\_\+epochs times and coefficients are consistently modified to build a reliable model. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+source/\+Logistic\+Regression\+Std/logistic\+\_\+regression\+\_\+std.\+h\item 
+source/\+Logistic\+Regression\+Std/logistic\+\_\+regression\+\_\+std.\+cpp\end{DoxyCompactItemize}

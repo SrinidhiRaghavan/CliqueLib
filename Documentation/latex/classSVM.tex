@@ -1,0 +1,76 @@
+\hypertarget{classSVM}{}\section{S\+VM Class Reference}
+\label{classSVM}\index{S\+VM@{S\+VM}}
+
+
+Inheritance diagram for S\+VM\+:
+% FIG 0
+
+
+Collaboration diagram for S\+VM\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSVM_abd852ed1f552b83c0b66fc135aba518b}{S\+VM} ()
+\item 
+\hyperlink{classSVM_a73f7590f57ff8354264061eb29975bd8}{S\+VM} (double)
+\item 
+void \hyperlink{classSVM_adefa037277c8e65b2e1fa20b4b538939}{train} (const mat \&, const colvec \&, uword)
+\item 
+void \hyperlink{classSVM_a68e86812a98797d7349b5c2d69ca63f7}{predict} (const mat \&, colvec \&)
+\item 
+double {\bfseries get\+Regularization\+Parameter} ()\hypertarget{classSVM_a0f0c1e3ad97b46bb951cafea9c660426}{}\label{classSVM_a0f0c1e3ad97b46bb951cafea9c660426}
+
+\item 
+void \hyperlink{classSVM_a3153e7866092884558fa1b8999dffed9}{set\+Regularization\+Parameter} (double C)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{S\+VM@{S\+VM}!S\+VM@{S\+VM}}
+\index{S\+VM@{S\+VM}!S\+VM@{S\+VM}}
+\subsubsection[{\texorpdfstring{S\+V\+M()}{SVM()}}]{\setlength{\rightskip}{0pt plus 5cm}S\+V\+M\+::\+S\+VM (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classSVM_abd852ed1f552b83c0b66fc135aba518b}{}\label{classSVM_abd852ed1f552b83c0b66fc135aba518b}
+A default constructor for \hyperlink{classSVM}{S\+VM} is available and sets the default double C, the regularization parameter, to 0.\+01. \index{S\+VM@{S\+VM}!S\+VM@{S\+VM}}
+\index{S\+VM@{S\+VM}!S\+VM@{S\+VM}}
+\subsubsection[{\texorpdfstring{S\+V\+M(double)}{SVM(double)}}]{\setlength{\rightskip}{0pt plus 5cm}S\+V\+M\+::\+S\+VM (
+\begin{DoxyParamCaption}
+\item[{double}]{C\+\_\+val}
+\end{DoxyParamCaption}
+)}\hypertarget{classSVM_a73f7590f57ff8354264061eb29975bd8}{}\label{classSVM_a73f7590f57ff8354264061eb29975bd8}
+An \hyperlink{classSVM}{S\+VM} object is created by a constructor wherein the user must specify the regularization parameter C. The regularization parameter is used in the \hyperlink{classSVM}{S\+VM} train function to compute the lambda parameter for \hyperlink{classSVM}{S\+VM}. The Lambda parameter is then used in the Pegasos algorithm to find the weight vector. 
+
+\subsection{Member Function Documentation}
+\index{S\+VM@{S\+VM}!predict@{predict}}
+\index{predict@{predict}!S\+VM@{S\+VM}}
+\subsubsection[{\texorpdfstring{predict(const mat \&, colvec \&)}{predict(const mat &, colvec &)}}]{\setlength{\rightskip}{0pt plus 5cm}void S\+V\+M\+::predict (
+\begin{DoxyParamCaption}
+\item[{const mat \&}]{data, }
+\item[{colvec \&}]{Y}
+\end{DoxyParamCaption}
+)}\hypertarget{classSVM_a68e86812a98797d7349b5c2d69ca63f7}{}\label{classSVM_a68e86812a98797d7349b5c2d69ca63f7}
+The predict function accepts a matrix of inputs and a column vector of labels initialized to 0. As the column vector is passed by reference, the algorithm simply inserts the computed predictions into the vector and returns void. There are two major steps to \hyperlink{classSVM}{S\+VM} predictions\+: Step 1 -\/ Find the product of the data entries and the weight Step 2 -\/ If the product $>$= 0, then predict 1 else -\/1 \index{S\+VM@{S\+VM}!set\+Regularization\+Parameter@{set\+Regularization\+Parameter}}
+\index{set\+Regularization\+Parameter@{set\+Regularization\+Parameter}!S\+VM@{S\+VM}}
+\subsubsection[{\texorpdfstring{set\+Regularization\+Parameter(double C)}{setRegularizationParameter(double C)}}]{\setlength{\rightskip}{0pt plus 5cm}void S\+V\+M\+::set\+Regularization\+Parameter (
+\begin{DoxyParamCaption}
+\item[{double}]{C}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classSVM_a3153e7866092884558fa1b8999dffed9}{}\label{classSVM_a3153e7866092884558fa1b8999dffed9}
+The user can retrieve the regularization parameter C by calling the get\+Regularization\+Parameter getter. The user can change the value of the regularization parameter C by calling the set\+Regularization\+Parameter setter. \index{S\+VM@{S\+VM}!train@{train}}
+\index{train@{train}!S\+VM@{S\+VM}}
+\subsubsection[{\texorpdfstring{train(const mat \&, const colvec \&, uword)}{train(const mat &, const colvec &, uword)}}]{\setlength{\rightskip}{0pt plus 5cm}void S\+V\+M\+::train (
+\begin{DoxyParamCaption}
+\item[{const mat \&}]{data, }
+\item[{const colvec \&}]{Y, }
+\item[{uword}]{epoch}
+\end{DoxyParamCaption}
+)}\hypertarget{classSVM_adefa037277c8e65b2e1fa20b4b538939}{}\label{classSVM_adefa037277c8e65b2e1fa20b4b538939}
+The train function accepts a matrix of sample inputs, a column vector of sample labels, and a uword representing the number of epochs. Given these inputs, \hyperlink{classSVM}{S\+VM} can apply the Pegasos algorithm for Linear Kernels to Find the Ideal Weight Vector which constitutes a model for predicting on new inputs. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+source/\+S\+V\+M/S\+V\+M.\+h\item 
+source/\+S\+V\+M/S\+V\+M.\+cpp\end{DoxyCompactItemize}

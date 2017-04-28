@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['perceptron',['Perceptron',['../classPerceptron.html#a5b8f94d3ec951f153774575e2acdf582',1,'Perceptron::Perceptron()'],['../classPerceptron.html#a1ccbe33e4e26ee0258e63ab01507498d',1,'Perceptron::Perceptron(double)']]],
+  ['predict',['predict',['../classAdaBoost.html#a700eefa154b63673ca40ec258d3b803a',1,'AdaBoost::predict()'],['../classBaggingClassifier.html#a1be0950979be0f5b30ee5849751fad94',1,'BaggingClassifier::predict()'],['../classBaseClassifier.html#a6b025862e956120b89302007745ec30d',1,'BaseClassifier::predict()'],['../classKNN.html#adbcbfadf1460448dfcece84f796874db',1,'KNN::predict()'],['../classKNNStd.html#a61d7d4d3d4be142927018cfa96a117c1',1,'KNNStd::predict()'],['../classLogistic.html#a84e35026ef7401e5454586936c7d430f',1,'Logistic::predict()'],['../classLogisticRegressionStd.html#a72426e5570bd4385149f5fb517c7eced',1,'LogisticRegressionStd::predict()'],['../classPerceptron.html#a36db241f14bb94709bd7c04c19daab1c',1,'Perceptron::predict()'],['../classSVM.html#a68e86812a98797d7349b5c2d69ca63f7',1,'SVM::predict()'],['../classVotingClassifier.html#a2ae92d9d9e3a0be5c2081544054ff5b5',1,'VotingClassifier::predict()']]],
+  ['predict_5flabel',['predict_label',['../classKNNStd.html#a8a5545234ca9adcce0a6d38636f3f9b4',1,'KNNStd::predict_label()'],['../classLogisticRegressionStd.html#ab3099375fe4881bb9dd19fbc973e5a29',1,'LogisticRegressionStd::predict_label()']]],
+  ['predictstump',['predictStump',['../classStump.html#aeea11090771c4db880c5044d8b4d2c07',1,'Stump']]]
+];

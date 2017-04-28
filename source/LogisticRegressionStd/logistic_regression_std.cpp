@@ -23,7 +23,6 @@ float LogisticRegressionStd::sigmoid_function(float z)
     return 1.0 / (1.0 + pow(e, -z));
 }
 
-
 //Train - returns a vector of coefficients
 //Uses stochastic gradient descent
 vector<float> LogisticRegressionStd::train()

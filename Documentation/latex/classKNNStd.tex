@@ -1,0 +1,117 @@
+\hypertarget{classKNNStd}{}\section{K\+N\+N\+Std Class Reference}
+\label{classKNNStd}\index{K\+N\+N\+Std@{K\+N\+N\+Std}}
+
+
+{\ttfamily \#include $<$knnstd.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classKNNStd_abfd0c263161568afdbf1a8bf96267230}{K\+N\+N\+Std} (vector$<$ vector$<$ float $>$ $>$ train\+\_\+file)
+\item 
+\hyperlink{classKNNStd_a706ed97e4625fdfe507a90bd152f1a15}{K\+N\+N\+Std} (vector$<$ vector$<$ float $>$ $>$ train\+\_\+file, int k)
+\item 
+int \hyperlink{classKNNStd_ad7ce711159c4c2609a4dd4a57d4bc98b}{getK} ()
+\item 
+void \hyperlink{classKNNStd_a4473354d0a585bf09896b1d6ada3d1e1}{setK} (int k)
+\item 
+float \hyperlink{classKNNStd_a620734fe288a7fff38d59f8c5f50c4f9}{euclidean\+Distance} (int, vector$<$ float $>$, vector$<$ float $>$)
+\item 
+vector$<$ vector$<$ float $>$ $>$ \hyperlink{classKNNStd_abb1d4ca9c2a997f799881c6e0b74f7de}{find\+Neighbors} (vector$<$ float $>$)
+\item 
+float \hyperlink{classKNNStd_a992822075592286e1ed4c43194e20be9}{find\+Class} (vector$<$ vector$<$ float $>$ $>$)
+\item 
+vector$<$ vector$<$ float $>$ $>$ \hyperlink{classKNNStd_a2de41ed4f9d4fd122839de95ad60e0a8}{train} ()
+\item 
+float \hyperlink{classKNNStd_a8a5545234ca9adcce0a6d38636f3f9b4}{predict\+\_\+label} (vector$<$ float $>$)
+\item 
+vector$<$ float $>$ \hyperlink{classKNNStd_a61d7d4d3d4be142927018cfa96a117c1}{predict} (vector$<$ vector$<$ float $>$ $>$)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classKNNStd}{K\+N\+N\+Std} is Clique\+Lib\textquotesingle{}s implementation of the K-\/\+Nearest Neighbors algorithm with vector$<$vector$>$ $>$ data structures rather than Armadillo. \hyperlink{classKNN}{K\+NN} differs greatly from many machine learning algorithms since it does not implement a model. In fact, the entire training dataset could be considered as the model for k\+NN. The k\+NN algorithm searches through the training example for k closest instances. The prevailing prediction of these k nearest neighbors is returned as the prediction for the new input. Euclidean distance is used for measuring the similarity between instances. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{K\+N\+N\+Std@{K\+N\+N\+Std}!K\+N\+N\+Std@{K\+N\+N\+Std}}
+\index{K\+N\+N\+Std@{K\+N\+N\+Std}!K\+N\+N\+Std@{K\+N\+N\+Std}}
+\subsubsection[{\texorpdfstring{K\+N\+N\+Std(vector$<$ vector$<$ float $>$ $>$ train\+\_\+file)}{KNNStd(vector< vector< float > > train_file)}}]{\setlength{\rightskip}{0pt plus 5cm}K\+N\+N\+Std\+::\+K\+N\+N\+Std (
+\begin{DoxyParamCaption}
+\item[{vector$<$ vector$<$ float $>$ $>$}]{train\+\_\+file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classKNNStd_abfd0c263161568afdbf1a8bf96267230}{}\label{classKNNStd_abfd0c263161568afdbf1a8bf96267230}
+A default constructor for \hyperlink{classKNN}{K\+NN} is available and sets the default value of k to 3 as well as declares the training dataset. \index{K\+N\+N\+Std@{K\+N\+N\+Std}!K\+N\+N\+Std@{K\+N\+N\+Std}}
+\index{K\+N\+N\+Std@{K\+N\+N\+Std}!K\+N\+N\+Std@{K\+N\+N\+Std}}
+\subsubsection[{\texorpdfstring{K\+N\+N\+Std(vector$<$ vector$<$ float $>$ $>$ train\+\_\+file, int k)}{KNNStd(vector< vector< float > > train_file, int k)}}]{\setlength{\rightskip}{0pt plus 5cm}K\+N\+N\+Std\+::\+K\+N\+N\+Std (
+\begin{DoxyParamCaption}
+\item[{vector$<$ vector$<$ float $>$ $>$}]{train\+\_\+file, }
+\item[{int}]{k}
+\end{DoxyParamCaption}
+)}\hypertarget{classKNNStd_a706ed97e4625fdfe507a90bd152f1a15}{}\label{classKNNStd_a706ed97e4625fdfe507a90bd152f1a15}
+A \hyperlink{classKNN}{K\+NN} object is created by a constructor wherein the user must specify the training .csv dataset and the value k representing k nearest neighbors. 
+
+\subsection{Member Function Documentation}
+\index{K\+N\+N\+Std@{K\+N\+N\+Std}!euclidean\+Distance@{euclidean\+Distance}}
+\index{euclidean\+Distance@{euclidean\+Distance}!K\+N\+N\+Std@{K\+N\+N\+Std}}
+\subsubsection[{\texorpdfstring{euclidean\+Distance(int, vector$<$ float $>$, vector$<$ float $>$)}{euclideanDistance(int, vector< float >, vector< float >)}}]{\setlength{\rightskip}{0pt plus 5cm}float K\+N\+N\+Std\+::euclidean\+Distance (
+\begin{DoxyParamCaption}
+\item[{int}]{num\+\_\+attributes, }
+\item[{vector$<$ float $>$}]{instance1, }
+\item[{vector$<$ float $>$}]{instance2}
+\end{DoxyParamCaption}
+)}\hypertarget{classKNNStd_a620734fe288a7fff38d59f8c5f50c4f9}{}\label{classKNNStd_a620734fe288a7fff38d59f8c5f50c4f9}
+The euclidean\+Distance method takes int num\+\_\+attributes as a parameter representing number of attributes of every example, and two examples between which Euclidean distance is calculated and returned as float. \index{K\+N\+N\+Std@{K\+N\+N\+Std}!find\+Class@{find\+Class}}
+\index{find\+Class@{find\+Class}!K\+N\+N\+Std@{K\+N\+N\+Std}}
+\subsubsection[{\texorpdfstring{find\+Class(vector$<$ vector$<$ float $>$ $>$)}{findClass(vector< vector< float > >)}}]{\setlength{\rightskip}{0pt plus 5cm}float K\+N\+N\+Std\+::find\+Class (
+\begin{DoxyParamCaption}
+\item[{vector$<$ vector$<$ float $>$ $>$}]{k\+\_\+neighbors}
+\end{DoxyParamCaption}
+)}\hypertarget{classKNNStd_a992822075592286e1ed4c43194e20be9}{}\label{classKNNStd_a992822075592286e1ed4c43194e20be9}
+This function is called by predict\+\_\+label to find the best class from all neighbors. The label is returned as a float. \index{K\+N\+N\+Std@{K\+N\+N\+Std}!find\+Neighbors@{find\+Neighbors}}
+\index{find\+Neighbors@{find\+Neighbors}!K\+N\+N\+Std@{K\+N\+N\+Std}}
+\subsubsection[{\texorpdfstring{find\+Neighbors(vector$<$ float $>$)}{findNeighbors(vector< float >)}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ vector$<$ float $>$ $>$ K\+N\+N\+Std\+::find\+Neighbors (
+\begin{DoxyParamCaption}
+\item[{vector$<$ float $>$}]{instance}
+\end{DoxyParamCaption}
+)}\hypertarget{classKNNStd_abb1d4ca9c2a997f799881c6e0b74f7de}{}\label{classKNNStd_abb1d4ca9c2a997f799881c6e0b74f7de}
+find\+Neighbors takes the instance to be predicted and finds the k nearest neighbors, which are returned in a vector$<$vector$<$float$>$ $>$ \index{K\+N\+N\+Std@{K\+N\+N\+Std}!getK@{getK}}
+\index{getK@{getK}!K\+N\+N\+Std@{K\+N\+N\+Std}}
+\subsubsection[{\texorpdfstring{get\+K()}{getK()}}]{\setlength{\rightskip}{0pt plus 5cm}int K\+N\+N\+Std\+::getK (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classKNNStd_ad7ce711159c4c2609a4dd4a57d4bc98b}{}\label{classKNNStd_ad7ce711159c4c2609a4dd4a57d4bc98b}
+The user can retrieve k by calling the function\textquotesingle{}s getter. \index{K\+N\+N\+Std@{K\+N\+N\+Std}!predict@{predict}}
+\index{predict@{predict}!K\+N\+N\+Std@{K\+N\+N\+Std}}
+\subsubsection[{\texorpdfstring{predict(vector$<$ vector$<$ float $>$ $>$)}{predict(vector< vector< float > >)}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ float $>$ K\+N\+N\+Std\+::predict (
+\begin{DoxyParamCaption}
+\item[{vector$<$ vector$<$ float $>$ $>$}]{instances}
+\end{DoxyParamCaption}
+)}\hypertarget{classKNNStd_a61d7d4d3d4be142927018cfa96a117c1}{}\label{classKNNStd_a61d7d4d3d4be142927018cfa96a117c1}
+Predict\+\_\+label predicts the label for a single example. On the other hand, the predict function takes a vector of examples and predicts a label for every one of them. \index{K\+N\+N\+Std@{K\+N\+N\+Std}!predict\+\_\+label@{predict\+\_\+label}}
+\index{predict\+\_\+label@{predict\+\_\+label}!K\+N\+N\+Std@{K\+N\+N\+Std}}
+\subsubsection[{\texorpdfstring{predict\+\_\+label(vector$<$ float $>$)}{predict_label(vector< float >)}}]{\setlength{\rightskip}{0pt plus 5cm}float K\+N\+N\+Std\+::predict\+\_\+label (
+\begin{DoxyParamCaption}
+\item[{vector$<$ float $>$}]{instance}
+\end{DoxyParamCaption}
+)}\hypertarget{classKNNStd_a8a5545234ca9adcce0a6d38636f3f9b4}{}\label{classKNNStd_a8a5545234ca9adcce0a6d38636f3f9b4}
+The predict\+\_\+label function accepts a single input example and predicts a corresponding label. This is achieved by first calling a function that finds all neighbors (find\+Neighbors) before calling find\+Class that finds the actual label. The predict function iteratively calls predict\+\_\+label to generate a vector of float labels that is consequently returned. \index{K\+N\+N\+Std@{K\+N\+N\+Std}!setK@{setK}}
+\index{setK@{setK}!K\+N\+N\+Std@{K\+N\+N\+Std}}
+\subsubsection[{\texorpdfstring{set\+K(int k)}{setK(int k)}}]{\setlength{\rightskip}{0pt plus 5cm}void K\+N\+N\+Std\+::setK (
+\begin{DoxyParamCaption}
+\item[{int}]{k}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classKNNStd_a4473354d0a585bf09896b1d6ada3d1e1}{}\label{classKNNStd_a4473354d0a585bf09896b1d6ada3d1e1}
+The user can change the value of k by calling the function\textquotesingle{}s setter. \index{K\+N\+N\+Std@{K\+N\+N\+Std}!train@{train}}
+\index{train@{train}!K\+N\+N\+Std@{K\+N\+N\+Std}}
+\subsubsection[{\texorpdfstring{train()}{train()}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ vector$<$ float $>$ $>$ K\+N\+N\+Std\+::train (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classKNNStd_a2de41ed4f9d4fd122839de95ad60e0a8}{}\label{classKNNStd_a2de41ed4f9d4fd122839de95ad60e0a8}
+The train function is only kept for consistency and returns the vector$<$vector$<$float$>$ $>$ that it accepts as input. This is only done for consistency with other algorithms. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+source/\+K\+N\+N\+Std/knnstd.\+h\item 
+source/\+K\+N\+N\+Std/knnstd.\+cpp\end{DoxyCompactItemize}

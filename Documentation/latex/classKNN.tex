@@ -1,0 +1,89 @@
+\hypertarget{classKNN}{}\section{K\+NN Class Reference}
+\label{classKNN}\index{K\+NN@{K\+NN}}
+
+
+{\ttfamily \#include $<$K\+N\+N.\+h$>$}
+
+
+
+Inheritance diagram for K\+NN\+:
+% FIG 0
+
+
+Collaboration diagram for K\+NN\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classKNN_af5736f84aa09d2acbd4e5f6f4584820f}{K\+NN} ()
+\item 
+\hyperlink{classKNN_af967fef8cb9c49756f7355162fd513a0}{K\+NN} (uword)
+\item 
+void \hyperlink{classKNN_ad33321bbef850109228ba5ffef188cdd}{train} (const mat \&, const colvec \&, uword)
+\item 
+void \hyperlink{classKNN_adbcbfadf1460448dfcece84f796874db}{predict} (const mat \&, colvec \&)
+\item 
+uword \hyperlink{classKNN_af3dbfc1ce1580160ea0f9969520111c3}{getK} ()
+\item 
+void \hyperlink{classKNN_ab35b0d16ec11def3b20ae9b8d7a81868}{setK} (uword K)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+K-\/\+Nearest Neighbors (k\+NN) algorithms differs greatly from many machine learning algorithms since it does not implement a model. In fact, the entire training dataset could be considered as the model for k\+NN. The k\+NN algorithm searches through the training example for k closest instances. The prevailing prediction of these k nearest neighbors is returned as the prediction for the new input. Euclidean distance is used for measuring the similarity between instances. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{K\+NN@{K\+NN}!K\+NN@{K\+NN}}
+\index{K\+NN@{K\+NN}!K\+NN@{K\+NN}}
+\subsubsection[{\texorpdfstring{K\+N\+N()}{KNN()}}]{\setlength{\rightskip}{0pt plus 5cm}K\+N\+N\+::\+K\+NN (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classKNN_af5736f84aa09d2acbd4e5f6f4584820f}{}\label{classKNN_af5736f84aa09d2acbd4e5f6f4584820f}
+A default constructor for \hyperlink{classKNN}{K\+NN} is available and sets the default value of K to 3. \index{K\+NN@{K\+NN}!K\+NN@{K\+NN}}
+\index{K\+NN@{K\+NN}!K\+NN@{K\+NN}}
+\subsubsection[{\texorpdfstring{K\+N\+N(uword)}{KNN(uword)}}]{\setlength{\rightskip}{0pt plus 5cm}K\+N\+N\+::\+K\+NN (
+\begin{DoxyParamCaption}
+\item[{uword}]{K}
+\end{DoxyParamCaption}
+)}\hypertarget{classKNN_af967fef8cb9c49756f7355162fd513a0}{}\label{classKNN_af967fef8cb9c49756f7355162fd513a0}
+A \hyperlink{classKNN}{K\+NN} object is created by a constructor wherein the user must specify the value k representing k nearest neighbors. 
+
+\subsection{Member Function Documentation}
+\index{K\+NN@{K\+NN}!getK@{getK}}
+\index{getK@{getK}!K\+NN@{K\+NN}}
+\subsubsection[{\texorpdfstring{get\+K()}{getK()}}]{\setlength{\rightskip}{0pt plus 5cm}uword K\+N\+N\+::getK (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classKNN_af3dbfc1ce1580160ea0f9969520111c3}{}\label{classKNN_af3dbfc1ce1580160ea0f9969520111c3}
+The user can retrieve K by calling the function\textquotesingle{}s getter. \index{K\+NN@{K\+NN}!predict@{predict}}
+\index{predict@{predict}!K\+NN@{K\+NN}}
+\subsubsection[{\texorpdfstring{predict(const mat \&, colvec \&)}{predict(const mat &, colvec &)}}]{\setlength{\rightskip}{0pt plus 5cm}void K\+N\+N\+::predict (
+\begin{DoxyParamCaption}
+\item[{const mat \&}]{Xtest, }
+\item[{colvec \&}]{Ytest}
+\end{DoxyParamCaption}
+)}\hypertarget{classKNN_adbcbfadf1460448dfcece84f796874db}{}\label{classKNN_adbcbfadf1460448dfcece84f796874db}
+The predict function accepts a matrix of inputs and a column vector of labels initialized to 0. As the column vector is passed by reference, the algorithm simply inserts the computed predictions into the vector and returns void. \index{K\+NN@{K\+NN}!setK@{setK}}
+\index{setK@{setK}!K\+NN@{K\+NN}}
+\subsubsection[{\texorpdfstring{set\+K(uword K)}{setK(uword K)}}]{\setlength{\rightskip}{0pt plus 5cm}void K\+N\+N\+::setK (
+\begin{DoxyParamCaption}
+\item[{uword}]{K}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classKNN_ab35b0d16ec11def3b20ae9b8d7a81868}{}\label{classKNN_ab35b0d16ec11def3b20ae9b8d7a81868}
+The user can change the value of K by calling the function\textquotesingle{}s setter. \index{K\+NN@{K\+NN}!train@{train}}
+\index{train@{train}!K\+NN@{K\+NN}}
+\subsubsection[{\texorpdfstring{train(const mat \&, const colvec \&, uword)}{train(const mat &, const colvec &, uword)}}]{\setlength{\rightskip}{0pt plus 5cm}void K\+N\+N\+::train (
+\begin{DoxyParamCaption}
+\item[{const mat \&}]{X, }
+\item[{const colvec \&}]{Y, }
+\item[{uword}]{epoch = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}\hypertarget{classKNN_ad33321bbef850109228ba5ffef188cdd}{}\label{classKNN_ad33321bbef850109228ba5ffef188cdd}
+The train function accepts a matrix of sample inputs, a column vector of sample labels, and a uword representing the number of epochs. The number of epochs is never used in \hyperlink{classKNN}{K\+NN} but was kept for consistency. Given the other inputs, \hyperlink{classKNN}{K\+NN} is able to generate a model for predicting on new inputs. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+source/\+K\+N\+N/K\+N\+N.\+h\item 
+source/\+K\+N\+N/K\+N\+N.\+cpp\end{DoxyCompactItemize}
