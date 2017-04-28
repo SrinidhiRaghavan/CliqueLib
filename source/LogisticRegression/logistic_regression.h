@@ -28,10 +28,10 @@ class Logistic : public BaseClassifier
 {
     private:
 	colvec weight; /*!< Weight is a column vector of coefficients and is evaluated using stochastic
-                            gradient descent
+                            gradient descent.
                         */
 	double alpha; /*!< alpha is a learning rate, which states how much the coefficients change 
-                           every time they are updated 
+                           every time they are updated. 
                        */
                     
     public:
@@ -65,12 +65,12 @@ class Logistic : public BaseClassifier
                                         */
 
         double getLearningRate() { return alpha; } /**< The user can retrieve alpha by calling 
-                                                       the function's getter 
+                                                       the getLearningRate getter. 
                                                    */
 
         void setLearningRate(double alpha) { this->alpha = alpha; } /**< The user can change 
                                                                          the value of alpha by calling 
-                                                                         the function's setter 
+                                                                         the setLearningRate setter. 
                                                                      */
         
 };
