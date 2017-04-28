@@ -36,10 +36,12 @@ void Perceptron::train(const mat& data, const colvec& Y, uword epoch)
 	mat X = join_horiz(data, ones(n));
 
 	//Applying Gradient Descent to update the weights 
-	for (uword t = 0; t < epoch; t++) {
+	for (uword t = 0; t < epoch; t++) 
+        {
 		colvec delta(d+1);
 		delta.fill(0);
-		for(uword i = 0; i < n; i++){	
+		for(uword i = 0; i < n; i++)
+                {	
 			double f_word =  -1;
 			if (dot(X.row(i),w) >= 0)
 			    f_word = 1;
