@@ -13,7 +13,7 @@ using namespace arma;
 
 void test_adaboost()
 {
-	//cout << "it begins !!!" << endl;
+        std::cout << "\nTESTING ADABOOST" << std::endl;
 	mat x;
 	x << 1 << 2 << endr
 		<< 2 << 4 << endr
@@ -23,10 +23,9 @@ void test_adaboost()
 
 	mat xTest;
 	xTest << 2 << 1 << 3 << 4 << endr
-		<< 1 << 2 << 3 << 4 << endr
-		<< 3 << 2 << 3 << 4 << endr;
+	      << 1 << 2 << 3 << 4 << endr
+	      << 3 << 2 << 3 << 4 << endr;
 
-	//cout << "size(x)" << arma::size(x) << " x.size()" << x.size() << endl;
 	uword N = size(x, 0);
 	colvec w;
 	w.ones(N, 1);
@@ -34,16 +33,12 @@ void test_adaboost()
 
 	colvec y;
 	y << 1.0 << endr
-		<< -1.0 << endr
-		<< 1.0 << endr
-		<< -1.0 << endr
-		<< -1.0 << endr;
+	  << -1.0 << endr
+	  << 1.0 << endr
+	  << -1.0 << endr
+	  << -1.0 << endr;
 
 	auto z = x.col(0) % w;
-	//cout << "z:" << z << endl;
-
-	//cout << "x:" << x << endl;
-	//cout << "y:" << y << endl;
 
 	vector<double> v;
 	v.push_back(1);
@@ -57,38 +52,25 @@ void test_adaboost()
 	a.reshape(3, 2);
 	a = a.t();
 
-	//cout << "a:" << a << endl;
-	//cout << "size(a)" << arma::size(a) << " size(a, 0):" << size(a, 0) << " size(a, 1):" << size(a, 1) << endl;
-
-	//Stump* s = new Stump(0);
-	//double error, thres;
-	//s->calculateThreshold(x.col(1), y, w, "lesser", error, thres);
-	//s->buildOneDStump(x.col(1), y, w);
-	//AdaBoost ad;
-	//Stump* s = buildStump(x, y, w);
-	//cout << s;
-
-
 	AdaBoost ad;
 	uword iter = 2;
 	ad.train(x, y, iter);
 
 	colvec labels(arma::size(y));
-	//cout << "here!" << endl;
 
 	ad.predict(x, labels);
 
-	//s->predictStump(x, labels);
-	cout << "labels:" << labels;
+	cout << "\nlabels:\n" << labels;
 
 	uvec randA = randi<uvec>(3, 1, distr_param(0, N-1));
 	
-	cout << "x:" << x << endl;
-	cout << "randA:" << randA << endl;
-	cout << "x(randA):" << x.rows(randA) << endl;
+	cout << "x:\n" << x << endl;
+	cout << "randA:\n" << randA << endl;
+	cout << "x(randA):\n" << x.rows(randA) << endl;
 	x.rows(randA).fill(0.5);
 	x.col(0) = y;
-	cout << "x:" << x << endl;
-	cout << "x:" << find(sum(x, 1) > 5) << endl;
-	
+	cout << "x:\n" << x << endl;
+	cout << "x:\n" << find(sum(x, 1) > 5) << endl;	
+
+        std::cout << "\nTests Passed" << std::endl;
 }
