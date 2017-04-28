@@ -23,7 +23,7 @@ template<Classifier C>
 class BaggingClassifier 
 {
     private:
-	std::vector<std::shared_ptr<C>> base_estimators; /*!< base_estimators represents the number of classifiers
+	std::vector<std::shared_ptr<C>> base_estimators; /*!< base_estimators variable represents the number of classifiers
                                                               in an ensemble.
                                                           */
 	arma::uword n_estimators;
