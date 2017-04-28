@@ -21,5 +21,11 @@ void test_split_test_train_dataset()
     Dataset data;
     split_train_test(X, Y, data, 0.6);
 
+    cout << endl;
+    cout << "size Xtrain:" << arma::size(data.Xtrain) << " = 600X576" << endl;
+    cout << "size Ytrain:" << arma::size(data.Ytrain) << " = 600X1" << endl;
+    cout << "size Xtest:" << arma::size(data.Xtest) << " = 400X576" << endl;
+    cout << "size Ytest:" << arma::size(data.Ytest) << " = 400X1"<< endl;
+
     std::cout << "\nTest Passed" << std::endl;
 }
