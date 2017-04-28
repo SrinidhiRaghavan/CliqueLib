@@ -1,0 +1,53 @@
+\hypertarget{classBaseClassifier}{}\section{Base\+Classifier Class Reference}
+\label{classBaseClassifier}\index{Base\+Classifier@{Base\+Classifier}}
+
+
+{\ttfamily \#include $<$Base\+Classifier.\+h$>$}
+
+
+
+Inheritance diagram for Base\+Classifier\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classBaseClassifier_adabf37251588e29d4a7caf0e15596cf7}{train} (const arma\+::mat \&, const arma\+::colvec \&, arma\+::uword)=0
+\item 
+virtual void \hyperlink{classBaseClassifier_a6b025862e956120b89302007745ec30d}{predict} (const arma\+::mat \&, arma\+::colvec \&)=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classBaseClassifier}{Base\+Classifier} provides an interface that each Armadillo-\/based algorithm in the library implements. Each algorithm constains at least a train function and a predict function that needs to be implemented by that particular algorithm. 
+
+\subsection{Member Function Documentation}
+\index{Base\+Classifier@{Base\+Classifier}!predict@{predict}}
+\index{predict@{predict}!Base\+Classifier@{Base\+Classifier}}
+\subsubsection[{\texorpdfstring{predict(const arma\+::mat \&, arma\+::colvec \&)=0}{predict(const arma::mat &, arma::colvec &)=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Base\+Classifier\+::predict (
+\begin{DoxyParamCaption}
+\item[{const arma\+::mat \&}]{, }
+\item[{arma\+::colvec \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{classBaseClassifier_a6b025862e956120b89302007745ec30d}{}\label{classBaseClassifier_a6b025862e956120b89302007745ec30d}
+The predict function is virtual and is implemented by every Armadillo-\/based algorithm in Clique\+Lib. The predict function accepts a matrix of inputs and a column vector of labels initialized to 0. As the column vector is passed by reference, the algorithm simply inserts the computed predictions into the vector and returns void. 
+
+Implemented in \hyperlink{classAdaBoost_a700eefa154b63673ca40ec258d3b803a}{Ada\+Boost}.
+
+\index{Base\+Classifier@{Base\+Classifier}!train@{train}}
+\index{train@{train}!Base\+Classifier@{Base\+Classifier}}
+\subsubsection[{\texorpdfstring{train(const arma\+::mat \&, const arma\+::colvec \&, arma\+::uword)=0}{train(const arma::mat &, const arma::colvec &, arma::uword)=0}}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Base\+Classifier\+::train (
+\begin{DoxyParamCaption}
+\item[{const arma\+::mat \&}]{, }
+\item[{const arma\+::colvec \&}]{, }
+\item[{arma\+::uword}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\hypertarget{classBaseClassifier_adabf37251588e29d4a7caf0e15596cf7}{}\label{classBaseClassifier_adabf37251588e29d4a7caf0e15596cf7}
+The train function is virtual and is implemented by every Armadillo-\/based algorithm in Clique\+Lib. The train function accepts a matrix of sample inputs, a column vector of sample labels, and a uword representing the number of epochs. Given these inputs, the algorithms are able to generate a model for predicting on new inputs. 
+
+Implemented in \hyperlink{classAdaBoost_a733b812e2f315dd8d70e7ecbef5be5a1}{Ada\+Boost}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source/\+Commons/Base\+Classifier.\+h\end{DoxyCompactItemize}

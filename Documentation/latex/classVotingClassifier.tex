@@ -1,0 +1,56 @@
+\hypertarget{classVotingClassifier}{}\section{Voting\+Classifier Class Reference}
+\label{classVotingClassifier}\index{Voting\+Classifier@{Voting\+Classifier}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classVotingClassifier_ab01879754f994347dd487c70f9474ab0}{Voting\+Classifier} ()
+\item 
+void \hyperlink{classVotingClassifier_a2940d365780d591b776061dab68d763e}{train} (const arma\+::mat \&, const arma\+::colvec \&, arma\+::uword)
+\item 
+void \hyperlink{classVotingClassifier_a2ae92d9d9e3a0be5c2081544054ff5b5}{predict} (const arma\+::mat \&, arma\+::colvec \&)
+\item 
+void \hyperlink{classVotingClassifier_a41a0ce19a39982ccbc502e586c0864d3}{add\+Classifier} (std\+::shared\+\_\+ptr$<$ \hyperlink{classBaseClassifier}{Base\+Classifier} $>$)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Voting\+Classifier@{Voting\+Classifier}!Voting\+Classifier@{Voting\+Classifier}}
+\index{Voting\+Classifier@{Voting\+Classifier}!Voting\+Classifier@{Voting\+Classifier}}
+\subsubsection[{\texorpdfstring{Voting\+Classifier()}{VotingClassifier()}}]{\setlength{\rightskip}{0pt plus 5cm}Voting\+Classifier\+::\+Voting\+Classifier (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classVotingClassifier_ab01879754f994347dd487c70f9474ab0}{}\label{classVotingClassifier_ab01879754f994347dd487c70f9474ab0}
+The constructor \hyperlink{classVotingClassifier}{Voting\+Classifier} creates a very simple \hyperlink{classVotingClassifier}{Voting\+Classifier} object 
+
+\subsection{Member Function Documentation}
+\index{Voting\+Classifier@{Voting\+Classifier}!add\+Classifier@{add\+Classifier}}
+\index{add\+Classifier@{add\+Classifier}!Voting\+Classifier@{Voting\+Classifier}}
+\subsubsection[{\texorpdfstring{add\+Classifier(std\+::shared\+\_\+ptr$<$ Base\+Classifier $>$)}{addClassifier(std::shared_ptr< BaseClassifier >)}}]{\setlength{\rightskip}{0pt plus 5cm}void Voting\+Classifier\+::add\+Classifier (
+\begin{DoxyParamCaption}
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Base\+Classifier} $>$}]{clfr}
+\end{DoxyParamCaption}
+)}\hypertarget{classVotingClassifier_a41a0ce19a39982ccbc502e586c0864d3}{}\label{classVotingClassifier_a41a0ce19a39982ccbc502e586c0864d3}
+add\+Classifier method adds a classifier to base\+\_\+estimators, and hence adds an extra model to the ensemble \index{Voting\+Classifier@{Voting\+Classifier}!predict@{predict}}
+\index{predict@{predict}!Voting\+Classifier@{Voting\+Classifier}}
+\subsubsection[{\texorpdfstring{predict(const arma\+::mat \&, arma\+::colvec \&)}{predict(const arma::mat &, arma::colvec &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Voting\+Classifier\+::predict (
+\begin{DoxyParamCaption}
+\item[{const arma\+::mat \&}]{, }
+\item[{arma\+::colvec \&}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classVotingClassifier_a2ae92d9d9e3a0be5c2081544054ff5b5}{}\label{classVotingClassifier_a2ae92d9d9e3a0be5c2081544054ff5b5}
+The predict function calls the predict function for each corresponding classifier in base\+\_\+estimators, and takes the majority vote to yield predictions \index{Voting\+Classifier@{Voting\+Classifier}!train@{train}}
+\index{train@{train}!Voting\+Classifier@{Voting\+Classifier}}
+\subsubsection[{\texorpdfstring{train(const arma\+::mat \&, const arma\+::colvec \&, arma\+::uword)}{train(const arma::mat &, const arma::colvec &, arma::uword)}}]{\setlength{\rightskip}{0pt plus 5cm}void Voting\+Classifier\+::train (
+\begin{DoxyParamCaption}
+\item[{const arma\+::mat \&}]{, }
+\item[{const arma\+::colvec \&}]{, }
+\item[{arma\+::uword}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classVotingClassifier_a2940d365780d591b776061dab68d763e}{}\label{classVotingClassifier_a2940d365780d591b776061dab68d763e}
+The train function calls the train function for the corresponding classifier in base\+\_\+estimators 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+source/\+Voting\+Classifier/Voting\+Classifier.\+h\item 
+source/\+Voting\+Classifier/Voting\+Classifier.\+cpp\end{DoxyCompactItemize}

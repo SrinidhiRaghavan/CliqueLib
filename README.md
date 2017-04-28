@@ -2,7 +2,6 @@ CliqueLib
 
 “A Machine Learning Library aiming to provide reliable ensemble classifiers”
 
-
 Aliraza Punjani (amp2280)
 Stanislav Karel Peceny (skp2140)
 Srinidhi Srinivasa Raghavan (ss5145)

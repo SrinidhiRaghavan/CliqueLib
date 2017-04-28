@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['train',['train',['../classAdaBoost.html#a733b812e2f315dd8d70e7ecbef5be5a1',1,'AdaBoost::train()'],['../classBaggingClassifier.html#af0849ec914e7e6736e2b3dfc29f0e1cd',1,'BaggingClassifier::train()'],['../classBaseClassifier.html#adabf37251588e29d4a7caf0e15596cf7',1,'BaseClassifier::train()'],['../classKNN.html#ad33321bbef850109228ba5ffef188cdd',1,'KNN::train()'],['../classKNNStd.html#a2de41ed4f9d4fd122839de95ad60e0a8',1,'KNNStd::train()'],['../classLogistic.html#a39f2b8b964ae18554a2affd7c3528bff',1,'Logistic::train()'],['../classLogisticRegressionStd.html#ab165dfd866aa94f54913fae1c7654797',1,'LogisticRegressionStd::train()'],['../classPerceptron.html#a2bee28a9e1b7e6f08c6f2bb8e44a8e07',1,'Perceptron::train()'],['../classSVM.html#adefa037277c8e65b2e1fa20b4b538939',1,'SVM::train()'],['../classVotingClassifier.html#a2940d365780d591b776061dab68d763e',1,'VotingClassifier::train()']]]
+];

@@ -1,0 +1,62 @@
+\hypertarget{classAdaBoost}{}\section{Ada\+Boost Class Reference}
+\label{classAdaBoost}\index{Ada\+Boost@{Ada\+Boost}}
+
+
+Inheritance diagram for Ada\+Boost\+:
+% FIG 0
+
+
+Collaboration diagram for Ada\+Boost\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classAdaBoost_a733b812e2f315dd8d70e7ecbef5be5a1}{train} (const arma\+::mat \&, const arma\+::colvec \&, arma\+::uword)
+\item 
+void \hyperlink{classAdaBoost_a700eefa154b63673ca40ec258d3b803a}{predict} (const arma\+::mat \&, arma\+::colvec \&)
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classStump}{Stump} $>$ \hyperlink{classAdaBoost_aba122568cf8c30054cd03e42879cdada}{build\+Stump} (const arma\+::mat \&, const arma\+::colvec \&, const arma\+::colvec \&)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{Ada\+Boost@{Ada\+Boost}!build\+Stump@{build\+Stump}}
+\index{build\+Stump@{build\+Stump}!Ada\+Boost@{Ada\+Boost}}
+\subsubsection[{\texorpdfstring{build\+Stump(const arma\+::mat \&, const arma\+::colvec \&, const arma\+::colvec \&)}{buildStump(const arma::mat &, const arma::colvec &, const arma::colvec &)}}]{\setlength{\rightskip}{0pt plus 5cm}shared\+\_\+ptr$<$ {\bf Stump} $>$ Ada\+Boost\+::build\+Stump (
+\begin{DoxyParamCaption}
+\item[{const arma\+::mat \&}]{, }
+\item[{const arma\+::colvec \&}]{, }
+\item[{const arma\+::colvec \&}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classAdaBoost_aba122568cf8c30054cd03e42879cdada}{}\label{classAdaBoost_aba122568cf8c30054cd03e42879cdada}
+build\+Stump Optimally selects dimensions to built decision stumps over. \index{Ada\+Boost@{Ada\+Boost}!predict@{predict}}
+\index{predict@{predict}!Ada\+Boost@{Ada\+Boost}}
+\subsubsection[{\texorpdfstring{predict(const arma\+::mat \&, arma\+::colvec \&)}{predict(const arma::mat &, arma::colvec &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Ada\+Boost\+::predict (
+\begin{DoxyParamCaption}
+\item[{const arma\+::mat \&}]{, }
+\item[{arma\+::colvec \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classAdaBoost_a700eefa154b63673ca40ec258d3b803a}{}\label{classAdaBoost_a700eefa154b63673ca40ec258d3b803a}
+The predict function accepts a matrix of inputs and a reference to an empty column vector which shall be filled with the predicted labels 
+
+Implements \hyperlink{classBaseClassifier_a6b025862e956120b89302007745ec30d}{Base\+Classifier}.
+
+\index{Ada\+Boost@{Ada\+Boost}!train@{train}}
+\index{train@{train}!Ada\+Boost@{Ada\+Boost}}
+\subsubsection[{\texorpdfstring{train(const arma\+::mat \&, const arma\+::colvec \&, arma\+::uword)}{train(const arma::mat &, const arma::colvec &, arma::uword)}}]{\setlength{\rightskip}{0pt plus 5cm}void Ada\+Boost\+::train (
+\begin{DoxyParamCaption}
+\item[{const arma\+::mat \&}]{, }
+\item[{const arma\+::colvec \&}]{, }
+\item[{arma\+::uword}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classAdaBoost_a733b812e2f315dd8d70e7ecbef5be5a1}{}\label{classAdaBoost_a733b812e2f315dd8d70e7ecbef5be5a1}
+The train function accepts a matrix of sample inputs, a column vector of labels representing the ground truth, and number of Stumps to create for training and prediction. 
+
+Implements \hyperlink{classBaseClassifier_adabf37251588e29d4a7caf0e15596cf7}{Base\+Classifier}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+source/\+Ada\+Boost/Ada\+Boost.\+h\item 
+source/\+Ada\+Boost/Ada\+Boost.\+cpp\end{DoxyCompactItemize}

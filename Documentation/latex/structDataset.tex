@@ -1,0 +1,40 @@
+\hypertarget{structDataset}{}\section{Dataset Struct Reference}
+\label{structDataset}\index{Dataset@{Dataset}}
+
+
+{\ttfamily \#include $<$Dataset.\+h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+arma\+::mat \hyperlink{structDataset_afba2ca3372581ba850149b0a806e15c4}{Xtrain}
+\item 
+arma\+::colvec \hyperlink{structDataset_ac8226522f944e7f586c9ead2240c8a6b}{Ytrain}
+\item 
+arma\+::mat \hyperlink{structDataset_ae013d9631db39109264e1f39adc616e0}{Xtest}
+\item 
+arma\+::colvec \hyperlink{structDataset_a3b08f5de87d947b3f974d8534048e6be}{Ytest}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{structDataset}{Dataset} structure is a convenient implementation constituting the basic components of a \hyperlink{structDataset}{Dataset}. Each dataset contains a matrix of features that is used for training and a vector column that is used for training. Similarly, the dataset further has a testing component that represents a matrix of features and a vector column of labels that needs to be predicted by a selected algorithm and tested. 
+
+\subsection{Member Data Documentation}
+\index{Dataset@{Dataset}!Xtest@{Xtest}}
+\index{Xtest@{Xtest}!Dataset@{Dataset}}
+\subsubsection[{\texorpdfstring{Xtest}{Xtest}}]{\setlength{\rightskip}{0pt plus 5cm}arma\+::mat Dataset\+::\+Xtest}\hypertarget{structDataset_ae013d9631db39109264e1f39adc616e0}{}\label{structDataset_ae013d9631db39109264e1f39adc616e0}
+Xtest is a matrix of attributes used for testing \index{Dataset@{Dataset}!Xtrain@{Xtrain}}
+\index{Xtrain@{Xtrain}!Dataset@{Dataset}}
+\subsubsection[{\texorpdfstring{Xtrain}{Xtrain}}]{\setlength{\rightskip}{0pt plus 5cm}arma\+::mat Dataset\+::\+Xtrain}\hypertarget{structDataset_afba2ca3372581ba850149b0a806e15c4}{}\label{structDataset_afba2ca3372581ba850149b0a806e15c4}
+Xtrain is a matrix of attributes used for training \index{Dataset@{Dataset}!Ytest@{Ytest}}
+\index{Ytest@{Ytest}!Dataset@{Dataset}}
+\subsubsection[{\texorpdfstring{Ytest}{Ytest}}]{\setlength{\rightskip}{0pt plus 5cm}arma\+::colvec Dataset\+::\+Ytest}\hypertarget{structDataset_a3b08f5de87d947b3f974d8534048e6be}{}\label{structDataset_a3b08f5de87d947b3f974d8534048e6be}
+Ytest is a vector column of labels to be tested with \index{Dataset@{Dataset}!Ytrain@{Ytrain}}
+\index{Ytrain@{Ytrain}!Dataset@{Dataset}}
+\subsubsection[{\texorpdfstring{Ytrain}{Ytrain}}]{\setlength{\rightskip}{0pt plus 5cm}arma\+::colvec Dataset\+::\+Ytrain}\hypertarget{structDataset_ac8226522f944e7f586c9ead2240c8a6b}{}\label{structDataset_ac8226522f944e7f586c9ead2240c8a6b}
+Ytrain is a vector column of labels used for training 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+source/\+Commons/Dataset.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,71 @@
+\hypertarget{classPerceptron}{}\section{Perceptron Class Reference}
+\label{classPerceptron}\index{Perceptron@{Perceptron}}
+
+
+{\ttfamily \#include $<$Perceptron.\+h$>$}
+
+
+
+Inheritance diagram for Perceptron\+:
+% FIG 0
+
+
+Collaboration diagram for Perceptron\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classPerceptron_a5b8f94d3ec951f153774575e2acdf582}{Perceptron} ()
+\item 
+\hyperlink{classPerceptron_a1ccbe33e4e26ee0258e63ab01507498d}{Perceptron} (double)
+\item 
+void \hyperlink{classPerceptron_a2bee28a9e1b7e6f08c6f2bb8e44a8e07}{train} (const mat \&, const colvec \&, uword)
+\item 
+void \hyperlink{classPerceptron_a36db241f14bb94709bd7c04c19daab1c}{predict} (const mat \&, colvec \&)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classPerceptron}{Perceptron} is a supervised learning algorithm for binary classification. The predictions are made on a linear predictor function that combines a set of weights in the feature vector. 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Perceptron@{Perceptron}!Perceptron@{Perceptron}}
+\index{Perceptron@{Perceptron}!Perceptron@{Perceptron}}
+\subsubsection[{\texorpdfstring{Perceptron()}{Perceptron()}}]{\setlength{\rightskip}{0pt plus 5cm}Perceptron\+::\+Perceptron (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classPerceptron_a5b8f94d3ec951f153774575e2acdf582}{}\label{classPerceptron_a5b8f94d3ec951f153774575e2acdf582}
+A default constructor for \hyperlink{classPerceptron}{Perceptron} is available and sets the default learning rate neta to 0.\+01 \index{Perceptron@{Perceptron}!Perceptron@{Perceptron}}
+\index{Perceptron@{Perceptron}!Perceptron@{Perceptron}}
+\subsubsection[{\texorpdfstring{Perceptron(double)}{Perceptron(double)}}]{\setlength{\rightskip}{0pt plus 5cm}Perceptron\+::\+Perceptron (
+\begin{DoxyParamCaption}
+\item[{double}]{n}
+\end{DoxyParamCaption}
+)}\hypertarget{classPerceptron_a1ccbe33e4e26ee0258e63ab01507498d}{}\label{classPerceptron_a1ccbe33e4e26ee0258e63ab01507498d}
+A \hyperlink{classPerceptron}{Perceptron} object is created by a constructor wherein the user must specify the learning rate neta. The learning rate is used when calculating the coefficients with stochastic gradient descent. 
+
+\subsection{Member Function Documentation}
+\index{Perceptron@{Perceptron}!predict@{predict}}
+\index{predict@{predict}!Perceptron@{Perceptron}}
+\subsubsection[{\texorpdfstring{predict(const mat \&, colvec \&)}{predict(const mat &, colvec &)}}]{\setlength{\rightskip}{0pt plus 5cm}void Perceptron\+::predict (
+\begin{DoxyParamCaption}
+\item[{const mat \&}]{data, }
+\item[{colvec \&}]{Y}
+\end{DoxyParamCaption}
+)}\hypertarget{classPerceptron_a36db241f14bb94709bd7c04c19daab1c}{}\label{classPerceptron_a36db241f14bb94709bd7c04c19daab1c}
+The predict function accepts a matrix of inputs and a column vector of labels initialized to 0. As the column vector is passed by reference, the algorithm simply inserts the computed predictions into the vector and returns void. \index{Perceptron@{Perceptron}!train@{train}}
+\index{train@{train}!Perceptron@{Perceptron}}
+\subsubsection[{\texorpdfstring{train(const mat \&, const colvec \&, uword)}{train(const mat &, const colvec &, uword)}}]{\setlength{\rightskip}{0pt plus 5cm}void Perceptron\+::train (
+\begin{DoxyParamCaption}
+\item[{const mat \&}]{data, }
+\item[{const colvec \&}]{Y, }
+\item[{uword}]{epoch}
+\end{DoxyParamCaption}
+)}\hypertarget{classPerceptron_a2bee28a9e1b7e6f08c6f2bb8e44a8e07}{}\label{classPerceptron_a2bee28a9e1b7e6f08c6f2bb8e44a8e07}
+The train function accepts a matrix of sample inputs, a column vector of sample labels, and a uword representing the number of epochs. Given these inputs, perceptron is able to generate a model for predicting on new inputs. n -\/ Number of data entries in data d -\/ Dimension of each entry in data w -\/ Weight vector including the bias 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+source/\+Perceptron/Perceptron.\+h\item 
+source/\+Perceptron/Perceptron.\+cpp\end{DoxyCompactItemize}

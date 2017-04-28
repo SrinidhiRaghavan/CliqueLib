@@ -1,0 +1,48 @@
+\hypertarget{classBaggingClassifier}{}\section{Bagging\+Classifier$<$ C $>$ Class Template Reference}
+\label{classBaggingClassifier}\index{Bagging\+Classifier$<$ C $>$@{Bagging\+Classifier$<$ C $>$}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBaggingClassifier_a0d353a294977399eedca0757d7aec74a}{Bagging\+Classifier} (arma\+::uword, arma\+::uword)
+\item 
+void \hyperlink{classBaggingClassifier_af0849ec914e7e6736e2b3dfc29f0e1cd}{train} (const arma\+::mat \&, const arma\+::colvec \&, arma\+::uword)
+\item 
+void \hyperlink{classBaggingClassifier_a1be0950979be0f5b30ee5849751fad94}{predict} (const arma\+::mat \&, arma\+::colvec \&)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Bagging\+Classifier@{Bagging\+Classifier}!Bagging\+Classifier@{Bagging\+Classifier}}
+\index{Bagging\+Classifier@{Bagging\+Classifier}!Bagging\+Classifier@{Bagging\+Classifier}}
+\subsubsection[{\texorpdfstring{Bagging\+Classifier(arma\+::uword, arma\+::uword)}{BaggingClassifier(arma::uword, arma::uword)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$Classifier C$>$ {\bf Bagging\+Classifier}$<$ C $>$\+::{\bf Bagging\+Classifier} (
+\begin{DoxyParamCaption}
+\item[{arma\+::uword}]{, }
+\item[{arma\+::uword}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classBaggingClassifier_a0d353a294977399eedca0757d7aec74a}{}\label{classBaggingClassifier_a0d353a294977399eedca0757d7aec74a}
+The \hyperlink{classBaggingClassifier}{Bagging\+Classifier} object contains two main variables, the first of which represents the number of estimators and is accompanied with max samples. 
+
+\subsection{Member Function Documentation}
+\index{Bagging\+Classifier@{Bagging\+Classifier}!predict@{predict}}
+\index{predict@{predict}!Bagging\+Classifier@{Bagging\+Classifier}}
+\subsubsection[{\texorpdfstring{predict(const arma\+::mat \&, arma\+::colvec \&)}{predict(const arma::mat &, arma::colvec &)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$Classifier C$>$ void {\bf Bagging\+Classifier}$<$ C $>$\+::predict (
+\begin{DoxyParamCaption}
+\item[{const arma\+::mat \&}]{, }
+\item[{arma\+::colvec \&}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classBaggingClassifier_a1be0950979be0f5b30ee5849751fad94}{}\label{classBaggingClassifier_a1be0950979be0f5b30ee5849751fad94}
+The predict function iterates over base\+\_\+estimators, which contains all the classifiers in the ensemble, and predicts on each model in the ensemble. Consequently, given the predictions from all models, the ensemble combines the outputs and yields a final vector of labels. \index{Bagging\+Classifier@{Bagging\+Classifier}!train@{train}}
+\index{train@{train}!Bagging\+Classifier@{Bagging\+Classifier}}
+\subsubsection[{\texorpdfstring{train(const arma\+::mat \&, const arma\+::colvec \&, arma\+::uword)}{train(const arma::mat &, const arma::colvec &, arma::uword)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$Classifier C$>$ void {\bf Bagging\+Classifier}$<$ C $>$\+::train (
+\begin{DoxyParamCaption}
+\item[{const arma\+::mat \&}]{, }
+\item[{const arma\+::colvec \&}]{, }
+\item[{arma\+::uword}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{classBaggingClassifier_af0849ec914e7e6736e2b3dfc29f0e1cd}{}\label{classBaggingClassifier_af0849ec914e7e6736e2b3dfc29f0e1cd}
+The train function accepts a matrix of sample inputs, a column vector of sample labels, and a uword representing the number of epochs. Given these inputs, the bagging classifier iterates over the number of estimators and calls the train functions of corresponding algorithms. As this is bagging, the sets are randomized and models are inserted into base\+\_\+estimators 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+source/\+Bagging\+Classifier/Bagging\+Classifier.\+h\item 
+source/\+Bagging\+Classifier/Bagging\+Classifier.\+cpp\end{DoxyCompactItemize}
