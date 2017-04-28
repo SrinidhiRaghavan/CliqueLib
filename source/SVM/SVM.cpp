@@ -6,10 +6,8 @@
 // Description : CliqueLib SVM implementation
 //============================================================================
 
-#include <iostream>
 #include <cmath>
 #include <algorithm>
-#include <armadillo>
 #include <random>
 
 #include "SVM.h"
@@ -22,7 +20,6 @@ SVM::SVM(double C_val)
 {
     C = C_val;
 }
-
 
 //Implementation of the train function
 void SVM::train(const mat& data, const colvec& Y, uword epoch) 
@@ -68,7 +65,6 @@ void SVM::train(const mat& data, const colvec& Y, uword epoch)
     weight = w;
 }
 
-
 //Implementation of the predict function 
 void SVM::predict(const mat& data, colvec& Y) 
 {
@@ -87,4 +83,3 @@ void SVM::predict(const mat& data, colvec& Y)
     uvec idx = find(A < 0);
     Y.elem(idx).fill(-1);
 }
-
