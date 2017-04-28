@@ -20,12 +20,20 @@ using namespace arma;
 
 double getAccuracy(colvec& a, colvec& b) 
 {
-    return double(accu(a==b))/size(a, 0);
+    return (100 * (double(accu(a==b))/size(a, 0)));
 }
 
 //use case 1
 int main()
 {
+    cout << "" << endl;
+    cout << "Initiating Face Detection using AdaBoost..." << endl;
+    cout << "" << endl;
+    cout << "We draw 1000 samples from face_detection.csv which has" << endl;
+    cout << "images of faces and non-faces of size 24x24 flattened" << endl;
+    cout << "to give a feature vector with 576 features" << endl;
+    cout << "" << endl;
+    
     mat X;
     colvec Y;
     read_csv("../../samples_csv/face_detection.csv", X, Y, true, ',', '#');
@@ -36,11 +44,20 @@ int main()
     split_train_test(X, Y, data, 0.6);
     
     AdaBoost clfr;
+    cout << "Using Train-Test data split of 60-40%" << endl;
+    cout << "Training AdaBoost with 5 decision Stumps..." << endl;
     clfr.train(data.Xtrain, data.Ytrain, 5);
-    colvec preds;
-    clfr.predict(data.Xtest, preds);
-    auto acc = getAccuracy(data.Ytest, preds);
-    cout << "AdaBoost acc:" << acc << endl;
+    
+    colvec trainPreds;
+    clfr.predict(data.Xtrain, trainPreds);
+    auto acc = getAccuracy(data.Ytrain, trainPreds);
+    cout << "Training accuracy: " << acc << "%" << endl;
+    
+    colvec testPreds;
+    clfr.predict(data.Xtest, testPreds);
+    acc = getAccuracy(data.Ytest, testPreds);
+    cout << "Testing accuracy: " << acc << "%" << endl;
+    cout << "" << endl;
 
     return 0;
 }

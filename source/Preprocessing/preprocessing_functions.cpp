@@ -100,7 +100,7 @@ void split_train_test(const mat& X, const colvec& Y, Dataset& data, double train
     uvec randIdx = randi<uvec>(n, 1, distr_param(0, n-1));
     assert(trainProportion > 0);
     uword ntrain = ceil(trainProportion * n);
-    cout << "ntrain: " << ntrain << endl;
+    //cout << "ntrain: " << ntrain << endl;
 
     data.Xtrain = X.rows(randIdx.rows(0, ntrain-1));
     data.Ytrain = Y.rows(randIdx.rows(0, ntrain-1));
