@@ -36,7 +36,7 @@ int main()
     
     mat X;
     colvec Y;
-    read_csv("../../samples_csv/face_detection.csv", X, Y, true, ',', '#');
+    read_csv("../../samples_csv/face_detection.csv", X, Y, false, ',', '#');
     X = X.rows(0, 999);
     Y = Y.rows(0, 999);
     
@@ -57,6 +57,36 @@ int main()
     clfr.predict(data.Xtest, testPreds);
     acc = getAccuracy(data.Ytest, testPreds);
     cout << "Testing accuracy: " << acc << "%" << endl;
+    cout << "" << endl;
+
+    colvec samplePreds;
+    string label = "";
+    string truth = "";
+    for (uword i = 0; i < 5; i++)
+    {
+        clfr.predict(X.row(i), samplePreds);
+        
+        if (Y(i, 0) == 1)
+        {
+            truth = "positive";
+        }
+        else
+        {
+            truth = "negetive";
+        }
+        
+        if (samplePreds(0, 0) == 1)
+        {
+            label = "positive";
+        }
+        else
+        {
+            label = "negetive";
+        }
+
+        cout << "For " << i << ".pgm class face, ground truth:"<< truth << " prediction:" << label << endl;
+        cout << "" << endl;
+    }
     cout << "" << endl;
 
     return 0;
