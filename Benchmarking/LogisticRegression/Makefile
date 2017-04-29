@@ -1,8 +1,8 @@
 # CliqueLib
 # Stanislav Peceny
 
-CC = g++
-CXX = g++
+CC = g++-6
+CXX = g++-6
 INCLUDES = -I ../../armadillo-7.800.2/include/ -I ../../source/Commons/ -I ../../source  -I ../../source/Preprocessing -I ../../source/LogisticRegression -I ../../source/LogisticRegressionStd
 
 CXXFLAGS = -g -Wall --std=c++1z -fconcepts -o prog -O2 -DARMA_DONT_USE_WRAPPER -lblas -llapack -larmadillo $(INCLUDES) 
